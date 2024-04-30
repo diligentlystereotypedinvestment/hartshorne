@@ -1,0 +1,143 @@
+\documentclass[openany, amssymb, psamsfonts]{amsart}
+\input{~/templates/preamble}
+% \usepackage{exercise}
+\usepackage{fullpage}
+\title{Exercises From Hartshorne}
+
+\author{Vincent Tran}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Chapter 1}
+
+\subsection{Affine Varieties}
+
+Exercises
+
+\begin{exercise}[1.1]
+\begin{enumerate}
+\item Let $Y $ be the plane curve $y = x^2 $ (i.e., $Y $ is the zero set of the polynomial $f = y - x^2 $). Show that $A(Y) $ is isomorphic to a polynomial ring in one variable over $k $.
+\begin{proof}
+	We have that $I(y-x^2) = (y-x^2) $, so $A(Y) = k[x,y] / (y-x^2) $, which is obviously isomorphic to $k[x] $.
+\end{proof}
+\item Let $Z $ be the plane curve $xy = 1 $. Show that $A(Z) $ is not isomorphic to a polynomial ring in one variable over $k $.
+\begin{proof}
+	We want to show that $A(Z) = k[x,y] / (xy-1) \not\cong k[x] $.
+	Suppose FTSOC that there was an isomorphism $f: A(Z) \to k[x]$.
+	Then $f(xy) = f(1) = 1 = f(x)f(y) $ gives us that $f(x) $ is a unit.
+	Similarly, we can see that $f(kx) $ are also distinct units.
+
+	As $k $ is a field, $f(k) $ is a field.
+	The only subfield of $k[x] $ is $k $, so $f(k) = k $.
+	But $f(x) $ is in $k $, so we don't have bijectivity.
+\end{proof}
+\item Let $f $ be any irreducible quadratic polynomial in $k[x,y] $, and let $W $ be the conic defined by $f $. Show that $A(W) $ is isomorphic to $A(Y) $ or $A(Z) $. Which one is it when?
+\begin{proof}
+	By Proposition 1.7, $\dim W = \height I(W) \implies $ by Proposition 1.8A $\dim W + \dim k[x,y] / I(W) = 2 $.
+	As dimension is non-negative, there are three possibilities for $\dim W $.
+
+	It can't be $2 $ because these correspond to maximal ideals, and maximal ideals here are of the form $(x-a,y-b) $, which isn't principal.
+
+	If it is $1 $, then $\dim k[x,y] / I(W) = 1 $ and thus $A(W) = k[x,y] / I(W) \cong k[f] $ by definition of transcendence degree.
+	This corresponds to the $Y $ case.
+
+	If it is $0 $, then $\dim k[x,y] / I(W) = 2 $ and thus $A(W) = k[x,y] / I(W) \cong k[f,g] $ by definition of transcendence degree.
+	This corresponds to the $Z $ case, as $k(Z) \cong k[x,x^{-1}] $.
+\end{proof}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[1.2]
+\textit{The Twisted Cubic Curve}. Let $Y \subseteq A^3  $ be the set $Y = \{(t,t^2,t^3 )|t\in k\}   $. Show that $Y $ is an affine variety of dimension 1. Find generators for the ideal $I(Y) $. SHow that $A(Y) $ is isomorphic to a polynomial ring in one variable over $k $. We say that $Y $ is given by the parametric representation $x=t,y=t^2,z=t^3  $.
+\end{exercise}
+\begin{proof}
+	$Y $ is an affine variety because it is closed due to being $Z(y-x^2,z-x^3) $ and irreducible by quotienting out ($k[x,y,z] / I(Y) = k[x] $).
+	It is dimension 1 because $\height I(Y) + \dim k[x,y,z] / \mathfrak{p} = \dim k[x,y,z] $ and $1 + 2 = 3 $ by Proposition 1.8A.
+
+	The generators are $y-x^2,z-x^3  $ and $A(Y) \cong k[x] $.
+\end{proof}
+
+\begin{exercise}[1.3]
+Let $Y $ be the algebraic set in $\bm{A}^3 $ defined by the two polynomials $x^2-yz $ and $xz-x $. Show that $Y $ is a union of three irreducible components. Describe them and find their prime ideals.
+\end{exercise}
+\begin{proof}
+	We can see that $Z(x^2-yz,xz-x) = Z(x^2-yz,x)\cup Z(x^2-yz,z-1)$ because $k $ is an integral domain.
+	Then $Z(x^2-yz,x) = Z(yz,x) = Z(y,x)\cup Z(z,x)$, both of which are irreducible by quotienting out.
+
+	Finally, we can see that $Z(x^2-yz,z-1) = Z(x^2-y,z-1) $, which is irreducible by quotienting out.
+	Thus $Z(x^2-yz,xz-x) = Z(x,y)\cup Z(x,z)\cup Z(x^2-y,z-1) $.
+\end{proof}
+
+\begin{exercise}[1.4]
+Let $Y $ be the algebraic set in $\bm{A}^3$ with $\bm{A}\times \bm{A} $ in the natural way, show that the Zariski topology on $\bm{A}^2$ is not the product topology of the Zariski topologies on the two copies of $\bm{A}^1 $.
+\end{exercise}
+\begin{proof}
+	In the Zariski topology, we can see that $Z(xy-1) $ is closed.
+	But it is not closed in the product topology because
+\end{proof}
+
+\begin{exercise}[1.5]
+Show that a $k $-algebra $B $ is isomorphic to the affine coordinate ring of some algebraic set in $\bm{A}^n$, for some $n $, if and only if $B $ is a finitely generated $k $-algebra with no nilpotent elements.
+\end{exercise}
+\begin{proof}
+	
+\end{proof}
+
+\begin{exercise}[1.6]
+Any nonempty open subset of an irreducible topological space is dense and irreducible. If $Y $ is a subsut of a topological space $X $, which is irreducible in its induced topology, then the closure $\overline{Y}  $ is also irreducible.
+\end{exercise}
+
+\begin{exercise}[1.7]
+\begin{enumerate}
+\item Show that the following conditions are equivalent for a topological space $X$: $(i)$ $X$ is noetherian; $(ii)$ every nonempty family of closed subsets has a minimal element; $(iii)$ $X$ satisfies the ascending chain condition for open subsets; $(iv)$ every nonempty family of open subsets has a maximal element.
+\item A noetherian topological space is \emph{quasi-compact,} i.e., every open cover has a finite subcover.
+\item Any subset of a noetherian topological space is noetherian in its induced topology.
+\item A noetherian space which is also Hausdorff must be a finite set with the discrete topology.    
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[1.8]
+Let $Y$ be an affine variety of dimension $r$ in $\aa^n$.
+Let $H$ be a hypersurface in $\aa^n$, and assume $Y \not\subseteq H$.
+Then every irreducible component of $Y \cap H$ has dimension $r-1$.
+(See $(7.1)$ for a generalization.)
+\end{exercise}
+
+\begin{exercise}[1.9]
+Let $\mathfrak{a} \subseteq A = k[x_1,\ldots,x_n]$ be an ideal which can be
+generated by $r$ elements.
+Then every irreducible component of $Z(\mathfrak{a})$ has dimension $\ge n-r$.
+\end{exercise}
+
+\begin{exercise}[1.10]
+\begin{enumerate}
+\item If $Y$ is any subset of a topological space $X$ then $\dim Y \leq \dim X$. 
+\item If $X$ is a topological space which is covered by a family of open
+	subsets $\{U_{i}\}$, then $\dim X = \sup \dim U_i$.
+\item Give an example of a topological space $X$ and a dense open subset $U$
+	with $\dim U < \dim X$. 
+\item If Y is a closed subset of an irreducible finite-dimensional topological space $X$, and if $\dim Y = \dim X$, then $Y= X$. 
+\item Give an example of a noetherian topological space of infinite dimension.  
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[1.11]
+Let $Y \subseteq \aa^3$ be the curve given parametrically by
+$x = t^3$, $y= t^4$, $z = t^5$.
+Show that $I(Y)$ is a prime ideal of height $2$ in $k[x,y,z]$ which cannot
+be generated by $2$ elements.
+We say $Y$ is \emph{not a local complete
+intersection}---cf.~\emph{(Ex.~$2.17$)}. 
+\end{exercise}
+
+\begin{exercise}[1.12]
+Give an example of an irreducible polynomial $f \in \mathbf{R}[x,y]$,
+whose zero set $Z(f)$ in $\aa_{\mathbf{R}}^2$ is not irreducible
+\emph{(cf.~$1.4.2$)}.
+\end{exercise}
+
+\end{document}
