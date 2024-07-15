@@ -1,0 +1,577 @@
+\section{Schemes}
+
+\subsection{Sheaves}
+
+\begin{exercise}%1.1
+	Let $A $ be an abelian group, and define the \textit{constant presheaf} assicated to $A $ on the topological space $X $ to be the presheaf $U\mapsto A $ for all $U\ne \emptyset $, with restriction maps the identity. Show that the constant sheaf $\mathcal{A} $ defined in the text is the sheaf associated to this presheaf.
+\end{exercise}
+\begin{proof}
+	Let the constant presheaf be $\mathcal{C} $.
+	We want to show that $\forall $ open $U \subseteq X$, $\mathcal{C}^+(U) = A $.
+	Clearly $\mathcal{C}_P = A $ since $\mathcal{C}(U) = A$ for all subsets $U $ with the map from $\mathcal{C}(U) \to \mathcal{C}_P $ the identity.
+
+	Fix a connected, open $U $.
+	Then for a fixed but arbitrary $P \in U $, we have $A $ choices for $s(P) $.
+	We can then see that by the second condition of $\mathcal{C}^+ $ and making $V $ small enough that it falls in the connected open set, there exists $t$ in $\mathcal{C}(V) = A$ such that for all $Q \in V, t_Q = t = s(Q)$.
+	Thus $s $ is constant on $V $ as $t $ is in $A $.
+
+	Finally, take the collection of these neighborhoods.
+	Pick one.
+	Because $U $ is connected, there must be non-empty intersection between this neighborhood and the union of the other neighborhoods.
+	By doing the above argument for a point in their intersection, $s $ is constant on all of $U $.
+
+	By construction, $s $ satisfies conditions (1) and (2) on $U $, putting $s \in \mathcal{C}^+(U) $.
+	Thus $\mathcal{C}^+(U) = A $.
+	By picking constants on connected components, we can see that such a function satisfies (1) and (2), making $\mathcal{C}^+(U) = \mathcal{A}(U) $.
+\end{proof}
+
+\begin{exercise}%1.2
+	~
+	\begin{enumerate}
+		\item For any morphism of sheaves $\phi: \mathcal{F}\to \mathcal{G} $, show that for any point $P $, $(\ker \phi)_P = \ker(\phi_P) $ and $(im \phi)_P = \im(\phi_P) $.
+		\item Show that $\phi $ is injective (respectively, surjective) if and only if the induced map on the stalks $\phi_P $ is injective (respectively, surjective) for all $P $.
+		\item Show that a sequence
+			\[
+				\cdots \to \mathcal{F}^{i-1}\xrightarrow{\phi ^{i-1}} \mathcal{F}^i \xrightarrow{\phi^i} \mathcal{F}^{i+1}\to \cdots   
+			\] 
+			of sheaves and morphisms is exact if and only if for each $P \in X $, the corresponding sequence of stalks is exact as a sequence of abelian groups.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a)
+	We have the following commutative diagram by definition:
+	\[
+		\begin{tikzcd}
+			\cdots & \ker \phi(U) & & \ker \phi(V) & \cdots\\
+			       & &\lim \ker \phi & &\\
+			\cdots & \mathcal{F}(U) & & \mathcal{F}(V) & \cdots\\
+			       & &\mathcal{F}_P & &\\
+			\cdots & \mathcal{G}(U) & & \mathcal{G}(V) & \cdots\\
+			       & &\mathcal{G}_P & &
+			\arrow[from=1-1,to=1-2]
+			\arrow["\iota ",from=1-2,to=1-4]
+			\arrow[from=1-4,to=1-5]
+			\arrow[from=3-1,to=3-2]
+			\arrow[from=3-2,to=3-4]
+			\arrow[from=3-4,to=3-5]
+			\arrow[from=5-1,to=5-2]
+			\arrow[from=5-2,to=5-4]
+			\arrow[from=5-4,to=5-5]
+			\arrow[from=1-2,to=2-3]
+			\arrow[from=1-2,to=3-2]
+			\arrow[from=3-2,to=5-2]
+			\arrow[from=1-4,to=3-4]
+			\arrow["\phi (V)",from=3-4,to=5-4]
+			\arrow[from=1-4,to=2-3]
+			\arrow[from=3-2,to=4-3]
+			\arrow[from=3-4,to=4-3]
+			\arrow[from=5-2,to=6-3]
+			\arrow["\rho_{G,V}",from=5-4,to=6-3]
+			\arrow[dotted,from=2-3,to=4-3]
+			\arrow["\phi_P",dotted,from=4-3,to=6-3]
+		\end{tikzcd}
+	\] 
+	We have a map $\lim\ker \phi \to \ker \phi_P $ because any element $u \in \lim \ker \phi $ can be represented by $(v,V), v\in \ker \phi(V)$, and $v $ maps to 0 in $\mathcal{G}_P $ (so map $u $ to $v_P $).
+	Further this is injective, because each map $\ker \phi(U) \to \mathcal{F}(U) $ is injective, making the induced map injective (Proposition 1.1).
+	% any element $t $ mapped to 0 in $\mathcal{F}_P $ would imply that all of its representatives in $\ker \phi(U)$ are non-zero.
+	% But because the image of $t $ is 0, there is a representative $(v,V) $ that is 0, implying that the representative of $t $ in $\ker \phi (V) $ is 0, a contradiction.
+	Hence if we show it is surjective, we have a bijective homomorphism and thus are the same.
+
+	Then for any element $\ell \in \ker \phi_P \subseteq \mathcal{F}_P $, let $(v_{1},V_{1}) $ represent it.
+	Let $(0,V_{2}) $ represent $\phi _P(\ell) $.
+	Then $\rho_{G,V}(\phi(V)(v)) = 0 $ by commutativity.
+	Next restrict $0 $ to $V_{1}\cap V_{2} $ to get $0\in \mathcal{G}(V_{1}\cap V_{2}) $, implying that via commuting that $v_{1}|_{V_{1}\cap V_{2}} $ is mapped to 0 under $\phi(V_{1}\cap V_{2})$.
+
+	So $v_{1}|_{V_{1}\cap V_{2}}\in \ker \phi(V_{1}\cap V_{2}) $.
+	We have thus found an element $\iota(v_{1}|_{V_{1}\cap V_{2}}) $ that gets mapped to $\ell $ as $\iota(v_{1}|_{V_{1}\cap V_{2}}) $ can be represented by $(v_{1}|_{V_{1}\cap V_{2}},V_{1}\cap V_{2}) $ and $(v_{1}|_{V_{1}\cap V_{2}})_P \in \ker \phi_P$.
+
+	I don't really want to make another large diagram to trace it for the image, so I'll just trust that it is very similar.
+
+	b)
+	Follows from a).
+
+	c) If $\ker \phi^{i} = \im \phi^{i-1}$, then $(\ker \phi^i)_P = (\im \phi^{i-1})_P $.
+	By a), we then have $\ker \phi^{i}_P = \im \phi^{i-1}_P $, showing exactness of stalks.
+\end{proof}
+
+\begin{exercise}%1.3
+	~
+	\begin{enumerate}
+		\item Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of sheaves on $X $. Show that $\phi  $ is surjective if and only if the following condition holds: for every open set $U \subseteq X $, and for every $s \in \mathcal{G}(U) $, there is a covering $\{U_i\}   $ of $U $, and there are elements $t_i \in \mathcal{F}(U_i) $, such that $\phi (t_i) = s|_{U_i} $ for all $i $.
+		\item Give an example of a surjective morphism of sheaves $\phi : \mathcal{F}\to \mathcal{G} $, and an open set $U $ such that $\phi (U): \mathcal{F}(U) \to \mathcal{G}(U) $ is not surjective.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) $\implies $: Take an open cover of $U $, $\{U_i\}   $.
+	Because $\phi  $ is surjective, there is an element $t $ such that $\phi (t) = s $.
+	Then $\phi (t|_{U_i}) = \phi(t)|_{U_i} = s|_{U_i} $.
+	Thus let $t_i = t|_{U_i} $.
+
+	$\Leftarrow $: Take an arbitrary open set $U $.
+	We want to show that $(\im^+ \phi)(U) = \mathcal{G}(U) $.
+	As $\im^+ \phi $ is a subsheaf of $\mathcal{G} $, all we need to show is surjectivity.
+	Take some $s \in \mathcal{G}(U) $.
+	Let $U_i $ be the open cover given by hypothesis.
+	Next we will want to use the gluing property of sheaves to get an element $t \in \mathcal{F}(U) $, so we have to check that $t_i $ from the hypothesis agree on intersections.
+
+	Take $t_i,t_j $ in $\mathcal{F}(U_i),\mathcal{F}(U_j) $ respectively and let $U_{ij} = U_i \cap U_j $.
+	Then by the definition of a sheaf morphism, $\phi(t_i|_{U_{ij}}) = \phi(t_i)|_{U_{ij}} = s_{U_{ij}} $ and $\phi(t_j|_{U_{ij}}) = \phi(t_j)|_{U_{ij}} = s_{U_{ij}}$.
+	So $t_i|_{U_{ij}}-t_{j}|_{U_{ij}} \in \ker \phi(U_{ij}) $.
+	Hence there is a unique element $t\in \mathcal{F}(U)$ such that $t|_{U_i} = t_i $.
+
+	b) Let $\mathcal{F} $ be the constant sheaf of $A = \mathbb{Z} / 2\mathbb{Z} $ and $\mathcal{G} $ be $\mathcal{F} $.
+	Then we have the sheaf morphism $\mathcal{F} \to \mathcal{G} $ by mapping $\mathcal{F}(\emptyset) = 0$ to 0, $\mathcal{F}(0)= \mathcal{F}(1) = A$ to $A $ and $\mathcal{F}(A) = A^2 $ to $A $ via quotienting.
+	Then the sheaf associated to the image presheaf is the constant sheaf, but $\phi(\mathcal{F}(A)) \ne \mathcal{G}(A) = A^2$.
+\end{proof}
+
+\begin{exercise}%1.4
+	~
+	\begin{enumerate}
+		\item Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of presheaves such that $\phi (U): \mathcal{F}(U) \to \mathcal{G}(U) $ is injective for each $U $. Show that the induced map $\phi ^+: \mathcal{F}^+ \to \mathcal{G}^+ $ of associated shaves is injective.
+		\item Use part (a) to show that if $\phi : \mathcal{F}\to \mathcal{G} $ is a morphism of sheaves, then $\im \phi  $ can be naturally identified with a subsheaf of $\mathcal{G} $, as mentioned in the text.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) It suffices to check that the map is injective on stalks.
+	Because $\phi(U)$ is injective, $\phi_p $ is injective for all $p \in X $ by 1.2a.
+	As $\mathcal{F}^+_p = \mathcal{F}_p $ and $\mathcal{G}^+_p = \mathcal{G}_p $ and $\phi^+_p = \phi_p $, the induced map is injective on all stalks.
+	Hence it is injective.
+
+	b) 
+	We have injective maps $\iota (U): \im \phi (U) \to \mathcal{G}(U) $ via inclusion.
+	Then by part a, the incuded map $\iota^+: (\im \phi)^+ \to \mathcal{G}^+$ is injective.
+	But because $\mathcal{G} $ is a sheaf, $\mathcal{G}^+ = \mathcal{G} $, so $(\im \phi )^+ $ can be naturally identified with a subsheaf.
+\end{proof}
+%
+\begin{exercise}% 1.5
+	Show that a morphism of sheaves is an isomorphism if and only if it is both injective and surjective. 
+\end{exercise}
+\begin{proof}
+	It suffices to check that the stalks are isomorphic by Proposition 1.1.
+	First we have that $\im \phi = \mathcal{G} $, so $(\im \phi)_p = \mathcal{G}_p $.
+	Because the stalks of the associate sheaf and presheaf are the same, $(\im \phi)_p $ equals the stalk of the presheaf $U\mapsto \im \phi $ at $p $, denote it by $\im \phi^-_p $.
+	But since $\ker \phi = 0 $, $\mathcal{F}(U) / \ker \phi(U) \cong \mathcal{F}(U)$.
+	By the first isomorphism theorem, the LHS is isomorphic to $\im \phi(U) $ (not as a sheaf).
+	Hence $\im\phi^-_p = \lim_{U} \im\phi(U) \cong \lim_U \mathcal{F}(U) / \ker \phi(U) \cong \mathcal{F}_p$.
+	So they are isomorphic as stalks.
+\end{proof}
+
+\begin{exercise}%1.6
+	~
+	\begin{enumerate}
+		\item Let $\mathcal{F}' $ be a subsheaf of a sheaf $\mathcal{F} $. Show that the natural map of $\mathcal{F} $ to the quotient sheaf $\mathcal{F} / \mathcal{F}' $ is surjective, and has kernel $\mathcal{F}' $. Thus there is an exact sequence
+		\[
+			0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F} / \mathcal{F}' \to 0
+		.\] 
+		\item Conversely, if $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}''\to 0 $ is an exact sequence, show that $\mathcal{F}' $ is isomorphic to a subsheaf of $\mathcal{F} $, and that $\mathcal{F}'' $ is isomorphismic to the quotient of $\mathcal{F} $ by this subsheaf.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) 
+	The natural quotient map is $\phi: U \mapsto \mathcal{F}(U) / \mathcal{F}'(U)$.
+	Hence $\phi$ obvously has kernel $\mathcal{F}' $.
+	To show that it is surjective, we have to show that the sheaf associated to $U\mapsto \im \phi(U) $, call the sheaf $\im \phi^+ $ and the presheaf $\im \phi^- $, equals $\mathcal{F} / \mathcal{F}' $.
+	To do this, we can check it on stalks.
+	As the stalks of $\im \phi^+ $ equal the stalks of the presheaf $U\mapsto \im \phi(U) $, we just have to verify that $\im \phi^-_p \cong \mathcal{F} / \mathcal{F}'_p$.
+	This is a consequence of $\phi $ being surjective on each section and limits of isomorphic objects are isomorphic.
+
+	b)
+	Label the non-zero maps $a,b $.
+	Then first we can show that $\mathcal{F}' \cong \im a $ via the forward map of $a $ with restricted codomain.
+	We can do this via checking the map on stalks.
+	It is injective on stalks because $0 = (\ker a)_p = \ker a_p$ (1.2a).
+	Because the stalks of the image presheaf and image sheaf are the same, we simply have to check that $\im a_p = (\im a)_p $.
+	This is true by 1.2a.
+\end{proof}
+
+\begin{exercise}%1.7
+	Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of sheaves.
+	\begin{enumerate}
+		\item Show that $\im \phi \cong \mathcal{F} / \ker \phi $.
+		\item Show that $\coker \phi \cong \mathcal{G} / \im \phi $.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	
+\end{proof}
+
+\begin{exercise}%1.8
+	For any open subset $U \subseteq X $, show that the functor $\Gamma(U,\cdot) $ from sheaves on $X $ to abelian groups is a left exact functor, i.e. if $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0 $ is an exact sequence of sheaves, then $0 \to \Gamma(U,\mathcal{F}') \to \Gamma(U,\mathcal{F}) \to \Gamma(U,\mathcal{F}'') \to 0 $ is an exact sequence of groups. The functor $\Gamma(U,\cdot) $ need not be exact; see (Ex. 1.21) below.
+\end{exercise}
+
+\begin{exercise}[Extending a Sheaf by Zero]%1.19
+	Let $X $ be a topological space, let $Z $ be a closed subset, let $i: Z\to X $ be the inclusion, let $U = X \setminus Z $ be the complementary open subset, and let $j: U\to X $ be its inclusion.
+	\begin{enumerate}
+		\item Let $\mathcal{F} $ be a sheaf on $Z $. Show that the stalk $(i_\ast \mathcal{F})_P $ of the direct image sheaf on $X $ is $\mathcal{F}_P $ if $P\in Z $, $0 $ if $P\notin Z $. Hence we call $i_\ast \mathcal{F} $ the sheaf obtained by extending $\mathcal{F} $ by zero outside $Z $. By abuse of notation, we will sometimes write $\mathcal{F} $ instead of $i_\ast \mathcal{F} $, and say ``consider $\mathcal{F} $ as a sheaf on $X $,'' when we mean ``consider $i_\ast \mathcal{F}$''.
+		\item Now let $\mathcal{F} $ be a sheaf on $U $. Let $j_!(\mathcal{F}) $ be the sheaf on $X $ associated to the presheaf $V\mapsto \mathcal{F}(V) $ if $V\subseteq U $, $V\mapsto 0 $ otherwise. Show that the stalk $(j_!(\mathcal{F}))_P $ is equal to $\mathcal{F}_P $ is $P\in U $, $0 $ if $P\notin U $, and show that $j_! \mathcal{F} $ is the only sheaf on $X $ which has this property, and whose restriction to $U $ is $\mathcal{F} $. We call $j_! \mathcal{F} $ the sheaf obtained by \textit{extending} $\mathcal{F} $ \textit{by zero} outside $U $.
+		\item Now let $\mathcal{F} $ be a sheaf on $X $. Show that there is an exact sequence of sheaves on $X $,
+			\[
+				0 \to j_!(\mathcal{F}|_U) \to \mathcal{F} \to i_\ast(\mathcal{F}|_Z) \to 0
+			.\]
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a): First we have by definition that
+	\[
+		(i_\ast \mathcal{F})_P = \varinjlim_{V, \text{open in $X $} \ni P} \mathcal{F}(i^{-1}(V))
+		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathcal{F}(V)
+	.\] 
+	If $P\notin Z $, then because $U $ is open and contains $P $, this is a set the limit goes over.
+	Then because $U\cap Z = \emptyset $, $i^{-1}(U) = \emptyset $, so $\mathcal{F}(i^{-1}(U)) = 0 \implies (i_\ast \mathcal{F})_P = 0 $.
+
+	If $P\in Z $, then because $i $ is the inclusion map and is continuous, we can reparameterize what the limit goes over to be $U $ open in $Z $ that contain $P $.
+	This is just the stalk of $\mathcal{F} $.
+	%, the indexing set is the same as the set of open sets in $X $ (by definition of subspace topology) that contain $P $, so this just equals $\varinjlim_{V, \text{open} \ni P} \mathcal{F}(V)_P = \mathcal{F}_P$.
+
+	(b): First we have by definition that
+	\[
+		(j_! (\mathcal{F}))_P = \varinjlim_{V, \text{open in $X $} \ni P} j_!(\mathcal{F})(V)
+		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathcal{F}(V)
+	.\] 
+	If $P \notin V $, then by clearly $V\not\subseteq U $, so $j_!(\mathcal{F})(V) = 0 $, making the limit $0 $.
+
+	If $P\in V $, then because the stalks of sheafication and the presheaf are the same, the limit is $\mathcal{F}_P $ as desired.
+
+	TODO: uniqueness
+\end{proof}
+
+\subsection{Schemes}
+
+\begin{exercise}%2.4
+	Let $A $ be a ring and let $(X,\mathcal{O}_X) $ be a scheme. Given a morphism $f: X\to \Spec A $, we have an associated map on sheaves $f^\#: \mathcal{O}_{\Spec A} \to f_\ast \mathcal{O}_X $. Taking global sections we obtain a homomorphism $A\to \Gamma(X,\mathcal{O}_X) $. Thus there is a natural map
+	\[
+		\alpha: \Hom_{\text{\textbf{Sch}}}(X,\Spec A) \to \Hom_{\text{\textbf{Ring}}}(A,\Gamma(X,\mathcal{O}_X))
+	.\] 
+	Show that $\alpha $ is bijective (cf. (I, 3.5) for an analogous statement about varieties).
+\end{exercise}
+\begin{proof}
+	First we show that it is surjective.
+	Cover $X $ with open affines $U_i = \Spec A_i $.
+	Then for some map $f: A\to \Gamma(X,\mathcal{O}_X) $, we have a map $f_i:A\to \Gamma(U_i, \mathcal{O}_X) = A_i $ defined by $\rho_{U_iX}(f(a)) $.
+	Hence we have maps $f_i': \Spec A_i \to \Spec A $.
+
+	These maps agree on the open cover of affines because given $f_i',f_j' $, $f_i'|_{U_i \cap U_j} = (\rho_{(U_i\cap U_j)\cap X}(f(a)))^{-1} = f_j'|_{U_i\cap U_j}$.
+	Hence by the second property of sheaves, they glue together to a global section that is a map $X\to \Spec A $.
+\end{proof}
+
+\begin{exercise}%2.7
+	Let $X $ be a scheme. For any $x\in X $, let $\mathcal{O}_x $ be the local ring at $x $, and $\mathfrak{m}_x $ its maximal ideal. We define the \textit{residue field} of $x $ on $X $ to be the field $k(x) = \mathcal{O}_x / \mathfrak{m}_x $. Now let $K $ be any field. Show that to give a morphism of $\Spec K $ to $X $, it is equivalent to give a point $x\in X $ and an inclusion map $k(x) \to K $.
+\end{exercise}
+\begin{proof}
+	A morphism $f: \Spec K \to X $ gives us a local homomorphism $f^\#_x: \mathcal{O}_x \to K $ where $x $ is the image of the unique point of $\Spec K $.
+	As this is a local homomorphism, this implies that the maximal ideal of $\mathcal{O}_x $ is $\ker f^\#_x$.
+	By the first iso theorem, we then have that $\mathcal{O}_x / \ker f^\#_x \cong \im(f^\#_x) \subseteq K $, giving an inclusion $k(x) \to K $.
+
+	If we have a point $x\in X $ and an inclusion map $k(x) \to K $, then we have the desired morphism by sending $(0) \to x $ and we have two cases for defining $f^\# $.
+	For $U $ open, $x\in U $, then $f_\ast(\mathcal{O}_K(U)) = K $, and we can define the map $\mathcal{O}_X(U) $ to $K $ via $\mathcal{O}_X(U) \to \mathcal{O}_x \to k(x) \to K $.
+
+	If $x\notin U $, then $f_\ast(\mathcal{O}_K(U)) = 0 $, so the map is just given by 0.
+
+	Then we have that the needed diagram commute with three cases:
+
+	$x\in U \subseteq V$:
+	\[
+	\begin{tikzcd}
+	{\mathcal{O}_X(V)} & K\\
+	{\mathcal{O}_X(U)} & K
+	\arrow[from=1-1,to=1-2]
+	\arrow["\rho_{UV}",from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow["\rho _{UV}",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	The top and bottom row commute by commutativity of $\rho $ in the direct system that is part of $\mathcal{O}_x $.
+
+	$x\notin U, x \in V $:
+	\[
+	\begin{tikzcd}
+	\mathcal{O}_X(V) & K\\
+	0 & 0
+	\arrow[from=1-1,to=1-2]
+	\arrow["\rho_{UV}",from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow["\rho _{UV}",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+
+	$x\notin U, x \notin V $:
+	\[
+	\begin{tikzcd}
+	0 & 0\\
+	0 & 0
+	\arrow[from=1-1,to=1-2]
+	\arrow["\rho_{UV}",from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow["\rho _{UV}",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+\end{proof}
+
+\begin{exercise}%2.8
+	Let $X$	be a scheme. For any point $x\in X $, we define the \textit{Zariski tangent space} $T_x $ to $X $ to be the dual of the $k(x) $-vector space $\mathfrak{m}_x / \mathfrak{m}_x^2 $. Now assume that $X $ is a scheme over a field $k $, and let $k[\epsilon] / \epsilon^2$ be the \textit{ring of dual numbers} over $k $. Show that to give a $k $-morphism of $\Spec k[\epsilon] / \epsilon^2 $ to $X $ is equivalent to giving a point $x\in X $, \textit{rational over} $k $ (i.e. such that $k(x) = k $) and an element of $T_x $.
+\end{exercise}
+\begin{proof}
+	TODO
+	% $\implies) $
+	% Let $x $ be the image of $(0) $ and the element of $T_x $ be the image of $(\epsilon) $.
+	% Then $x = \ker f^\# $, so
+\end{proof}
+
+\begin{exercise}%2.9
+	If $X $ is a topological space, and $Z $ an irreducible closed subset of $X $, a \textit{generic point} for $Z $ is a point $\zeta $ such that $Z = \{\zeta\} ^-  $. If $X $ is a scheme, show that every (nonempty) irreducible closed subset has a unique generic point.
+\end{exercise}
+\begin{proof}
+	If we have an open subset of $Z $ s.t. $\{\zeta\} ^-\cap U = U  $, then $(U^C\cap Z) \cup (\overline{(\{\zeta\} ^- \cap U)} \cap Z)= Z$.
+	Both of these are closed, so by irreducibility of $Z $, $\overline{\{\zeta\} ^- \cap U }\cap Z = Z $.
+	As the closure is the smallest closed set containing $\zeta $, and $Z $ is closed, we have that $\overline{\{\zeta\} ^- \cap U } = Z  $ (as $\{\zeta\} ^- \subseteq Z  $).
+	Because $\{\zeta\} ^- \cap U \subseteq \{\zeta\} ^-   $, $Z \subseteq \{\zeta\} ^-  $, showing that $\{\zeta\} ^- = Z  $.
+
+	Hence we can reduce it to showing that there is an open affine space $\Spec A $, there is a point $\zeta $ s.t. $\{\zeta\} ^- = \Spec A  $.
+	Further, we have that $\Spec A $ is irreducible, since if we had a closed partition of $\Spec A $, the complement of $\Spec A $ is closed, giving rise to a closed partition of $Z $.
+	Hence there is only one minimal prime ideal of $\Spec A $, with which the closure of is $\Spec A $ (there is only one minimal prime ideal because otherwise, the closures of them would be a closed partition of $\Spec A $).
+
+	The uniqueness follows from the uniqueness of the minimal prime ideal.
+\end{proof}
+
+\begin{exercise}%2.16
+Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to be the subset of points $x\in X $ such that the stalk $f_x $ of $f $ at $x $ is not contained in the maximal ideal $\mathfrak{m}_x$ of the local ring $\mathcal{O}_x $.
+\begin{enumerate}[(a)]
+	\item If $U = \Spec B$ is an open \textit{affine} subscheme of $X $, and if $\overline{f} \in B = \Gamma(Y,\mathcal{O}_X|_U)  $ is the restriction of $f $, show that $U\cap X_f = D(\overline{f})  $. Conclude that $X_f $ is an open subset of $X $.
+	\begin{proof}
+		$U\cap X_f \subseteq D(\overline{f})  $: Take a point $x\in U\cap X_f $.
+		Then because $\mathcal{O}_x = \mathcal{O}_{U,x} = B_x $, $f_x $ not being in the maximal ideal of $\mathcal{O}_x$ implies that $\overline{f}_x  $ isn't in the maximal ideal of $B_x $.
+		So $\overline{f}_x  $ is invertible, implying that $\overline{f}_x = \frac{\overline{f}}{1}  \notin x  $.
+		Thus $x\in D(\overline{f})  $.
+
+		$U\cap X_f \supseteq D(\overline{f})  $:
+		Take some point $x\in D(\overline{f})  $, so $\overline{f}\not\in x$.
+		Thus $\frac{\overline{f}}{1}$ is invertible in $B_x $.
+		Hence $\frac{\overline{f} }{1} = \overline{f}_x = f_x$ is not in the maximal ideal of $\mathcal{O}_x = \mathcal{O}_{U,x} = B_x $, putting $x \in X_f $.
+
+		To see that $X_f $ is open, for every point of $X_f $, we can find an open affine neighborhood of it, whose intersection with $X_f $ is an open set.
+		A union of open sets is open.
+	\end{proof}
+	\item Assume that $X $ is quasi-compact. Let $A = \Gamma(X,\mathcal{O}_X), $ and let $a\in A $ be an element whose restriction to $X_f $ is $0 $. Show that for some $n > 0 $, $f^na = 0 $.
+		[Hint: Use an open affine cover of $X $.]
+	\begin{proof}
+		Take an open affine cover of $X $.
+		Because $X $ is quasi-compact, we can take a finite number, say $U_{1}, \ldots ,U_n $ and say they equal $\Spec A_i $.
+
+		Let $\overline{f}_i  $ be the image of $f $ in $U_i $.
+		This then covers $X_f $, and because of (a), $U_i \cap X_f = D(\overline{f}_i)  $.
+
+		As $D(\overline{f}_i) \cong \Spec (A_i)_{\overline{f}_i }$, $a|_{X_f} = 0 \implies a|_{U_i} = 0 \in (A_i)_{\overline{f}_i}$.
+		Thus $\exists n_i $ s.t. $\overline{f} _i^{n_i}a|_{U_i} = (f^{n_i}a)|_{U_i} = 0 $ in $A_i $ by definition of localizing.
+		Because there are finitely many, we can take a common $n $ for all $\overline{f} _i $.
+		As $\mathcal{O}_X $ is a sheaf, $f^na $ being 0 on the restictions to an open cover implies that $f^na $ is globally 0.
+	\end{proof}
+	\item Now assume that $X $ has a finite cover by open affines $U_i $ such that each intersection $U_i\cap U_j $ is quasi-compact. (This hypothesis is satisfied for example, if $\text{sp}(X)$ is Noetherian.) Let $b\in \Gamma(X_f,\mathcal{O}_{X_f}) $. Show that for some $n > 0, f^n b$ is the restriction of an element of $A $.
+	\begin{proof}
+		Let $U_i = \Spec A_i $.
+		Let $b|_{X_f\cap U_i} = \frac{b_i}{f^{n_i} } $ for $b_i \in A_i $.
+		Because there are finitely many $U_i $, we can pick a sufficiently large common $n $ for all of them.
+		Then $f^nb|_{X_f\cap U_i} = b_i $.
+
+		From this is follows that restricting $b_i,b_j $ to $U_{ij}\coloneqq U_i\cap U_j $ equals $f^nb|_{X_f\cap U_{ij}} $, so $b_i-b_j = 0 $ in $\Gamma(U_{ij}\cap X_f, \mathcal{O}_X) $.
+		%=\Gamma((U_{ij})_f,\mathcal{O}_X)$.
+		As $U_{ij} $ is quasi-compact by hypothesis, from (b) we can conclude that there is a $m_{ij} $ and s.t. $f^{m_{ij}}(b_i-b_j) = 0 $.
+		Because there are finitely many, we can pick a universal $m $ that works for all of $i,j $.
+		Then by $\mathcal{O}_X $ being a sheaf (and they agree on intersections), the $f^mb_i \in \Gamma(U_i,\mathcal{O}_X)$ glue together to get a global section $s \in A$.
+		Finally, $s|_{X_f} = f^{n+m}b$ because $s|_{U_i\cap X_f}-f^{n+m}b|_{U_i\cap X_f} = f^mb_i-f^mb_i = 0 $ on a cover of $X_f $, so by sheaf property (i) $s|_{X_f}-f^mb = 0 $.
+	\end{proof}
+	\item With the hypothesis of (c), conclude that $\Gamma(X_f,\mathcal{O}_{X_f}) \cong A_f $.
+	\begin{proof}
+		Technically, there should be some $\overline{f}  $ to indicate the image in $\Gamma(X_f,\mathcal{O}_{X_f}) $, but it doesn't really add much.
+		We have a map $\Gamma(X_f,\mathcal{O}_{X_f}) \to A_f $ by sending $b\to \frac{a}{f^n} $ where $a$ is the element of $A $ and $n $ is the associated $n $ via (c).
+		This is a homomorphism because obviously 0 and $1 $ are sent to the right places.
+		Then with $f^nb_{1} = a_{1}|_{X_f}, f^mb_{2} = a_{2}|_{X_f}$, we have that $f^{n+m}(b_{1}+b_{2})  $ is the restriction of $f^ma_{1}+f^na_2 $.
+		Hence $b_{1}+b_{2} $ gets mapped to $\frac{a_{1}f^m + a_{2}f^n}{f^{n+m} } = \frac{a_{1}}{f^n} +\frac{a_{2}}{f^m}$, the sum of the images of $b_{1},b_{2} $.
+
+		This is an isomorphism because it is surjective with $\frac{a|_{X_f}}{f^n} $ mapping to $\frac{a}{f^n} \in A_f \forall a\in A$.
+		This is in $\Gamma(X_f,\mathcal{O}_{X_f}) $ because we can find for any point $\mathfrak{p} $ an open neighborhood of $X_f $ s.t. $f\notin \mathfrak{q}$ for all points $\mathfrak{q} $ in that neighborhood.
+		Take any open affine neighborhood of $\mathfrak{p} $.
+		By definition, $f\notin \mathfrak{m}_{\mathfrak{q}} = \mathfrak{q} \forall \mathfrak{q}\in X_f$ (note that $\mathfrak{m}_{\mathfrak{q}} $ is the maximal ideal of the stalk at $\mathfrak{q} $ of the open affine neighborhood, which equals $\mathcal{O}_ \mathfrak{q} $).
+		% (hence $f $ is invertible in $\mathcal{O}_\mathfrak{q} $, hence is invertible in some $\Gamma(U\cap X_f,\mathcal{O}_{X_f})$ by direct limit).
+	\end{proof}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%2.17
+\begin{enumerate}[(a)]
+	\item Let $f:X\to Y $ be a morphism of schemes, and suppose that $Y $ can be covered by open subsets $U_i $, such that for each $i $, the induced map $f^{-1}(U_i)\to U_i $ is an isomorphism. Then $f $ is an isomorphism.
+	\begin{proof}
+		TODO
+	\end{proof}
+	\item A scheme is affine if and only if there is a finite set of elements $f_{1}, \ldots ,f_r \in A = \Gamma(X,\mathcal{O}_X) $ such that the open subsets $X_{f_i} $ are affine and $f_{1}, \ldots ,f_r $ generate the unit ideal in $A $.
+		[Hint: Use (Ex. 2.4) and (Ex. 2.16d) above.]
+	\begin{proof}
+		The if direction is easy.
+
+		For the only if direction, we will show that $X \cong \Spec A $.
+		We can cover $\Spec A $ with a finite number of $U_i \coloneqq \Spec A_{g_i} $.
+		We have the map $f: X\to \Spec A $ via Exercise 2.4 and the map $\iota :A\to \Gamma(X,\mathcal{O}_X) $.
+		So by (a), if we show that $f^{-1}(U_i) \to U_i$ is an isomorphism, we are done.
+		TODO
+	\end{proof}
+\end{enumerate}
+\end{exercise}
+
+\subsection{First Properties of Schemes}
+
+\begin{exercise}%3.1
+	Show that a morphism $f: X\to Y $ is locally of finite type if and only if for \textit{every} open affine subset $V = \Spec B $ of $Y, f^{-1}(V) $ can be covered by open affine subsets $U_j = \Spec A_j $, where each $A_j $ is a finitely generated $B $-algebra.
+\end{exercise}
+\begin{proof}
+	The if direction is easy.
+	%
+	% For the other direction, we begin by realizing that for every open affine set $U_{ij} = \Spec A_{ij} $ in the open cover of $f^{-1}(V_i), V_i= \Spec B_i$ from the definition of locally finite type, $A_{ij} $ being a finitely generated $B_i $-algebra implies that for every $g\in V $, $(A_{ij})_\overline{g}  $ is a finitely generated $(B_i)_g $-algebra (where $\overline{g}  $ is the image of $g $ in $B $) by commutative algebra.
+	% Because $\Spec (A_{ij})_{\overline{g} } = D(\overline{g})$ and $V_i $ is a cover of $Y $, the preimage of $Y $ is covered by distinguished open sets $D(\overline{g})  $. 
+	%
+	% So for a fixed $V = \Spec B $, $f^{-1}(V) $ has a cover by distinguished that are spectra of finitely generated $(B_i)_g $-algebras.
+
+	We can use the Affine Communication Lemma found in Vakil.
+	Let $P $ be the property of $V = \Spec B $ that $f^{-1}(V) $ can be covered by open affine subsets $U_j = \Spec A_j $ with $A_j $ a finitely generated $B $-algebra.
+	The first condition is met because $\Spec B_{f_i} \subseteq \Spec B $, so by covering $f^{-1}(\Spec B_{f_i}) $ with the same $U_j $ from above and using the same generators of $A_j $ as a $B $-algebra, $A_j $ is a finitely generated $B_{f_i}$-algebra.
+
+	Then for condition two, I claim that by embedding the open cover of $\Spec B_{f_i} $ into $\Spec B $, we have the conditions met for P on $\Spec B $.
+	First, because $(f_1, \ldots , f_n) = (1) $, for any point in $\mathfrak{p} \in \Spec B $ there is some $f_i \notin \mathfrak{p}$ (otherwise $\mathfrak{p} $ would contain $1 $).
+	So the open covers of $f^{-1}(\Spec B_{f_i})$ cover $f^{-1}(\Spec B) $.
+	Then each $A_{ij} $ whose spectra cover $f^{-1}(\Spec B_{f_{i}}) $ are finitely generated $B $-algebras because they are finitely generated $B_{f_{i}} $-algebras, and $B_{f_{i}} $ is a finitely generated $B $-algebra by using $1, \frac{1}{f_{i}} $.
+	Thus this open cover of $f^{-1}(B) $ give us the condition for $P $.
+	%
+	% This is done by letting $P $ be the property that it is contained in a fixed open affine subset $U = \Spec B$ s.t. $A $ is a finitely generated $B $-algebra.
+	% Because $A_f $ is also a finitely generated $B $-algebra (by adding $\frac{1}{f} $ to the generators), the first condition is met.
+	%
+	% The second is also met.
+	% Let $1 = \sum c_i f_i , c_i \in A_i$, which exists because $(1) = (f_1, \ldots, f_n) $.
+	% Then let $\frac{r_{ij}}{f_{i}^k} $ (a finite number) generate $A_{f_i} $ as $B $ algebras, with $r_{ij} \in A $, by hypothesis.
+\end{proof}
+
+\begin{exercise}%3.2
+	A morphism $f: X\to Y $ of schemes is \textit{quasi-compact} if there is a cover of $Y $ by open affines $V_i$ such that $f^{-1}(V_i) $ is quasi-compact for each $i $. Show that $f $ is quasi-compact if and only if for \textit{every} open affine subset $V\subseteq Y, f^{-1}(V) $ is quasi-compact.
+\end{exercise}
+\begin{proof}
+	The if direction is easy.
+
+	For the other direction, cover $V $ by the $V_i $ s.t. $f^{-1}(V_i) $ is quasi-compact.
+	Because $V $ is open affine, it is quasi-compact, so we can pick a finite number of these.
+	Then any open cover of $f^{-1}(V) $ has a finite subcover formed by putting together the finite subcovers of $f^{-1}(V) \cap f^{-1}(V_i) $, of which there are a finite number of $V_i $.
+\end{proof}
+
+\begin{exercise}%3.3
+	~
+	\begin{enumerate}[(a)]
+		\item Show that a morphism $f: X\to Y $ is of finite type if and only if it is locally of finite type and quasi-compact.
+		\item Conclude from this that $f $ is of finite type if and only if for \textit{every} open affine subset $V = \Spec B $ of $Y $, $f^{-1}(V) $ can be covered by a finite number of open affines $Y_j = \Spec A_j $, where each $A_j $ is a finitely generated $B $-algebra.
+		\item Show also if $f $ is of finite type, then for \textit{every} open affine subset $V = \Spec B \subseteq  Y $ and for \textit{every} open affine subset $U = \Spec A \subseteq f^{-1}(V) $, $A $ is a finitely generated $B $-algebra.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) The if direction is trivially.
+	Finite type implies locally finite type by definition.
+	Now for quasi-compact, take the cover of $Y $ from locally finite type, let it be $V_i $.
+	Because it is finite type, there is a finite open affine cover of $f^{-1}(V_i) $, say $U_{ij} $.
+	Then any open cover of $f^{-1}(V_i) $ then covers $U_{ij} $, which is quasi-compact because it is affine, so we can take a finite subcover.
+	We then have a finite subcover of $f^{-1}(V_i) $ by putting together all the finite subcovers from $U_{ij} $.
+
+	b) Easy by using 3.1 and 3.2.
+
+	c) WLOG, we can have $Y=\Spec B $ be affine. Let P be the property of $\Spec A \subseteq X$ that $A $ is a finitely generated $B $-algebra.
+	We want to use the affine communication lemma.
+	Clearly $\Spec A_g $ satisfies P, giving us condition 1 (add $\frac{1}{g} $ as a generator).
+	Then for condition 2, by the proof of the second condition in 3.1, having a cover of $\Spec A\subseteq \Spec B $ of $\Spec A_f $ with $A_f $ f.g. $B $ algebras gives us that $A $ is a f.g. $B $ algebra.
+\end{proof}
+
+\begin{exercise}%3.4
+	Show that a morphism $f: X\to Y $ is finite if and only if for \textit{every} open affine subset $V = \Spec B $ of $Y $, $f^{-1}(V) $ is affine, equal to $\Spec A $, where $A $ is a finite $B $-module.
+\end{exercise}
+\begin{proof}
+	The if direction is trivial.
+
+	Let $\Spec B_{f_i} $ be a cover of $Y $ s.t. $f^{-1}(\Spec B_{f_{i}}) = \Spec A_i $ with $A_i $ finite $B $-modules.
+	Because $V $ is quasi-compact, we can pick a finite subcover of this.
+	Then in $V $, $(f_{i_1},\cdots,f_{i_n}) = (1) $.
+	Let $X = f^{-1}(\Spec B) $ and $\overline{f_i}  $ be the image of $f_i $ in $B $.
+	Because $X_{\overline{f_i} } =  X \setminus V(\overline{f_i})$ and $f^{-1}(\Spec B_{f_{i}}) = f^{-1}(\Spec B) \setminus f^{-1}(V(\overline{f_i})) = f^{-1}(\Spec B) \setminus V(\overline{f_i}) = \Spec A_i   $, we can apply the affine criterion to $f_{i_n} $ from 2.17 to conclude that $X = f^{-1}(\Spec B)$ is affine.
+
+	As $f^{-1}(\Spec B_{f_i}) = \Spec A_{f^\#(\overline{f_i}) } $, we have each $A_{i} $ a localization of $A $.
+	Because $(f_{i_{1}}, \ldots , f_{i_n}) = (1) $, the ideal generated by $f^\#(\overline{f_i})  $ also generates $(1) $ in $A $.
+	Let $g_i = f^\#(\overline{f_i})$. 
+	Say $A_i $ is generated by $\frac{a_{i_{1}}}{f_i^n},\ldots, \frac{a_{i_j}}{f_j^n}, \ldots $ where we pick $n $ sufficiently large s.t. it is the same for all $i,j $.
+	Because $(f_{i_{1}}, \ldots , f_{i_n}) = (1)$, $\exists d_i $ s.t. $\sum d_i f_{i_{1}}^n = 1 $.
+	Then we can see that $A $ is generated by $d_i, f_{i_j}^n, a_{i_j} $ because any element of $B $ can be written using the generators of $A_{f_1}$, which upon multiplication by 1 and substituting kills the denominators and leaves these terms to generate it, which is a finite number.
+\end{proof}
+
+\begin{exercise}%3.5
+	A morphism $f: X\to Y $ is \textit{quasi-finite} if for every point $y \in Y, f^{-1}(y) $ is a finite set.
+	\begin{enumerate}[(a)]
+		\item Show that a finite morphism is quasi-finite.
+		\item Show that a finite morphism is \textit{closed}, i.e. the image of any closed subset is closed.
+		\item Show by example that a surjective, finite-type, quasi-finite morphism need not be finite.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) By 3.4 we can reduce to the case of affine $X,Y $, say $X = \Spec B, Y = \Spec A$ with $B $ a finite $A $-module.
+	Because the topological space of the fibre of $f $ over $y $ is homeomorphic to $f^{-1}(y) $ (3.10), if the fibre is finite we are done.
+	Then we have that $X_y = X \times _Y \Spec k(y) = \Spec B \times _Y \Spec k(y) = \Spec(B \otimes k(y)) $.
+	Because $k(y) $ is a field and $B $ is a finite $A $-module, $B \otimes k(y) $ is a finite dimensional vector space.
+
+	This is then a finite field extension, and by commutative algebra thus an integral extension of a field.
+	By the lying down lemma, every prime of $B \otimes k(y) $ lies over a prime of $k(y) $, and by commutative algebra there are finitely many.
+	Because $k(y) $ has only one prime, $\Spec(B \otimes k(y)) $ is finite.
+
+	b) Fix a closed set $C $ and suppose FSTOC that $f(C) $ wasn't closed.
+	Then there is a limit point $p $ that isn't in $f(C) $.
+	As this is a limit point, for all open sets $U $ in $Y $ containing $p $, $U\cap f(C) \ne \emptyset $.
+
+	Because $f $ is continuous, $f^{-1}(U\cap f(C)) $ is open, and, from the above, it is non-empty.
+
+	c) Take $\Spec \mathbb{F}_p[x] / (x^2+1) \to \Spec \mathbb{F}_p $.
+\end{proof}
+
+\begin{exercise}%3.6
+	Let $X $ be an integral scheme. Show that the local ring $\mathcal{O}_{\zeta} $ of the generic point $\zeta  $ of $X $ is a field. It is called the \textit{function field} of $X $, and is denoted by $K(X) $. Show also that if $U = \Spec A $ is any open affine subset of $X $, then $K(X) $ is isomorphic to the quotient field of $A $.
+\end{exercise}
+\begin{proof}
+	We can find an open affine neighborhood of $\zeta  $ $U = \Spec A $ by definition of a scheme.
+	Because $X $ is integral, and the generic point is unique, the generic point is $(0) \in U $.
+	Further, $\mathcal{O}_{(0),U} $ is a field because it is an integral domain.
+	Because the local ring of a restricted scheme and the scheme are the same, $\mathcal{O}_{\zeta } $ is a field.
+
+	The quotient field of $A $ is $A_{(0)} \cong \mathcal{O}(U)_{\zeta} $.
+	Because the local ring of a restricted scheme and the scheme are the same, $K(X) = \mathcal{O}_{\zeta }\cong A_{(0)} $.
+\end{proof}
+
+\begin{exercise}%3.7
+	A morphism $f: X\to Y $, with $Y $ irreducible is \textit{generically finite} if $f^{-1}(\eta ) $ is a finite set, where $\eta  $ is the generic point of $Y $. A morphism $f: X\to Y $ is \textit{dominant} is $f(X) $ is dense in $Y $. Now let $f: X\to Y $ be a dominant, generically finite morphism of finite type of integral schemes. Show that there is an open dense subset $Y \subseteq Y $ scuh that the induced morphism $f^{-1}(U) \to U $ is finite.
+	[Hint: First show that the function field of $X $ is a finite field extension of the function field of $Y $.]
+\end{exercise}
+\begin{proof}
+	We show the hint first.
+	Let $\eta _X $ be the generic point of $X $.
+	Then because $f(\overline{\eta _X}) \subseteq \overline{f(\eta _X)}   $ and $\eta _X $ is the generic point of $X $, we have that $f(X) \subseteq \overline{f(\eta_X)}  $.
+	Because $f  $ is dominant, $f(X) $ is dense, so by definition of closure we have $\overline{f(X)} = Y \subseteq \overline{f(\eta _X)} \implies f(\eta_X) = \eta$.
+	So $f $ maps the generic point of $X $ to the generic point of $Y $.
+
+	Because $f $ is generically finite and $f^{-1}(\eta ) $ is homeomorphic to $X \times_Y \Spec(K(Y)) $.
+\end{proof}
+
+\begin{exercise}%3.9
+	\textit{The Topological Space of a Product}. Recall that in the category of varieties, the Zariski topology on the product of two varieties is not equal to the product topology (I, Ex. 1.4). Now we see that in the category of schemes, the underlying point set of a product of schemes is not even the product set.
+	\begin{enumerate}[(a)]
+		\item Let $k $ be a field, and let $A^1_k = \Spec k[x] $ be the affine line over $k $. Show that $A^1_k \times A_k^1 \cong A_k^2$, and show that the udnerlying point set of the product is the not product of the underlying point sets of the factors (even if $k$ is algebraically closed).
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Vector Bundles]%5.18
+	Let $Y $ be a scheme. A \textit{(geometric) vector bundle} of rank $n $ over $Y $ is a scheme $X $ and a morphism $f: X\to Y$, together with additional data consisting of an open covering $\{U_i\}   $ of $Y $, and isomorphisms $\psi_i: f^{-1}(U_i) \to \A^n_{U_i} $, such that for any $i,j $, and for any open affine subset $V = \Spec A \subseteq  U_i \cap U_j $, the automorphism $\psi = \psi_j\circ \psi_i ^{-1} $ of $\A^n_V = \Spec A[x_{1}, \ldots ,x_n] $, i.e. $\theta(a) = a $ for any $a \in A $, and $\theta (x_i) = \sum a_{ij}x_j $ for suitable $a_{ij} \in A $.
+
+	An \textit{isomorphism} $g: (X,f,\{U_i\} ,\{\psi_i\} ) \to (X',f',\{U_i'\} ,\{\psi_i'\} )     $ of one vector bundle of rank $n $ to another one is an isomorphism $g: X\to X' $ of the underlying schemes, such that $f=  f' \circ g $, and such that $X,f $, together with the covering of $Y $ consisting of all the $U_i $ and $U_i' $, and the isomorphisms $\psi_i $ and $\psi_i'\circ g $, is also a vector bundle structure on $X $.
+	\begin{enumerate}
+		\item Let $\mathcal{E} $ be a locally free sheaf of rank $n $ on a scheme $Y $. Let $S(\mathcal{E})$ be the symmetric algebra on $\mathcal{E}$, and let $X = Spec S(\mathcal{E})$, with projection morphism $f:X \to Y$. For each open affine subset $U \subseteq Y$ for which $\mathcal{E}|_U $ is free, choose a basis of $\mathcal{E}$, and let $\psi: f^{-1}(U) \to \A^n_U $ be the isomorphism resulting from the identification of $S(\mathcal{E}(V))$ with $\mathcal{O}(U)[x_{1}, \ldots , x_n]$. Then $(X,f,{u},{\psi})$ is a vector bundle of rank $n$ over $Y$, which (up to isomorphism) does not depend on the bases of $\mathcal{E}_U$ chosen. We call it the geometric vector bundle associated to $\mathcal{E}$, and denote it by $\bm{V}(\mathcal{E})$.
+		\item For any morphismf:X -+ Y, a section off over an open set U s;; Yis a mor- phism s: U -+ X such that f 0 s = idu. It is clear how to restrict sections to smaller open sets, or how to glue them together, so we see that the presheaf U H {set of sections of f over U} is a sheaf of sets on Y, which we denote by 9'(X/Y). Show that if f:X -+ Y is a vector bundle of rank n, then the sheaf of sections .9"(X/Y) has a natural structure of (1)y-module, which makes it a locally free (1)y-module of rank n. [Hint: It is enough to define the module structure locally, so we can assume Y = Spec A is affine, and X = AY. Then a section s : Y -+ X comes from an A -algebra homomorphism (J: A [Xl' ... ,x.] -+ A, which in tum determines an ordered n-tuple «(J(x 1), • •• ,(J(x.) of elements of A. Use this correspondence between sections s and ordered n-tuples of 
+elements of A to define the module structure.] 
+	\item Again let c! be a locally free sheaf ofrank n on Y, let X = V(c!), and let 9' = .9"(X /Y) be the sheaf of sections of X over Y. Show that .9" ~ c!~, as follows. Given a section s E r(v,c!~) over any open set V, we think of s as an element of Hom(c!lv,{1)v). So s determines an (1)y-algebra homomorphism S(c!lv) -+ (1)v. This determines a morphism of spectra V = Spec (1)v -+ Spec S(c!lv) = f-1(V), which is a section of X/YO Show that this construction gives an iso- morphism of c!~ to 9'. 
+	\item Summing up, show that we have established a one-to-one correspondence between isomorphism classes of locally free sheaves of rank n on Y, and iso- morphism classes of vector bundles of rank n over Y. Because of this, we sometimes use the words "locally free sheaf" and "vector bundle" inter- changeably, if no confusion seems likely to result.
+	\end{enumerate}
+\end{exercise}
