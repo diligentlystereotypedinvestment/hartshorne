@@ -192,11 +192,31 @@
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
-	
+	a) It suffices to check isomorphism on stalks.
+	We have that $(\im \phi)_p $ is the stalk of the image presheaf, so $(\im \phi)_p \cong (\im \phi^-)_p \cong \im (\phi^-_p) \cong \mathcal{F}_p / \ker \phi_p$ by the first isomorphism theorem.
+	This is just $(\mathcal{F} / \ker \phi)_p$.
+
+	b) It suffices to check isomorphism on stalks.
+	As the stalks of the cokernel presheaf and the sheaf are the same, all we have to check is that $(\coker \phi)_p \cong \mathcal{G}_p / \im \phi_p $.
+	This is true because $(\coker \phi)_p = \coker \phi_p$ by 1.2a, and $\coker \phi_p = \mathcal{G}_p / \im \phi_p $ by definition.
 \end{proof}
 
 \begin{exercise}%1.8
 	For any open subset $U \subseteq X $, show that the functor $\Gamma(U,\cdot) $ from sheaves on $X $ to abelian groups is a left exact functor, i.e. if $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0 $ is an exact sequence of sheaves, then $0 \to \Gamma(U,\mathcal{F}') \to \Gamma(U,\mathcal{F}) \to \Gamma(U,\mathcal{F}'') \to 0 $ is an exact sequence of groups. The functor $\Gamma(U,\cdot) $ need not be exact; see (Ex. 1.21) below.
+\end{exercise}
+
+\begin{exercise}%1.9
+	[Direct Sum]
+	Let $\mathcal{F} $ and $\mathcal{G} $ be sheaves on $X $. Show that the presheaf $U\mapsto \mathcal{F}(U) \oplus \mathcal{G}(U) $ is a sheaf. It is called the \textit{direct sum} of $\mathcal{F} $ and $\mathcal{G} $, and is denoted by $\mathcal{F}\oplus \mathcal{G} $. Show tha it plays the role of direct sum and of direct product in the cateogry of sheaves of abelian groups on $X $.
+\end{exercise}
+\begin{proof}
+	Let the maps in the exact sequence of sheaves be $a,b $.
+	The injectivity of $\Gamma(U,\mathcal{F}') \to \Gamma(U,\mathcal{F}) $ is easy, since $\ker a = 0$, so $\ker a(U) = 0 $.
+	Now to show that $\im a(U) = \ker b(U) $, it suffices to check this on stalks.
+\end{proof}
+
+\begin{exercise}%1.10
+	[Direct Limit.] Let $\{\mathcal{F}_i\}   $ be a direct system of sheaves and morphisms on $X $. We define the \textit{direct limit} of the system $\{\mathcal{F}_i\}   $, denoted $\varinjlim \mathcal{F}_i $ to be the sheaf associated to the presheaf $U\mapsto \varinjlim \mathcal{F}_i(U) $. Show that this is a direct limit in the category of sheaves on $X $, i.e. that it has the following universal property: given a sheaf $\mathcal{G} $, and a collection of morphisms $\mathcal{F}_i \to \mathcal{G} $, compatible with the maps of the direct system, then there exists a unique map $\varinjlim \mathcal{F}_i \to \mathcal{G} $ such that for each $i $, the original map $\mathcal{F}_i \to \mathcal{G} $ is obtained by composing the maps $\mathcal{F}_i \to \varinjlim \mathcal{F}_i \to \mathcal{G} $.
 \end{exercise}
 
 \begin{exercise}[Extending a Sheaf by Zero]%1.19
@@ -569,9 +589,9 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	An \textit{isomorphism} $g: (X,f,\{U_i\} ,\{\psi_i\} ) \to (X',f',\{U_i'\} ,\{\psi_i'\} )     $ of one vector bundle of rank $n $ to another one is an isomorphism $g: X\to X' $ of the underlying schemes, such that $f=  f' \circ g $, and such that $X,f $, together with the covering of $Y $ consisting of all the $U_i $ and $U_i' $, and the isomorphisms $\psi_i $ and $\psi_i'\circ g $, is also a vector bundle structure on $X $.
 	\begin{enumerate}
 		\item Let $\mathcal{E} $ be a locally free sheaf of rank $n $ on a scheme $Y $. Let $S(\mathcal{E})$ be the symmetric algebra on $\mathcal{E}$, and let $X = Spec S(\mathcal{E})$, with projection morphism $f:X \to Y$. For each open affine subset $U \subseteq Y$ for which $\mathcal{E}|_U $ is free, choose a basis of $\mathcal{E}$, and let $\psi: f^{-1}(U) \to \A^n_U $ be the isomorphism resulting from the identification of $S(\mathcal{E}(V))$ with $\mathcal{O}(U)[x_{1}, \ldots , x_n]$. Then $(X,f,{u},{\psi})$ is a vector bundle of rank $n$ over $Y$, which (up to isomorphism) does not depend on the bases of $\mathcal{E}_U$ chosen. We call it the geometric vector bundle associated to $\mathcal{E}$, and denote it by $\bm{V}(\mathcal{E})$.
-		\item For any morphismf:X -+ Y, a section off over an open set U s;; Yis a mor- phism s: U -+ X such that f 0 s = idu. It is clear how to restrict sections to smaller open sets, or how to glue them together, so we see that the presheaf U H {set of sections of f over U} is a sheaf of sets on Y, which we denote by 9'(X/Y). Show that if f:X -+ Y is a vector bundle of rank n, then the sheaf of sections .9"(X/Y) has a natural structure of (1)y-module, which makes it a locally free (1)y-module of rank n. [Hint: It is enough to define the module structure locally, so we can assume Y = Spec A is affine, and X = AY. Then a section s : Y -+ X comes from an A -algebra homomorphism (J: A [Xl' ... ,x.] -+ A, which in tum determines an ordered n-tuple «(J(x 1), • •• ,(J(x.) of elements of A. Use this correspondence between sections s and ordered n-tuples of 
-elements of A to define the module structure.] 
-	\item Again let c! be a locally free sheaf ofrank n on Y, let X = V(c!), and let 9' = .9"(X /Y) be the sheaf of sections of X over Y. Show that .9" ~ c!~, as follows. Given a section s E r(v,c!~) over any open set V, we think of s as an element of Hom(c!lv,{1)v). So s determines an (1)y-algebra homomorphism S(c!lv) -+ (1)v. This determines a morphism of spectra V = Spec (1)v -+ Spec S(c!lv) = f-1(V), which is a section of X/YO Show that this construction gives an iso- morphism of c!~ to 9'. 
-	\item Summing up, show that we have established a one-to-one correspondence between isomorphism classes of locally free sheaves of rank n on Y, and iso- morphism classes of vector bundles of rank n over Y. Because of this, we sometimes use the words "locally free sheaf" and "vector bundle" inter- changeably, if no confusion seems likely to result.
+% 		\item For any morphism $f:X \rightarrow Y$, a section of $f$ over an open set U s;; Yis a mor- phism s: U -+ X such that f 0 s = idu. It is clear how to restrict sections to smaller open sets, or how to glue them together, so we see that the presheaf U H {set of sections of f over U} is a sheaf of sets on Y, which we denote by 9'(X/Y). Show that if f:X -+ Y is a vector bundle of rank n, then the sheaf of sections .9"(X/Y) has a natural structure of (1)y-module, which makes it a locally free (1)y-module of rank n. [Hint: It is enough to define the module structure locally, so we can assume Y = Spec A is affine, and X = AY. Then a section s : Y -+ X comes from an A -algebra homomorphism (J: A [Xl' ... ,x.] -+ A, which in tum determines an ordered n-tuple «(J(x 1), • •• ,(J(x.) of elements of A. Use this correspondence between sections s and ordered n-tuples of 
+% elements of A to define the module structure.] 
+% 	\item Again let c! be a locally free sheaf ofrank n on Y, let X = V(c!), and let 9' = .9"(X /Y) be the sheaf of sections of X over Y. Show that .9" ~ c!~, as follows. Given a section s E r(v,c!~) over any open set V, we think of s as an element of Hom(c!lv,{1)v). So s determines an (1)y-algebra homomorphism S(c!lv) -+ (1)v. This determines a morphism of spectra V = Spec (1)v -+ Spec S(c!lv) = f-1(V), which is a section of X/YO Show that this construction gives an iso- morphism of c!~ to 9'. 
+% 	\item Summing up, show that we have established a one-to-one correspondence between isomorphism classes of locally free sheaves of rank n on Y, and iso- morphism classes of vector bundles of rank n over Y. Because of this, we sometimes use the words "locally free sheaf" and "vector bundle" inter- changeably, if no confusion seems likely to result.
 	\end{enumerate}
 \end{exercise}
