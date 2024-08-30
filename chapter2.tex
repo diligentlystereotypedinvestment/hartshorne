@@ -1,18 +1,18 @@
+% root = main.tex
 \section{Schemes}
 
 \subsection{Sheaves}
 
 \begin{exercise}%1.1
-	Let $A $ be an abelian group, and define the \textit{constant presheaf} assicated to $A $ on the topological space $X $ to be the presheaf $U\mapsto A $ for all $U\ne \emptyset $, with restriction maps the identity. Show that the constant sheaf $\mathcal{A} $ defined in the text is the sheaf associated to this presheaf.
+	Let $A $ be an abelian group, and define the \textit{constant presheaf} assicated to $A $ on the topological space $X $ to be the presheaf $U\mapsto A $ for all $U\ne \emptyset $, with restriction maps the identity. Show that the constant sheaf $\mathscr{A} $ defined in the text is the sheaf associated to this presheaf.
 \end{exercise}
 \begin{proof}
-	Let the constant presheaf be $\mathcal{C} $.
-	We want to show that $\forall $ open $U \subseteq X$, $\mathcal{C}^+(U) = A $.
-	Clearly $\mathcal{C}_P = A $ since $\mathcal{C}(U) = A$ for all subsets $U $ with the map from $\mathcal{C}(U) \to \mathcal{C}_P $ the identity.
-
+	Let the constant presheaf be $\mathscr{C} $.
+	% We want to show that for all open $U \subseteq X$, $\mathscr{C}^+(U) = A $.
+	% Clearly $\mathscr{C}_P = A $ since $\mathscr{C}(U) = A$ for all subsets $U $ with the map from $\mathscr{C}(U) \to \mathscr{C}_P $ the identity.
 	Fix a connected, open $U $.
 	Then for a fixed but arbitrary $P \in U $, we have $A $ choices for $s(P) $.
-	We can then see that by the second condition of $\mathcal{C}^+ $ and making $V $ small enough that it falls in the connected open set, there exists $t$ in $\mathcal{C}(V) = A$ such that for all $Q \in V, t_Q = t = s(Q)$.
+	We can then see that by the second condition of $\mathscr{C}^+ $ and making $V $ small enough that it falls in the connected open set, there exists $t$ in $\mathscr{C}(V) = A$ such that for all $Q \in V, t_Q = t = s(Q)$.
 	Thus $s $ is constant on $V $ as $t $ is in $A $.
 
 	Finally, take the collection of these neighborhoods.
@@ -20,19 +20,19 @@
 	Because $U $ is connected, there must be non-empty intersection between this neighborhood and the union of the other neighborhoods.
 	By doing the above argument for a point in their intersection, $s $ is constant on all of $U $.
 
-	By construction, $s $ satisfies conditions (1) and (2) on $U $, putting $s \in \mathcal{C}^+(U) $.
-	Thus $\mathcal{C}^+(U) = A $.
-	By picking constants on connected components, we can see that such a function satisfies (1) and (2), making $\mathcal{C}^+(U) = \mathcal{A}(U) $.
+	By construction, $s $ satisfies conditions (1) and (2) on $U $, putting $s \in \mathscr{C}^+(U) $.
+	Thus $\mathscr{C}^+(U) = A $.
+	By picking constants on connected components, we can see that such a function satisfies (1) and (2), making $\mathscr{C}^+(U) = \mathscr{A}(U) $.
 \end{proof}
 
 \begin{exercise}%1.2
 	~
 	\begin{enumerate}
-		\item For any morphism of sheaves $\phi: \mathcal{F}\to \mathcal{G} $, show that for any point $P $, $(\ker \phi)_P = \ker(\phi_P) $ and $(im \phi)_P = \im(\phi_P) $.
+		\item For any morphism of sheaves $\phi: \mathscr{F}\to \mathscr{G} $, show that for any point $P $, $(\ker \phi)_P = \ker(\phi_P) $ and $(\im \phi)_P = \im(\phi_P) $.
 		\item Show that $\phi $ is injective (respectively, surjective) if and only if the induced map on the stalks $\phi_P $ is injective (respectively, surjective) for all $P $.
 		\item Show that a sequence
 			\[
-				\cdots \to \mathcal{F}^{i-1}\xrightarrow{\phi ^{i-1}} \mathcal{F}^i \xrightarrow{\phi^i} \mathcal{F}^{i+1}\to \cdots   
+				\cdots \to \mathscr{F}^{i-1}\xrightarrow{\phi ^{i-1}} \mathscr{F}^i \xrightarrow{\phi^i} \mathscr{F}^{i+1}\to \cdots   
 			\] 
 			of sheaves and morphisms is exact if and only if for each $P \in X $, the corresponding sequence of stalks is exact as a sequence of abelian groups.
 	\end{enumerate}
@@ -44,10 +44,10 @@
 		\begin{tikzcd}
 			\cdots & \ker \phi(U) & & \ker \phi(V) & \cdots\\
 			       & &\lim \ker \phi & &\\
-			\cdots & \mathcal{F}(U) & & \mathcal{F}(V) & \cdots\\
-			       & &\mathcal{F}_P & &\\
-			\cdots & \mathcal{G}(U) & & \mathcal{G}(V) & \cdots\\
-			       & &\mathcal{G}_P & &
+			\cdots & \mathscr{F}(U) & & \mathscr{F}(V) & \cdots\\
+			       & &\mathscr{F}_P & &\\
+			\cdots & \mathscr{G}(U) & & \mathscr{G}(V) & \cdots\\
+			       & &\mathscr{G}_P & &
 			\arrow[from=1-1,to=1-2]
 			\arrow["\iota ",from=1-2,to=1-4]
 			\arrow[from=1-4,to=1-5]
@@ -71,16 +71,16 @@
 			\arrow["\phi_P",dotted,from=4-3,to=6-3]
 		\end{tikzcd}
 	\] 
-	We have a map $\lim\ker \phi \to \ker \phi_P $ because any element $u \in \lim \ker \phi $ can be represented by $(v,V), v\in \ker \phi(V)$, and $v $ maps to 0 in $\mathcal{G}_P $ (so map $u $ to $v_P $).
-	Further this is injective, because each map $\ker \phi(U) \to \mathcal{F}(U) $ is injective, making the induced map injective (Proposition 1.1).
-	% any element $t $ mapped to 0 in $\mathcal{F}_P $ would imply that all of its representatives in $\ker \phi(U)$ are non-zero.
+	We have a map $\lim\ker \phi \to \ker \phi_P $ because any element $u \in \lim \ker \phi $ can be represented by $(v,V), v\in \ker \phi(V)$, and $v $ maps to 0 in $\mathscr{G}_P $ (so map $u $ to $v_P $).
+	Further this is injective, because each map $\ker \phi(U) \to \mathscr{F}(U) $ is injective, making the induced map injective (Proposition 1.1).
+	% any element $t $ mapped to 0 in $\mathscr{F}_P $ would imply that all of its representatives in $\ker \phi(U)$ are non-zero.
 	% But because the image of $t $ is 0, there is a representative $(v,V) $ that is 0, implying that the representative of $t $ in $\ker \phi (V) $ is 0, a contradiction.
 	Hence if we show it is surjective, we have a bijective homomorphism and thus are the same.
 
-	Then for any element $\ell \in \ker \phi_P \subseteq \mathcal{F}_P $, let $(v_{1},V_{1}) $ represent it.
+	Then for any element $\ell \in \ker \phi_P \subseteq \mathscr{F}_P $, let $(v_{1},V_{1}) $ represent it.
 	Let $(0,V_{2}) $ represent $\phi _P(\ell) $.
 	Then $\rho_{G,V}(\phi(V)(v)) = 0 $ by commutativity.
-	Next restrict $0 $ to $V_{1}\cap V_{2} $ to get $0\in \mathcal{G}(V_{1}\cap V_{2}) $, implying that via commuting that $v_{1}|_{V_{1}\cap V_{2}} $ is mapped to 0 under $\phi(V_{1}\cap V_{2})$.
+	Next restrict $0 $ to $V_{1}\cap V_{2} $ to get $0\in \mathscr{G}(V_{1}\cap V_{2}) $, implying that via commuting that $v_{1}|_{V_{1}\cap V_{2}} $ is mapped to 0 under $\phi(V_{1}\cap V_{2})$.
 
 	So $v_{1}|_{V_{1}\cap V_{2}}\in \ker \phi(V_{1}\cap V_{2}) $.
 	We have thus found an element $\iota(v_{1}|_{V_{1}\cap V_{2}}) $ that gets mapped to $\ell $ as $\iota(v_{1}|_{V_{1}\cap V_{2}}) $ can be represented by $(v_{1}|_{V_{1}\cap V_{2}},V_{1}\cap V_{2}) $ and $(v_{1}|_{V_{1}\cap V_{2}})_P \in \ker \phi_P$.
@@ -97,8 +97,8 @@
 \begin{exercise}%1.3
 	~
 	\begin{enumerate}
-		\item Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of sheaves on $X $. Show that $\phi  $ is surjective if and only if the following condition holds: for every open set $U \subseteq X $, and for every $s \in \mathcal{G}(U) $, there is a covering $\{U_i\}   $ of $U $, and there are elements $t_i \in \mathcal{F}(U_i) $, such that $\phi (t_i) = s|_{U_i} $ for all $i $.
-		\item Give an example of a surjective morphism of sheaves $\phi : \mathcal{F}\to \mathcal{G} $, and an open set $U $ such that $\phi (U): \mathcal{F}(U) \to \mathcal{G}(U) $ is not surjective.
+		\item Let $\phi :\mathscr{F}\to \mathscr{G} $ be a morphism of sheaves on $X $. Show that $\phi  $ is surjective if and only if the following condition holds: for every open set $U \subseteq X $, and for every $s \in \mathscr{G}(U) $, there is a covering $\{U_i\}   $ of $U $, and there are elements $t_i \in \mathscr{F}(U_i) $, such that $\phi (t_i) = s|_{U_i} $ for all $i $.
+		\item Give an example of a surjective morphism of sheaves $\phi : \mathscr{F}\to \mathscr{G} $, and an open set $U $ such that $\phi (U): \mathscr{F}(U) \to \mathscr{G}(U) $ is not surjective.
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -108,39 +108,39 @@
 	Thus let $t_i = t|_{U_i} $.
 
 	$\Leftarrow $: Take an arbitrary open set $U $.
-	We want to show that $(\im^+ \phi)(U) = \mathcal{G}(U) $.
-	As $\im^+ \phi $ is a subsheaf of $\mathcal{G} $, all we need to show is surjectivity.
-	Take some $s \in \mathcal{G}(U) $.
+	We want to show that $(\im^+ \phi)(U) = \mathscr{G}(U) $.
+	As $\im^+ \phi $ is a subsheaf of $\mathscr{G} $, all we need to show is surjectivity.
+	Take some $s \in \mathscr{G}(U) $.
 	Let $U_i $ be the open cover given by hypothesis.
-	Next we will want to use the gluing property of sheaves to get an element $t \in \mathcal{F}(U) $, so we have to check that $t_i $ from the hypothesis agree on intersections.
+	Next we will want to use the gluing property of sheaves to get an element $t \in \mathscr{F}(U) $, so we have to check that $t_i $ from the hypothesis agree on intersections.
 
-	Take $t_i,t_j $ in $\mathcal{F}(U_i),\mathcal{F}(U_j) $ respectively and let $U_{ij} = U_i \cap U_j $.
+	Take $t_i,t_j $ in $\mathscr{F}(U_i),\mathscr{F}(U_j) $ respectively and let $U_{ij} = U_i \cap U_j $.
 	Then by the definition of a sheaf morphism, $\phi(t_i|_{U_{ij}}) = \phi(t_i)|_{U_{ij}} = s_{U_{ij}} $ and $\phi(t_j|_{U_{ij}}) = \phi(t_j)|_{U_{ij}} = s_{U_{ij}}$.
 	So $t_i|_{U_{ij}}-t_{j}|_{U_{ij}} \in \ker \phi(U_{ij}) $.
-	Hence there is a unique element $t\in \mathcal{F}(U)$ such that $t|_{U_i} = t_i $.
+	Hence there is a unique element $t\in \mathscr{F}(U)$ such that $t|_{U_i} = t_i $.
 
-	b) Let $\mathcal{F} $ be the constant sheaf of $A = \mathbb{Z} / 2\mathbb{Z} $ and $\mathcal{G} $ be $\mathcal{F} $.
-	Then we have the sheaf morphism $\mathcal{F} \to \mathcal{G} $ by mapping $\mathcal{F}(\emptyset) = 0$ to 0, $\mathcal{F}(0)= \mathcal{F}(1) = A$ to $A $ and $\mathcal{F}(A) = A^2 $ to $A $ via quotienting.
-	Then the sheaf associated to the image presheaf is the constant sheaf, but $\phi(\mathcal{F}(A)) \ne \mathcal{G}(A) = A^2$.
+	b) Let $\mathscr{F} $ be the constant sheaf of $A = \mathbb{Z} / 2\mathbb{Z} $ and $\mathscr{G} $ be $\mathscr{F} $.
+	Then we have the sheaf morphism $\mathscr{F} \to \mathscr{G} $ by mapping $\mathscr{F}(\emptyset) = 0$ to 0, $\mathscr{F}(0)= \mathscr{F}(1) = A$ to $A $ and $\mathscr{F}(A) = A^2 $ to $A $ via quotienting.
+	Then the sheaf associated to the image presheaf is the constant sheaf, but $\phi(\mathscr{F}(A)) \ne \mathscr{G}(A) = A^2$.
 \end{proof}
 
 \begin{exercise}%1.4
 	~
 	\begin{enumerate}
-		\item Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of presheaves such that $\phi (U): \mathcal{F}(U) \to \mathcal{G}(U) $ is injective for each $U $. Show that the induced map $\phi ^+: \mathcal{F}^+ \to \mathcal{G}^+ $ of associated shaves is injective.
-		\item Use part (a) to show that if $\phi : \mathcal{F}\to \mathcal{G} $ is a morphism of sheaves, then $\im \phi  $ can be naturally identified with a subsheaf of $\mathcal{G} $, as mentioned in the text.
+		\item Let $\phi :\mathscr{F}\to \mathscr{G} $ be a morphism of presheaves such that $\phi (U): \mathscr{F}(U) \to \mathscr{G}(U) $ is injective for each $U $. Show that the induced map $\phi ^+: \mathscr{F}^+ \to \mathscr{G}^+ $ of associated shaves is injective.
+		\item Use part (a) to show that if $\phi : \mathscr{F}\to \mathscr{G} $ is a morphism of sheaves, then $\im \phi  $ can be naturally identified with a subsheaf of $\mathscr{G} $, as mentioned in the text.
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
 	a) It suffices to check that the map is injective on stalks.
 	Because $\phi(U)$ is injective, $\phi_p $ is injective for all $p \in X $ by 1.2a.
-	As $\mathcal{F}^+_p = \mathcal{F}_p $ and $\mathcal{G}^+_p = \mathcal{G}_p $ and $\phi^+_p = \phi_p $, the induced map is injective on all stalks.
+	As $\mathscr{F}^+_p = \mathscr{F}_p $ and $\mathscr{G}^+_p = \mathscr{G}_p $ and $\phi^+_p = \phi_p $, the induced map is injective on all stalks.
 	Hence it is injective.
 
 	b) 
-	We have injective maps $\iota (U): \im \phi (U) \to \mathcal{G}(U) $ via inclusion.
-	Then by part a, the incuded map $\iota^+: (\im \phi)^+ \to \mathcal{G}^+$ is injective.
-	But because $\mathcal{G} $ is a sheaf, $\mathcal{G}^+ = \mathcal{G} $, so $(\im \phi )^+ $ can be naturally identified with a subsheaf.
+	We have injective maps $\iota (U): \im \phi (U) \to \mathscr{G}(U) $ via inclusion.
+	Then by part a, the incuded map $\iota^+: (\im \phi)^+ \to \mathscr{G}^+$ is injective.
+	But because $\mathscr{G} $ is a sheaf, $\mathscr{G}^+ = \mathscr{G} $, so $(\im \phi )^+ $ can be naturally identified with a subsheaf.
 \end{proof}
 %
 \begin{exercise}% 1.5
@@ -148,36 +148,36 @@
 \end{exercise}
 \begin{proof}
 	It suffices to check that the stalks are isomorphic by Proposition 1.1.
-	First we have that $\im \phi = \mathcal{G} $, so $(\im \phi)_p = \mathcal{G}_p $.
+	First we have that $\im \phi = \mathscr{G} $, so $(\im \phi)_p = \mathscr{G}_p $.
 	Because the stalks of the associate sheaf and presheaf are the same, $(\im \phi)_p $ equals the stalk of the presheaf $U\mapsto \im \phi $ at $p $, denote it by $\im \phi^-_p $.
-	But since $\ker \phi = 0 $, $\mathcal{F}(U) / \ker \phi(U) \cong \mathcal{F}(U)$.
+	But since $\ker \phi = 0 $, $\mathscr{F}(U) / \ker \phi(U) \cong \mathscr{F}(U)$.
 	By the first isomorphism theorem, the LHS is isomorphic to $\im \phi(U) $ (not as a sheaf).
-	Hence $\im\phi^-_p = \lim_{U} \im\phi(U) \cong \lim_U \mathcal{F}(U) / \ker \phi(U) \cong \mathcal{F}_p$.
+	Hence $\im\phi^-_p = \lim_{U} \im\phi(U) \cong \lim_U \mathscr{F}(U) / \ker \phi(U) \cong \mathscr{F}_p$.
 	So they are isomorphic as stalks.
 \end{proof}
 
 \begin{exercise}%1.6
 	~
 	\begin{enumerate}
-		\item Let $\mathcal{F}' $ be a subsheaf of a sheaf $\mathcal{F} $. Show that the natural map of $\mathcal{F} $ to the quotient sheaf $\mathcal{F} / \mathcal{F}' $ is surjective, and has kernel $\mathcal{F}' $. Thus there is an exact sequence
+		\item Let $\mathscr{F}' $ be a subsheaf of a sheaf $\mathscr{F} $. Show that the natural map of $\mathscr{F} $ to the quotient sheaf $\mathscr{F} / \mathscr{F}' $ is surjective, and has kernel $\mathscr{F}' $. Thus there is an exact sequence
 		\[
-			0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F} / \mathcal{F}' \to 0
+			0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F} / \mathscr{F}' \to 0
 		.\] 
-		\item Conversely, if $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}''\to 0 $ is an exact sequence, show that $\mathcal{F}' $ is isomorphic to a subsheaf of $\mathcal{F} $, and that $\mathcal{F}'' $ is isomorphismic to the quotient of $\mathcal{F} $ by this subsheaf.
+		\item Conversely, if $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}''\to 0 $ is an exact sequence, show that $\mathscr{F}' $ is isomorphic to a subsheaf of $\mathscr{F} $, and that $\mathscr{F}'' $ is isomorphic to the quotient of $\mathscr{F} $ by this subsheaf.
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
 	a) 
-	The natural quotient map is $\phi: U \mapsto \mathcal{F}(U) / \mathcal{F}'(U)$.
-	Hence $\phi$ obvously has kernel $\mathcal{F}' $.
-	To show that it is surjective, we have to show that the sheaf associated to $U\mapsto \im \phi(U) $, call the sheaf $\im \phi^+ $ and the presheaf $\im \phi^- $, equals $\mathcal{F} / \mathcal{F}' $.
+	The natural quotient map is $\phi: U \mapsto \mathscr{F}(U) / \mathscr{F}'(U)$.
+	Hence $\phi$ obvously has kernel $\mathscr{F}' $.
+	To show that it is surjective, we have to show that the sheaf associated to $U\mapsto \im \phi(U) $, call the sheaf $\im \phi^+ $ and the presheaf $\im \phi^- $, equals $\mathscr{F} / \mathscr{F}' $.
 	To do this, we can check it on stalks.
-	As the stalks of $\im \phi^+ $ equal the stalks of the presheaf $U\mapsto \im \phi(U) $, we just have to verify that $\im \phi^-_p \cong \mathcal{F} / \mathcal{F}'_p$.
+	As the stalks of $\im \phi^+ $ equal the stalks of the presheaf $U\mapsto \im \phi(U) $, we just have to verify that $\im \phi^-_p \cong \mathscr{F} / \mathscr{F}'_p$.
 	This is a consequence of $\phi $ being surjective on each section and limits of isomorphic objects are isomorphic.
 
 	b)
 	Label the non-zero maps $a,b $.
-	Then first we can show that $\mathcal{F}' \cong \im a $ via the forward map of $a $ with restricted codomain.
+	Then first we can show that $\mathscr{F}' \cong \im a $ via the forward map of $a $ with restricted codomain.
 	We can do this via checking the map on stalks.
 	It is injective on stalks because $0 = (\ker a)_p = \ker a_p$ (1.2a).
 	Because the stalks of the image presheaf and image sheaf are the same, we simply have to check that $\im a_p = (\im a)_p $.
@@ -185,127 +185,857 @@
 \end{proof}
 
 \begin{exercise}%1.7
-	Let $\phi :\mathcal{F}\to \mathcal{G} $ be a morphism of sheaves.
+	Let $\phi :\mathscr{F}\to \mathscr{G} $ be a morphism of sheaves.
 	\begin{enumerate}
-		\item Show that $\im \phi \cong \mathcal{F} / \ker \phi $.
-		\item Show that $\coker \phi \cong \mathcal{G} / \im \phi $.
+		\item Show that $\im \phi \cong \mathscr{F} / \ker \phi $.
+		\item Show that $\coker \phi \cong \mathscr{G} / \im \phi $.
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
-	a) It suffices to check isomorphism on stalks.
-	We have that $(\im \phi)_p $ is the stalk of the image presheaf, so $(\im \phi)_p \cong (\im \phi^-)_p \cong \im (\phi^-_p) \cong \mathcal{F}_p / \ker \phi_p$ by the first isomorphism theorem.
-	This is just $(\mathcal{F} / \ker \phi)_p$.
+	a) It suffices to check isomorphism on stalks as we have the obvious morphism $\mathscr{F} / \ker \phi \to \im \phi$ (as the former is isomorphic as presheaves to the image presheaf).
+	We have that $(\im \phi)_p $ is the stalk of the image presheaf, so $(\im \phi)_p \cong (\im \phi^-)_p \cong \im (\phi^-_p) \cong \mathscr{F}_p / \ker \phi_p$ by the first isomorphism theorem.
+	This is just $(\mathscr{F} / \ker \phi)_p$.
 
-	b) It suffices to check isomorphism on stalks.
-	As the stalks of the cokernel presheaf and the sheaf are the same, all we have to check is that $(\coker \phi)_p \cong \mathcal{G}_p / \im \phi_p $.
-	This is true because $(\coker \phi)_p = \coker \phi_p$ by 1.2a, and $\coker \phi_p = \mathcal{G}_p / \im \phi_p $ by definition.
+	b) It suffices to check isomorphism on stalks, with the morphism being $\mathscr{G} / \im \phi $ to the cokernel presheaf.
+	As the stalks of the cokernel presheaf and the sheaf are the same, all we have to check is that $(\coker \phi)_p \cong \mathscr{G}_p / \im \phi_p $.
+	This is true because $(\coker \phi)_p = \coker \phi_p$ by 1.2a, and $\coker \phi_p = \mathscr{G}_p / \im \phi_p $ by definition.
 \end{proof}
 
 \begin{exercise}%1.8
-	For any open subset $U \subseteq X $, show that the functor $\Gamma(U,\cdot) $ from sheaves on $X $ to abelian groups is a left exact functor, i.e. if $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0 $ is an exact sequence of sheaves, then $0 \to \Gamma(U,\mathcal{F}') \to \Gamma(U,\mathcal{F}) \to \Gamma(U,\mathcal{F}'') \to 0 $ is an exact sequence of groups. The functor $\Gamma(U,\cdot) $ need not be exact; see (Ex. 1.21) below.
-\end{exercise}
-
-\begin{exercise}%1.9
-	[Direct Sum]
-	Let $\mathcal{F} $ and $\mathcal{G} $ be sheaves on $X $. Show that the presheaf $U\mapsto \mathcal{F}(U) \oplus \mathcal{G}(U) $ is a sheaf. It is called the \textit{direct sum} of $\mathcal{F} $ and $\mathcal{G} $, and is denoted by $\mathcal{F}\oplus \mathcal{G} $. Show tha it plays the role of direct sum and of direct product in the cateogry of sheaves of abelian groups on $X $.
+	For any open subset $U \subseteq X $, show that the functor $\Gamma(U,\cdot) $ from sheaves on $X $ to abelian groups is a left exact functor, i.e. if $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}'' \to 0 $ is an exact sequence of sheaves, then $0 \to \Gamma(U,\mathscr{F}') \to \Gamma(U,\mathscr{F}) \to \Gamma(U,\mathscr{F}'') \to 0 $ is an exact sequence of groups. The functor $\Gamma(U,\cdot) $ need not be exact; see (Ex. 1.21) below.
 \end{exercise}
 \begin{proof}
 	Let the maps in the exact sequence of sheaves be $a,b $.
-	The injectivity of $\Gamma(U,\mathcal{F}') \to \Gamma(U,\mathcal{F}) $ is easy, since $\ker a = 0$, so $\ker a(U) = 0 $.
-	Now to show that $\im a(U) = \ker b(U) $, it suffices to check this on stalks.
+	The injectivity of $\Gamma(U,\mathscr{F}') \to \Gamma(U,\mathscr{F}) $ is easy, since $\ker a = 0$, so $\ker a(U) = 0 $.
+	Next we show that $\im a(U) = \ker b(U) $.
+
+	\begin{lem}\label{lem:injsheaf}
+		For an injective morphism $f: \mathscr{F}\to \mathscr{G} $ of sheaves on $X $, the image presheaf is a sheaf.
+	\end{lem}
+	\begin{proof}
+		We verify the two properties:
+
+		i) If we have an open cover of $\im f $ $\{U_i\}   $ and an element $s \in \Gamma(\mathscr{G},X)$ such that $s|_{U_i} = 0 $, then $t_i \coloneqq f^{-1}(s|_{U_i}) $, which exists uniquely by definition of image presheaf and injectivity, equals 0 and is in $\Gamma(\mathscr{F},U_i) $.
+		Thus we have a set of elements of an open cover obviously compatible on intersections (zero elements always restrict to $0 $), lifting to a unique global zero section $t $ by property i) of $\mathscr{F} $ being a sheaf.
+		But $f^{-1}(s) $ also has the property of being a global section that restricts to the right elements on sections of the open cover (once again using injectivity), i.e.
+		\[
+		\begin{tikzcd}
+		f^{-1}(s) & s\\
+		f^{-1}(s)|_{U_i} & s|_{U_i}
+		\arrow[from=1-1,to=1-2]
+		\arrow[from=1-1,to=2-1]
+		\arrow[from=2-1,to=2-2]
+		\arrow[from=1-2,to=2-2]
+		\end{tikzcd}
+		\]
+		commutes because $f^{-1}(s)|_{U_i} = f^{-1}(s|_{U_i}) $.
+		Hence $f^{-1}(s) = t = 0 \implies s = 0 $.
+
+		ii) If we have an open cover $\{U_i\}   $ and sections $s_i $ of it that agree on intersections, then by bijectivity of $f $ on the image, $f^{-1}(s_i|_{U_i\cap U_j}) = f^{-1}(s_i)|_{U_i\cap U_j} $.
+		Thus $f^{-1}(s_i) $ are sections of an open cover of the sheaf $\mathscr{F} $, so they lift to a global section.
+		By bijectivity of $f $ on the image (we need this for commuting to work right), this global section is a global section of the image.
+	\end{proof}
+
+	By the above lemma, the image presheaf is a sheaf, and as both the image presheaf and image sheaf are subsheaves of $\mathscr{G} $, they are the same.
+	Thus $\im a(U) = (\im a)(U) = \ker a(U) $.
+\end{proof}
+
+\begin{exercise}%1.9
+	[Direct Sum]
+	Let $\mathscr{F} $ and $\mathscr{G} $ be sheaves on $X $. Show that the presheaf $U\mapsto \mathscr{F}(U) \oplus \mathscr{G}(U) $ is a sheaf. It is called the \textit{direct sum} of $\mathscr{F} $ and $\mathscr{G} $, and is denoted by $\mathscr{F}\oplus \mathscr{G} $. Show that it plays the role of direct sum and of direct product in the category of sheaves of abelian groups on $X $.
+\end{exercise}
+\begin{proof}
+	We first verify the first property of a sheaf:
+	If we have a section $f \in \mathscr{F}(U) \oplus \mathscr{G}(U)$ and an open cover $\{U_i\}  $ such that $f|_{U_i} = 0 $, then by projecting into the $\mathscr{F}(U) $ and $\mathscr{G}(U) $ coordinates, we get a section of $\mathscr{F}(U) $ and $\mathscr{G}(U) $ with restrictions to an open cover equaling 0.
+	By $\mathscr{F} $ and $\mathscr{G} $ being sheaves, the components of $f $ are both 0, hence $f =0$.
+
+	Second property:
+	Use the same notation as above.
+	Then we have $f_i \in \mathscr{F}(U_i) \oplus \mathscr{G}(U_i) $.
+	By projecting to each component, we get sections on $U $ of each sheaf, say $f',f'' $.
+	Then I propose $f \coloneqq f' \oplus f''$ as the needed element of $\mathscr{F}(U) \oplus \mathscr{G}(U)$.
+	This is because the restriction map on this presheaf is $\rho_{F}\oplus \rho_{G} $, so by $\mathscr{F},\mathscr{G} $ being sheaves, the restriction of each component of $f $ to $U_i $ equals $f_i $, showing that $f $ has the desired property.
+
+	It satisfies the direct product and direct sum because projecting is a morphism:
+	\[
+	\begin{tikzcd}
+	\mathscr{F}(U)\oplus \mathscr{G}(U) & \mathscr{F}(U)\\
+	\mathscr{F}(V) \oplus \mathscr{G}(V) & \mathscr{F}(V)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	commutes because the restriction morphism is $\rho_{\mathscr{F}}\oplus \rho_{\mathscr{G}} $, hence the projection of a restriction is the restriction of a projection.
+	This implies the categorical definition because $\oplus  $ in the category of abelian groups is the direct product and direct sum, hence the projection morphisms being sheaf morphisms gives us the categorical stuff for free.
 \end{proof}
 
 \begin{exercise}%1.10
-	[Direct Limit.] Let $\{\mathcal{F}_i\}   $ be a direct system of sheaves and morphisms on $X $. We define the \textit{direct limit} of the system $\{\mathcal{F}_i\}   $, denoted $\varinjlim \mathcal{F}_i $ to be the sheaf associated to the presheaf $U\mapsto \varinjlim \mathcal{F}_i(U) $. Show that this is a direct limit in the category of sheaves on $X $, i.e. that it has the following universal property: given a sheaf $\mathcal{G} $, and a collection of morphisms $\mathcal{F}_i \to \mathcal{G} $, compatible with the maps of the direct system, then there exists a unique map $\varinjlim \mathcal{F}_i \to \mathcal{G} $ such that for each $i $, the original map $\mathcal{F}_i \to \mathcal{G} $ is obtained by composing the maps $\mathcal{F}_i \to \varinjlim \mathcal{F}_i \to \mathcal{G} $.
+	[Direct Limit.] Let $\{\mathscr{F}_i\}   $ be a direct system of sheaves and morphisms on $X $. We define the \textit{direct limit} of the system $\{\mathscr{F}_i\}   $, denoted $\varinjlim \mathscr{F}_i $ to be the sheaf associated to the presheaf $U\mapsto \varinjlim \mathscr{F}_i(U) $. Show that this is a direct limit in the category of sheaves on $X $, i.e. that it has the following universal property: given a sheaf $\mathscr{G} $, and a collection of morphisms $\mathscr{F}_i \to \mathscr{G} $, compatible with the maps of the direct system, then there exists a unique map $\varinjlim \mathscr{F}_i \to \mathscr{G} $ such that for each $i $, the original map $\mathscr{F}_i \to \mathscr{G} $ is obtained by composing the maps $\mathscr{F}_i \to \varinjlim \mathscr{F}_i \to \mathscr{G} $.
 \end{exercise}
+\begin{proof}
+	Because each open set $U $ has a morphism $\mathscr{F}_i(U) \to \mathscr{G}(U) $, there is a morphism $\varinjlim \mathscr{F}_i(U) \to \mathscr{G}(U) $ by definition of direct limits in category of abelian groups which has the desired commuting property.
+	This is a presheaf morphism because the compatibility of $\mathscr{F}_i(U) \to \mathscr{G}(U) \to \mathscr{G}(V) $ with $\mathscr{F}_i(U) \to \mathscr{F}_i(V) \to \mathscr{G}(V) $ gives us one map $\varinjlim_i \mathscr{F}(U) \to \mathscr{G}(U)$ that commutes with the upper triangle and lower triangle.
+	\[
+	\begin{tikzcd}
+	\varinjlim_i \mathscr{F}(U) & \mathscr{G}(U)\\
+	\varinjlim_i \mathscr{F}(V) & \mathscr{G}(V)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\arrow[from=1-1,to=2-2]
+	\end{tikzcd}
+	\]
+
+	Because there is a presheaf morphism $f^-: \varinjlim \mathscr{F}_i \to \mathscr{G}$, there is a unique morphism from the sheafification $f:\varinjlim \mathscr{F} \to \mathscr{G} $ such that $f^- = f \circ \theta $.
+	This gives us the uniqueness, and the commuting properties desired.
+\end{proof}
+
+\begin{exercise}[1.11]
+	Let $\{\mathscr{F}_i\}   $ be a direct system of sheaves on a noetherian topological space $X $. In this case, show that the presheaf $U\mapsto \varinjlim \mathscr{F}_i(U)$ is already a sheaf. In particular,
+	\[
+		\Gamma(X, \varinjlim \mathscr{F}_i) = \varinjlim \Gamma(X,\mathscr{F}_i)
+	.\] 
+\end{exercise}
+\begin{proof}
+	We verify this directly.
+
+	Property 1: Suppose we have $U $, open cover $\{U_i\}$, and a section $s \in \varinjlim \mathscr{F}_i(U) $ s.t. $s|_{U_i} = 0 $.
+	Because $X $ is Noetherian, we can let $\{U_i\}   $ be finite.
+	By definition of the direct limit presheaf, restriction commutes with the limit.
+	So $0 = s|_{U_j} \in \varinjlim_i (\mathscr{F}_i(U_j))$.
+
+	Recall that every element of the direct limit can be represented by a pair $(s_{ij}, j) $ with $s_{ij} \in \mathscr{F}_j(U_i) $.
+	Because $s|_{U_i} = 0 $, there is a $k_i $ such that $s_{ik_i} = 0 \in \mathscr{F}_{k_i}(U_i) $.
+	As we have a direct system, we can find $I \ge i \forall i $.
+	Hence $s_{ik_i} = 0 \in \mathscr{F}_I(U_i) $.
+	By $\mathscr{F}_I $ being a sheaf, this implies that $s = 0 $ in $\mathscr{F}_I(U) $.
+	But this implies that $s = 0 \in \varinjlim \mathscr{F}_i(U) $.
+	
+	Property 2: Suppose we have a finite open cover $\{U_i\}$ and sections $s_i \in \varinjlim \mathscr{F}_i(U_i)$ that agree on intersections.
+	As above, we can represent $s_i $ by $(s_{ij},j) $ with $s_{ij} \in \mathscr{F}_j(U_i) $.
+	Because $\{U_i\}   $ is a finite cover, we can find $I \ge i $ for all $i $.
+	Then by mapping $s_{ij} $ into $\mathscr{F}_I(U_i) $, we get sections of an open cover of a sheaf that agree on intersections.
+	Thus we lift to a global section $s \in \mathscr{F}_I(U)$.
+	Then by mapping this into $\varinjlim \mathscr{F}_i(U_i) $, we have found an element that restricts properly.
+\end{proof}
+
+\begin{exercise}[Inverse Limit]%1.12
+	Let $\{\mathscr{F}_i\}$ be an inverse system of sheaves on $X $. Show that the presheaf $U\mapsto \varprojlim \mathscr{F}_i(U)$ is a sheaf. It is called the \textit{inverse limit} of the system $\{\mathscr{F}_i\}$, and is denoted by $\varprojlim \mathscr{F}_i $. Show that it has the universal property of an inverse limit in the category of sheaves.
+\end{exercise}
+\begin{proof}
+	We verify the desired properties:
+
+	i) If we have an open cover $\{U_i\}   $ of $X $ and a global section $s $ of $\varprojlim \mathscr{F}_j(U) $ that restricts to 0 on the open cover.
+	Then we can represent $s $ as a pair $(s_j,j) $ with $s_j \in \mathscr{F}_j(U) $.
+	\[
+	\begin{tikzcd}
+	\varprojlim \mathscr{F}_j(U) & \mathscr{F}_j(U)\\
+	\varprojlim \mathscr{F}_j(U_i) & \mathscr{F}_j(U_i)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	Because $s $ restricts to 0 on $\varprojlim \mathscr{F}_j(U_i) $ for all $i $, the morphism from the top left to bottom right sends $s $ to 0.
+	Now suppose FTSOC that there was some $j $ such that $s $ in $\mathscr{F}_j(U) $ wasn't zero.
+	Then for all $i$, the image of $s$ in $\mathscr{F}_j(U_i) $ is 0.
+	As $\mathscr{F}_j $ are sheaves, this means that the image of $s $ in $\mathscr{F}_j(U) $ is $0 $ for all $j $, a contradiction.
+	Hence $s =0 \in \mathscr{F}_j(U)$ for all $j $, so $s=0 $ in $\varprojlim \mathscr{F}_j(U) $.
+
+	ii) If we have an open cover $\{U_i\}   $ of $X $ and sections $s_i $ of $\varprojlim \mathscr{F}_j(U_i) $ that agree on intersections, then for all $j $, we have an element $S_{j} \in \mathscr{F}_j(U) $ that agree on intersections and restrict to $\pi_j(s_i)$ on the open cover.
+	Then $(S_j)_{j\in I} $ with $I $ the index set is an element of the projective limit, since the projections and morphisms of the inverse system commute.
+	Because the projection and restriction commute properly by construction, $(S_j)_{j\in I} $ is the lift we are looking for.
+\end{proof}
+
+\begin{exercise}%1.13
+	[Espace Etal\'e of a Presheaf.] (This exercise is included only to establish the connection between our definition of a sheaf and another definition often found in the literature. See for example Godement [1, Ch. II, §1.2].) Given a presheaf $\mathscr{F}$ on $X$, we define a topological space $\text{Sp\'e}(\mathscr{F})$, called the \textit{espace \'etal\'e} of $\mathscr{F}$, as follows. As a set, $\text{Sp\'e}(\mathscr{F})=\bigcup_{P \in X} \mathscr{F}_P$. We define a projection map $\pi: \text{Sp\'e}(\mathscr{F}) \to X $ by sending $s \in \mathscr{\mathscr { F }}_P$ to $P$. For each open set $U \subseteq X$ and each section $s \in \mathscr{F}(U)$, we obtain a map $\bar{s}: U \to$ $\text{Sp\'e}(\mathscr{F})$ by sending $P \mapsto s_P$, its germ at $P$. This map has the property that $\pi \circ \bar{s}=\operatorname{id}_U$, in other words, it is a ``section'' of $\pi$ over $U$. We now make $\text{Sp\'e}(\mathscr{F})$ into a topological space by giving it the strongest topology such that all the maps $\bar{s}: U \to$ $\text{Sp\'e}(\mathscr{F})$ for all $U$, and all $s \in \mathscr{F}(U)$, are continuous. Now show that the sheaf $\mathscr{F}^{+}$ associated to $\mathscr{F}$ can be described as follows: for any open set $U \subseteq X, \mathscr{F}^{+}(U)$ is the set of \textit{continuous sections} of $\text{Sp\'e}( \mathscr{F})$ over $U$. In particular, the original presheaf $\mathscr{F}$ was a sheaf if and only if for each $U, \mathscr{F}(U)$ is equal to the set of all continuous sections of $\text{Sp\'e}(\mathscr{F})$ over $U$.
+\end{exercise}
+\begin{proof}
+	We show that a continuous section has the properties of a section of the sheafification:
+	Condition 1 is obviously met.
+	Condition 2 is met by letting $V = U$ and $t = s $.
+
+	Finally we can see that a section $u $ of the sheafification (say over $U $) is a continuous section of $\text{Sp\'e}(\mathscr{F}) $ over $U $:
+	It suffices to check that the preimage of the open set $\overline{s}(U) $ for all open sets $U $ and sections $s \in \mathscr{F}(U) $.
+	Fix a $\overline{s}(U)  $.
+
+	For every point $P $ in the preimage, by condition 2 of being a section of the sheafification, there is a neighborhood $V $ of $P $ and an element $t \in \mathscr{F}(V) $ such that $t_Q = u(Q) \forall Q \in V $.
+	But $u(P) = t_P = s_P $, so $t = s $ (the latter equality is due to $P $ being in the preimage of $\overline{s}(U)$ and $u(P) \in \mathscr{F}_P $).
+	Then $V $ is in the preimage as well, so the preimage is a union of open $V $'s, implying that the preimage is open, giving us continuity of $s $.
+\end{proof}
+
+\begin{exercise}[Support]% 1.14
+	Let $\mathscr{F} $ be a sheaf on $X $, and let $s \in \mathscr{F}(U) $ be a section over an open set $U $. The \textit{support} of $s $, denoted $\Supp s $, is defined to be $\{P \in U | s_P \ne 0\}   $, where $s_P $ denotes the germ of $s $ in the stalk $\mathscr{F}_P $. Show that $\Supp s $ is a closed subset of $U $. We define the \textit{support} of $\mathscr{F} $, $\Supp \mathscr{F} $, to be $\{P \in X | \mathscr{F}_P \ne 0\}   $. It need not be a closed subset.
+\end{exercise}
+\begin{proof}
+	By the above exercise, $\mathscr{F}(U) $ is the set of all continuous sections of $\text{Sp\'e}(\mathscr{F}) $ over $U $.
+	Then $\Supp s $ equals $\overline{s}^{-1}(\{\bigsqcup_{P\in X} 0_P\}^C)   $.
+	As $\mathscr{F}_p $ has the discrete topology, $\{0\}   $ is open, hence $\{\sqcup 0_P\} ^C  $ is closed, which by continuity of $\overline{s}  $ gives us that $\Supp s $ is closed.
+\end{proof}
+
+\begin{exercise}[Sheaf $\Hom $]% 1.15
+	Let $\mathscr{F}, \mathscr{G} $ be sheaves of abelian groups on $X $. For any open set $U \subseteq X $, show that the set $\Hom(\mathscr{F}|_U, \mathscr{G}|_U) $ of morphisms of the restricted sheaves has a natural structure of an abelian group. Show that the presheaf $U\mapsto \Hom(\mathscr{F}|_U, \mathscr{G}|_U) $ is a sheaf. It is called the \textit{sheaf of local morphisms} of $\mathscr{F} $ into $\mathscr{G} $, ``sheaf hom'' for short, and is denoted $\mathscr{H}om(\mathscr{F},\mathscr{G}) $.
+\end{exercise}
+\begin{proof}
+	The abelian group operation is simply by defining $(f+g)(V), f,g \in \Hom(\mathscr{F}|_U, \mathscr{G}|_U) $ to be $f+g $ with $+ $ the group operation of $\mathscr{G}|_U(V) $.
+	This satisfies the group properties because $+ $ has this property.
+	It is in $\Hom(\mathscr{F}|_U, \mathscr{G}|_U) $ because the below diagram commutes:
+	\[
+	\begin{tikzcd}
+	\mathscr{F}|_U(V) & \mathscr{G}|_U(V)\\
+	\mathscr{F}|_U(W) & \mathscr{G}|_U(W)
+	\arrow["(f+g)(V)",from=1-1,to=1-2]
+	\arrow["\rho(VW)",from=1-1,to=2-1]
+	\arrow["(f+g)(W)",from=2-1,to=2-2]
+	\arrow["\rho(VW)",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	by the commuting properties in the definition of the morphisms $f,g $.
+
+	We show that it is a sheaf:
+
+	i) If we have a morphism $f \in \Hom(\mathscr{F}|_U, \mathscr{G}|_U) $ that restricts to 0 morphisms on an open cover of $U $, call it $\{U_i\}   $, then for any open set $V \subseteq U $,
+	\[
+	\begin{tikzcd}
+		{\mathscr{F}|_U(V)} & {\mathscr{G}|_U(V)}\\
+		{\mathscr{F}|_U(V\cap U_i)} & {\mathscr{G}|_U(V\cap U_i)}
+	\arrow["f(V)",from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow["f(V\cap U_i)",from=2-1,to=2-2]
+	\arrow["\rho_\mathscr{G}(V\,V\cap U_i)",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	commutes for all $i $.
+	As $f(V\cap U_i) = f|_{U_i}(V\cap U_i) $, $f(V\cap U_i) = 0 $.
+	Finally, if there is an element $x $ that isn't in the kernel of $f(V) $, then this element is in the kernel of $\rho_{\mathscr{G}}(V,V\cap U_i) \forall i $.
+	But then by $\mathscr{G} $ being a sheaf, this implies that $f(V)(x) = 0$, a contradiction.
+	Thus $f(V) = 0 $, showing that $f = 0 $.
+
+	ii) Say we have $f_i \in \Hom(\mathscr{F}|_{U}(U_i), \mathscr{G}|_U(U_i)) $ (sections of the $\mathscr{H}om $ sheaf) for an open cover $U_i $ of some open subset $V $ that agree on intersections.
+	Then we can define a function $f \in \Hom(\mathscr{F}_U(V), \mathscr{G}|_U(V)) $ by defining it for open $V' \subseteq V $ by taking $x \in \mathscr{F}|_U(V) $ to the lift of $f_i(x|_{U_i}) $.
+	Because the $f_i $ agree on intersections, we can lift $f_i(x|_{U_i}) $.
+
+	Finally, $f $ satisfies the commuting diagram
+	\[
+	\begin{tikzcd}
+	\mathscr{F}|_U(V') & \mathscr{G}|_U(V')\\
+	\mathscr{F}|_U(V'') & \mathscr{G}|_U(V'')
+	\arrow["f(V')",from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow["f(V'')",from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	for all open $V'' \subseteq V' \subseteq V$ because the $f_i $ are sheaf morphisms, so they satisfy the commuting diagrams
+	\[
+	\begin{tikzcd}
+	\mathscr{F}|_U(V'\cap U_i) & \mathscr{G}|_U(V'\cap U_i)\\
+	\mathscr{F}|_U(V''\cap U_i) & \mathscr{G}|_U(V''\cap U_i)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	and the lift is unique and restricts properly (i.e. going along the top gives an element that should be the lift, and uniqueness tells us it is the lift given from going along the bottom).
+\end{proof}
+
+\begin{exercise}[Flasque Sheaves.] %1.16
+	A sheaf $\mathscr{F} $ on a topological space $X $ is \textit{flasque} if for every inclusion $V\subseteq U $ of open sets, the restriction map $\mathscr{F}(U) \to \mathscr{F}(V) $ is surjective.
+	\begin{enumerate}
+		\item Show that a constant sheaf on an irreducible topological space is flasque. See (I, Section 1) for irreducible topological spaces.
+		\item If $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}'' \to 0 $ is an exact sequence of sheaves, and if $\mathscr{F}' $ is flasque, then for any open set $U $, the sequence $0 \to \mathscr{F}'(U) \to \mathscr{F}(U) \to \mathscr{F}''(U) \to 0 $ of abelian groups is also exact.
+		\item If $0 \to \mathscr{F}' \to \mathscr{F} \to \mathscr{F}'' \to 0 $ is an exact sequence of sheaves, and if $\mathscr{F}' $ and $\mathscr{F} $ are flasque, then $\mathscr{F}'' $ is flasque.
+		\item If $f: X\to Y $ is a continuous map, and if $\mathscr{F} $ is a flasque sheaf on $X $, then $f_\ast \mathscr{F} $ is a flasque sheaf on $Y $.
+		\item Let $\mathscr{F} $ be any sheaf on $X $. We define a new sheaf $\mathscr{G} $, called the sheaf of \textit{discontinuous sections} of $\mathscr{F} $ as follows. For each open set $U \subseteq X $, $\mathscr{G}(U) $ is the set of maps $s: U \to \cup_{P \in U} \mathscr{F}_P $ such that for each $P \in U $, $s(P) \in \mathscr{F}_P $. Show that $\mathscr{G} $ is a flasque sheaf, and that there is a natural injective morphism of $\mathscr{F} $ to $\mathscr{G} $.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) First we can observe that all open subsets of $X $ are connected because if we have open $U = C_{1} \sqcup C_{2} $ and closed $C_{1},C_{2} $, then $C_{1},C_{2} $ come from closed sets in $X $, call them $C_{1}',C_{2}' $.
+	Then $X = (C_{1}'\cup C_{2}') \cup U^C $, contradicting $X $'s irreducibility.
+
+	As $\mathscr{A}(U) \cong A $ for connected open sets, it suffices to show that the restriction map is injective ($A / \ker \rho \cong \im \rho \subseteq A$).
+	Suppose that we have $V \subseteq U $ and $s \in \mathscr{A}(U)$ such that $s|_V = 0$.
+	Then $s ^{-1}(\{0\} ^C)  $ is open and closed by the discrete topology on $A $ and continuity of $s $.
+	But this contradicts the connectedness of $U $, unless $s ^{-1}(\{0\} ^C) = \emptyset  $.
+	Thus $s(U) = 0 $.
+
+	b) 
+	Suppose we have an open subset $U $ of $X $, a section $s \in \mathscr{F}''(U) $, and call the maps $f: \mathscr{F}' \to \mathscr{F} $ and $g: \mathscr{F}\to \mathscr{F}'' $.
+	By Exercise 1.3a and hypothesis, we have an open cover of $U$, call it $\{U_i\}   $, and sections $t_i \in \mathscr{F}(U_i)$ such that $g_{U_i}(t_i) = s\big|_{U_i}$.
+
+	Now we show an intermediary result. 
+	Consider the set $\mathscr{C} = \{(P,t)\}   $ with $P $ an arbitrary union of the $U_i $'s and $t \in \mathscr{F}(P) $ such that $g_P(t) = s|_P $.
+	Give it a partial order via $(U_{1},t_{1}) \le (U_{2},t_{2}) $ if $U_{1}\subseteq U_{2} $ and $t_{2}\big|_{U_{1}} = t_{1} $.
+	Then this set has a maximal element by Zorn's lemma:
+	if we have a chain
+	\[
+		(V_{1},t_{1}) \subseteq (V_{2},t_{2}) \subseteq (V_{3},t_{3}) \subseteq \cdots
+	,\] 
+	then the $t_i $'s lift to a section $t $ on $V = \cup V_i $ by $\mathscr{F} $ being a sheaf and agreeing on intersections by definition of the partial order.
+	Because the $V_i $'s are unions of the $U_i $'s, $V $ is too.
+	Then because $g $ is a sheaf morphism, $g_V(t)\big|_{V_i} = s\big|_{V_i} $, and as the $V_i $ are an open cover of $V $, by the uniqueness in sheaf property 2, $g_V(t) = s\big|_{V} $.
+
+	Next take a maximal element of $\mathscr{C} $ with the open sets contained in $U $, call it $(A,t) $.
+	If $A = U $, then we have a section of $\mathscr{F}(U) $ that maps to $s|_U = s $.
+	So suppose that $A \subsetneq U $.
+	Then $A \subsetneq A \cup U_k $ for some $k $.
+
+	We can see that $g_{U_k\cap A}(t_k) = (g_{U_k}(t_k))\big|_{U_k\cap A} = (s\big|_{U_k})\big|_{U_k\cap A} = s\big|_{U_k\cap A}$.
+	Similarly, $g_{U_k\cap A}(t) = (g_{A}(t))\big|_{U_k\cap A} = (s\big|_{A})\big|_{U_k\cap A} = s\big|_{U_k\cap A} $.
+	Thus $t\big|_{U_k\cap A}-(t_k)\big|_{U_k\cap A} \in \ker g_{U_k\cap A} $.
+	Hence by left exactness from Exercise 1.8, there is $u\in \mathscr{F}'(U_k\cap A) $.
+	
+	By $\mathscr{F}' $ being flasque, $u $ lifts to an element $u' \in \mathscr{F}'(A) $.
+	Now consider $t-f_A(u') \in \mathscr{F}'(A) $.
+	Then $(t-f_{A}(u'))\big|_{U_k\cap A} - (t_k)\big|_{U_k\cap A} = t\big|_{U_k\cap A} - (t_k)\big|_{U_k\cap A} - (t\big|_{U_k\cap A} - (t_k)\big|_{U_k\cap A}) = 0$ because of the following diagram:
+\[\begin{tikzcd}
+	0 & {\mathscr{F}'(A)} & {\mathscr{F}(A)} & {\mathscr{F}''(A)} \\
+	0 & {\mathscr{F}'(U_k\cap A)} & {\mathscr{F}(U_k\cap A)} & {\mathscr{F}''(U_k\cap A)}
+	\arrow[from=1-1, to=1-2]
+	\arrow["{f_A}", from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{g_A}", from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{f_{U_k\cap A}}", from=2-2, to=2-3]
+	\arrow["{g_{U_k\cap A}}", from=2-3, to=2-4]
+\end{tikzcd}\]
+ 	As they agree on intersections, by sheaf property 2 we can lift $t-f_A(u') $ to a $t' \in \mathscr{F}(A \cap U_k) $, which then contradicts $(A,t) $'s maximality
+
+	c) Kind of a ridiculous proof but here goes:
+	By b), we have this diagram:
+	\[\begin{tikzcd}
+	0 & {\ker a} & {\ker b} & {\ker c} \\
+	0 & {\mathscr{F}'(U)} & {\mathscr{F}(U)} & {\mathscr{F}''(U)} & 0 \\
+	0 & {\mathscr{F}'(V)} & {\mathscr{F}(V)} & {\mathscr{F}''(V)} & 0 \\
+	& {\coker a} & {\coker b} & {\coker c}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["a", from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow["b", from=2-3, to=3-3]
+	\arrow[from=2-4, to=2-5]
+	\arrow["c", from=2-4, to=3-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-2, to=4-2]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=3-4, to=3-5]
+	\arrow[from=3-4, to=4-4]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+\end{tikzcd}\]
+	Because $a,b $ are surjective, $\coker a = \coker b = 0 $.
+	Then by the snake lemma, we have exactness of a map $\ker c \to \coker a $.
+	As $\coker a = 0 $, the top row is then exact.
+	Finally, by abusing first isomorphism, we have
+	\begin{align*}
+		\mathscr{F}(V) \cong \mathscr{F}(U) / \ker b &\qquad \mathscr{F}'(V) \cong \mathscr{F}'(U) / \ker a \\
+		\ker c \cong \ker b / \ker a &\qquad \im c \cong \mathscr{F}''(U) / \ker c\\
+					     & \mathscr{F}''(V) \cong \mathscr{F}(V) / \mathscr{F}'(V)
+	.\end{align*} 
+	Finally,
+	\begin{align*}
+		\mathscr{F}''(V) &\cong \mathscr{F}(V) / \mathscr{F}'(V) \\&\cong (\mathscr{F}(U) / \ker b) / (\mathscr{F}'(U) / \ker a) \\&\cong (\mathscr{F}(U) / \mathscr{F}'(U)) / (\ker b / \ker a) \\&\cong \mathscr{F}''(U) / \ker c \\&\cong \im c
+	.\end{align*} 
+
+	d) Take open $V \subseteq U \subseteq Y$.
+	Then $f_\ast \mathscr{F}(U) \to f_\ast \mathscr{F}(V) $ is surjective because this morphism is, by definition, $\mathscr{F}(f^{-1}(U)) \to \mathscr{F}(f^{-1}(V)) $, and $f^{-1}(U),f^{-1}(V) $ are open by continuity of $f $.
+	This morphism is surjective by definition of $\mathscr{F} $ being flasque.
+
+	e) Suppose we have open $V \subseteq U \subseteq X $.
+	Then
+\end{proof}
+
+\begin{exercise}[Skyscraper Sheaves.] %1.17
+	Let $X $ be a topological space, let $P $ be point, and let $A $ be an abelian group. Define a sheaf $i_P(A) $ on $X $ as follows: $i_P(A)(U) = A $ if $P \in U, 0 $ otherwise. Verify that the stalk of $i_P(A) $ is $A $ at every point $Q \in \{P\} ^-   $, and $0 $ elsewhere, where $\{P\} ^-  $ denotes the closure of the set consisting of the point $P $. Hence the name ``skyscraper sheaf''. Show that is this sheaf could also be described as $i_\ast(A) $, where $A $ denotes the constant sheaf $A $ on the closed subspace $\{P\} ^-  $, and $i: \{P\} ^- \to X  $ is the inclusion.
+\end{exercise}
+\begin{proof}
+	For every point $Q \in \{P\} ^-  $, all neighborhoods of $Q $ contain $P $, so all the terms in the direct limit are $A $, making the stalk at $Q $ equal $A $.
+	Then elsewhere, we can find a neighborhood of $Q $ that doesn't contain $P $ by definition of not being in the closure.
+	Then the section of $i_P $ at that neighborhood is 0 by definition, making the direct limit equal 0.
+
+	It can also be described as $i_\ast(A) $ because for any open set $U $, if $i^{-1}(U) \ne \emptyset $, then it contains a point of $\{P\} ^-  $, and as it is an open set containing a point in the closure of $P $, the open set contains $P $ and thus $\mathscr{A}(i^{-1}(U)) $ equals $A $ (the closure of a point is an irreducible space, so all open subsets of $\{P\} ^-  $ are connected).
+	Then if $i^{-1}(U) = \emptyset $, note that $U $ doesn't contain $P $ and $i_\ast(U) = \mathscr{A}(\emptyset) = 0 $.
+\end{proof}
+
+\begin{exercise}[Adjoint Property of $f^{-1}$]%1.18
+	Let $f: X\to Y $ be a continous map of topological spaces. Show that for any sheaf $\mathscr{F} $ on $X $ there is a natural map $f^{-1}f_\ast \mathscr{F} \to \mathscr{F} $, and for any sheaf $\mathscr{G} $ on $Y $ there is a natural map $\mathscr{G} \to f_\ast f^{-1}\mathscr{G} $. Use these maps to show that there is a natural bijection of sets, for any sheaves $\mathscr{F} $ on $X $ and $\mathscr{G} $ on $Y $,
+	\[
+		\Hom_X(f^{-1}\mathscr{G},\mathscr{F}) = \Hom_Y(\mathscr{G},f_\ast \mathscr{F})
+	.\] 
+	Hence we say that $f ^{-1} $ is a \textit{left adjoint} of $f_\ast $, and that $f_\ast $ is a \textit{right adjoint} of $f^{-1} $.
+\end{exercise}
+\begin{proof}
+	We have a natural map $f^{-1}f_\ast \mathscr{F} \to \mathscr{F} $ because $f^{-1}f_\ast \mathscr{F}(U) = \lim_{open V \supseteq f(U)} \mathscr{F}(f^{-1}(V)) $ and each $f^{-1}(V) $ contains $U $ so that we have the restriction maps $\mathscr{F}(f^{-1}(V)) \to \mathscr{F}(U) $ that commute with the system.
+	By the universal property of the limit, this induces a map $\lim_{open V \supseteq f(U)} \mathscr{F}(f^{-1}(V)) \to \mathscr{F}(U) $.
+	This then gives us a morphism of sheaves because if we have $X \supseteq Y $ and arbitrary open $V \supseteq f(X) $ this commutes:
+	\[
+	\begin{tikzcd}
+		\mathscr{F}(f^{-1}(V)) & \lim_{V \supseteq f(X)} \mathscr{F}(f^{-1}(V)) & \mathscr{F}(X)\\
+				       & \lim_{U \supseteq f(Y)} \mathscr{F}(f^{-1}(U)) & \mathscr{F}(Y)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-2,to=1-3]
+	\arrow[from=1-2,to=2-2]
+	\arrow[from=2-2,to=2-3]
+	\arrow[from=1-3,to=2-3]
+	\end{tikzcd}
+	\]
+	Hence by definition of the limit, we induce a unique map from the top middle to the bottom right:
+	\[
+	\begin{tikzcd}
+		\mathscr{F}(f^{-1}(V)) & \lim_{V \supseteq f(X)} \mathscr{F}(f^{-1}(V)) & \mathscr{F}(X)\\
+				       & \lim_{U \supseteq f(Y)} \mathscr{F}(f^{-1}(U)) & \mathscr{F}(Y)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-2,to=1-3]
+	\arrow[from=1-2,to=2-2]
+	\arrow[from=2-2,to=2-3]
+	\arrow[from=1-3,to=2-3]
+	\arrow["\exists!",dotted,from=1-2,to=2-3]
+	\end{tikzcd}
+	\]
+	This shows the required commutativity.
+
+	We have a map $\mathscr{G} \to f_\ast f^{-1} \mathscr{G} $ because
+	\[
+		f_\ast f^{-1}\mathscr{G}(U) = \varinjlim_{V \supseteq f^{-1}(U)} \mathscr{G}(V)
+	\] 
+	has a morphism $\mathscr{G}(U) \to \varinjlim_{V \supseteq f^{-1}(U)} \mathscr{G}(V) $ by the definition of a limit.
+	It exists because by picking an arbitrary $V $ in the index, there is a morphism $\mathscr{G}(U) \to \mathscr{G}(V) $ the restriction (the proper commuting relations allows us to pick arbitrarily).
+	Finally, this is a sheaf morphism because given $A \subseteq B $,
+	\[
+	\begin{tikzcd}
+	\mathscr{G}(B) & \varinjlim_{V \supseteq f^{-1}(B)} \mathscr{G}(V)\\
+	\mathscr{G}(A) & \varinjlim_{U \supseteq f^{-1}(A)} \mathscr{G}(U)
+	\arrow["y(B)",from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow["y(A)",from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	commutes.
+	It commutes because the top left down route to the bottom right induces a unique map from the top right down, forcing the whole thing to commute.
+
+	Call the natural maps $x $ and $y $ (after their topological space).
+	Now that we have those two maps, if we have $a \in \Hom_X(f^{-1}\mathscr{G},\mathscr{F}) $, then we have $f_\ast a: f_\ast f^{-1} \mathscr{G} \to f_\ast \mathscr{F} $.
+	Precomposing with $y $ gives us $f_\ast a y: \mathscr{G} \to f_\ast \mathscr{F} \in \Hom_Y(\mathscr{G},f_\ast \mathscr{F}) $.
+	Similarly, given $b \in \Hom_Y(\mathscr{G},f_\ast \mathscr{F})$, $f^{-1}b: f^{-1}\mathscr{G} \to f^{-1}f_\ast \mathscr{F}$, which composing with $x $ gives us $xf^{-1}b \in \Hom_X(f^{-1}\mathscr{G}, \mathscr{F})$.
+	This is a bijection because these are inverses: given $a \in \Hom_X(f^{-1}\mathscr{G},\mathscr{F}) $,
+	we want to show that this diagram commutes
+	\adjustbox{scale=1.1,center}{%
+	\begin{tikzcd}[sep=small]
+	{\mathscr{G}(V)} & {f_\ast f^{-1}\mathscr{G}(V) = \varinjlim_{V'\supset f(f^{-1}(V))}\mathscr{G}(f(V')} & {f_\ast \mathscr{F}(V) =\mathscr{F}(f^{-1}(V))} \\
+	{f^{-1}\mathscr{G}(U)=\varinjlim_{V \supseteq f(U)} \mathscr{G}(V)} && {f^{-1} f_\ast\mathscr{F}(U) =\varinjlim_{V \supseteq f(U)} \mathscr{F}(f^{-1}(V))} \\
+	&& {\mathscr{F}(U)}
+	\arrow["{y(V)}", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["{a(f^{-1}(V))}", from=1-2, to=1-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{\varinjlim_{V \supseteq f(U)} a(f^{-1}(V)) y(V)}", from=2-1, to=2-3]
+	\arrow["{a(U)}"{description}, from=2-1, to=3-3]
+	\arrow["{x(U)}", from=2-3, to=3-3]
+	\end{tikzcd}
+	}
+	But this commutativity is guaranteed because the morphisms $\mathscr{G}(V) \to \mathscr{F}(U) $ commute so that we induce a unique map from $f^{-1}\mathscr{G}(U)\to \mathscr{F}(U) $ which must be $a $ and the top rectangle simultaneously.
+\end{proof}
 
 \begin{exercise}[Extending a Sheaf by Zero]%1.19
 	Let $X $ be a topological space, let $Z $ be a closed subset, let $i: Z\to X $ be the inclusion, let $U = X \setminus Z $ be the complementary open subset, and let $j: U\to X $ be its inclusion.
 	\begin{enumerate}
-		\item Let $\mathcal{F} $ be a sheaf on $Z $. Show that the stalk $(i_\ast \mathcal{F})_P $ of the direct image sheaf on $X $ is $\mathcal{F}_P $ if $P\in Z $, $0 $ if $P\notin Z $. Hence we call $i_\ast \mathcal{F} $ the sheaf obtained by extending $\mathcal{F} $ by zero outside $Z $. By abuse of notation, we will sometimes write $\mathcal{F} $ instead of $i_\ast \mathcal{F} $, and say ``consider $\mathcal{F} $ as a sheaf on $X $,'' when we mean ``consider $i_\ast \mathcal{F}$''.
-		\item Now let $\mathcal{F} $ be a sheaf on $U $. Let $j_!(\mathcal{F}) $ be the sheaf on $X $ associated to the presheaf $V\mapsto \mathcal{F}(V) $ if $V\subseteq U $, $V\mapsto 0 $ otherwise. Show that the stalk $(j_!(\mathcal{F}))_P $ is equal to $\mathcal{F}_P $ is $P\in U $, $0 $ if $P\notin U $, and show that $j_! \mathcal{F} $ is the only sheaf on $X $ which has this property, and whose restriction to $U $ is $\mathcal{F} $. We call $j_! \mathcal{F} $ the sheaf obtained by \textit{extending} $\mathcal{F} $ \textit{by zero} outside $U $.
-		\item Now let $\mathcal{F} $ be a sheaf on $X $. Show that there is an exact sequence of sheaves on $X $,
+		\item Let $\mathscr{F} $ be a sheaf on $Z $. Show that the stalk $(i_\ast \mathscr{F})_P $ of the direct image sheaf on $X $ is $\mathscr{F}_P $ if $P\in Z $, $0 $ if $P\notin Z $. Hence we call $i_\ast \mathscr{F} $ the sheaf obtained by extending $\mathscr{F} $ by zero outside $Z $. By abuse of notation, we will sometimes write $\mathscr{F} $ instead of $i_\ast \mathscr{F} $, and say ``consider $\mathscr{F} $ as a sheaf on $X $,'' when we mean ``consider $i_\ast \mathscr{F}$''.
+		\item Now let $\mathscr{F} $ be a sheaf on $U $. Let $j_!(\mathscr{F}) $ be the sheaf on $X $ associated to the presheaf $V\mapsto \mathscr{F}(V) $ if $V\subseteq U $, $V\mapsto 0 $ otherwise. Show that the stalk $(j_!(\mathscr{F}))_P $ is equal to $\mathscr{F}_P $ if $P\in U $, $0 $ if $P\notin U $, and show that $j_! \mathscr{F} $ is the only sheaf on $X $ which has this property, and whose restriction to $U $ is $\mathscr{F} $. We call $j_! \mathscr{F} $ the sheaf obtained by \textit{extending} $\mathscr{F} $ \textit{by zero} outside $U $.
+		\item Now let $\mathscr{F} $ be a sheaf on $X $. Show that there is an exact sequence of sheaves on $X $,
 			\[
-				0 \to j_!(\mathcal{F}|_U) \to \mathcal{F} \to i_\ast(\mathcal{F}|_Z) \to 0
+				0 \to j_!(\mathscr{F}|_U) \to \mathscr{F} \to i_\ast(\mathscr{F}|_Z) \to 0
 			.\]
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
 	(a): First we have by definition that
 	\[
-		(i_\ast \mathcal{F})_P = \varinjlim_{V, \text{open in $X $} \ni P} \mathcal{F}(i^{-1}(V))
-		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathcal{F}(V)
+		(i_\ast \mathscr{F})_P = \varinjlim_{V, \text{open in $X $} \ni P} \mathscr{F}(i^{-1}(V))
+		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathscr{F}(V)
 	.\] 
 	If $P\notin Z $, then because $U $ is open and contains $P $, this is a set the limit goes over.
-	Then because $U\cap Z = \emptyset $, $i^{-1}(U) = \emptyset $, so $\mathcal{F}(i^{-1}(U)) = 0 \implies (i_\ast \mathcal{F})_P = 0 $.
+	Then because $U\cap Z = \emptyset $, $i^{-1}(U) = \emptyset $, so $\mathscr{F}(i^{-1}(U)) = 0 \implies (i_\ast \mathscr{F})_P = 0 $.
 
 	If $P\in Z $, then because $i $ is the inclusion map and is continuous, we can reparameterize what the limit goes over to be $U $ open in $Z $ that contain $P $.
-	This is just the stalk of $\mathcal{F} $.
-	%, the indexing set is the same as the set of open sets in $X $ (by definition of subspace topology) that contain $P $, so this just equals $\varinjlim_{V, \text{open} \ni P} \mathcal{F}(V)_P = \mathcal{F}_P$.
+	This is just the stalk of $\mathscr{F} $.
+	%, the indexing set is the same as the set of open sets in $X $ (by definition of subspace topology) that contain $P $, so this just equals $\varinjlim_{V, \text{open} \ni P} \mathscr{F}(V)_P = \mathscr{F}_P$.
 
 	(b): First we have by definition that
 	\[
-		(j_! (\mathcal{F}))_P = \varinjlim_{V, \text{open in $X $} \ni P} j_!(\mathcal{F})(V)
-		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathcal{F}(V)
+		(j_! (\mathscr{F}))_P = \varinjlim_{V, \text{open in $X $} \ni P} j_!(\mathscr{F})(V)
+		%\varinjlim_{V, \text{open} \subseteq i(U)} \mathscr{F}(V)
 	.\] 
-	If $P \notin V $, then by clearly $V\not\subseteq U $, so $j_!(\mathcal{F})(V) = 0 $, making the limit $0 $.
+	If $P \notin V $, then by clearly $V\not\subseteq U $, so $j_!(\mathscr{F})(V) = 0 $, making the limit $0 $.
 
-	If $P\in V $, then because the stalks of sheafication and the presheaf are the same, the limit is $\mathcal{F}_P $ as desired.
+	If $P\in V $, then because the stalks of sheafication and the presheaf are the same, the limit is $\mathscr{F}_P $ as desired.
 
-	TODO: uniqueness
+	For uniqueness, suppose we have $\mathscr{F}' $ with these properties.
+	Call the presheaf defined in the problem $j $.
+	Then we have a presheaf morphism $j\to \mathscr{F}' $ via $\mathscr{F}(V) \to \mathscr{F}'(V) $ when $V \subseteq U $ and $0\to \mathscr{F}'(V) $ otherwise.
+	Thus we have a sheaf morphism $j_! (\mathscr{F}) \to \mathscr{F}' $.
+	As they are isomorphic on stalks, we are done.
+
+	(c): First we define the morphisms: the first is just inclusion and the second is via the natural morphism from $\mathscr{F}(U) \to \varinjlim_{V \supseteq U\cap Z} \mathscr{F}(V) $ as $U $ is in the indexing set.
+	This is a sheaf morphism because the limit commutes with restrictions as these are the maps in the direct system.
+
+	We can then check exactness on the stalks.
+	If $P \in U $, then the stalk sequence is
+	\[
+		0 \to j_!(\mathscr{F}|_U)_P = \mathscr{F}_P \to \mathscr{F}_P \to 0 \to 0
+	\] 
+	with the last term due to $P\notin Z $.
+	This is obviously exact.
+	Then if $P\notin U $, the stalk sequence is
+	\[
+		0\to 0\to \mathscr{F}_P \to \mathscr{F}_P \to 0,
+	\] 
+	which is obviously exact.
+	Thus the sequence is exact and we are done.
+\end{proof}
+
+\begin{exercise}[Subsheaf with Supports.]%1.20
+	Let $Z $ be a closed subset of $X $, and let $\mathscr{F}$ be a sheaf on $X $. We define $\Gamma_Z(X,\mathscr{F}) $ to be the subgroup of $\Gamma(X,\mathscr{F}) $ consisting of all sections whose support (Ex. 1.14) is contained in $Z $.
+	\begin{enumerate}
+		\item Show that the presheaf $V\mapsto \Gamma_{Z\cap V}(V,\mathscr{F}|_V) $ is a sheaf. It is called the subsheaf of $\mathscr{F} $ with supports in $Z $, and is denoted by $\mathscr{H}_Z^0(\mathscr{F}) $.
+		\item Let $U = X \setminus Z $, and let $j: U\to X $ be the inclusion. Show that there is an exact sequence of sheaves on $X $
+			\[
+				0 \to \mathscr{H}_Z^0(\mathscr{F}) \to \mathscr{F} \to j_\ast(\mathscr{F}|_U)
+			.\] 
+			Furthermore, if $\mathscr{F} $ is flasque, the map $\mathscr{F}\to j_\ast(\mathscr{F}|_U) $ is surjective.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Suppose we have $s\in \mathscr{H}_Z^0(\mathscr{F})(U) $ such that it restricts to $0$ on an open cover $\{U_i\}   $ of $U $ and respects intersections.
+	Then by property 1 of sheaves, $s=0 $.
+
+	If we have sections $\{s_i\} $ of an open cover $\{U_i\}   $, then it lifts to a section $s \in \mathscr{F}(U) $.
+	Then if we have $P \in U \cap Z$ such that $s_P = 0 $ (i.e. $s \notin \mathscr{H}_Z^p(\mathscr{F})(U) $), $P $ is in some $U_i $.
+	But because $(s|_{U_i})_P = s_P =0$, this implies that $\Supp s $ doesn't contain $P $, a contradiction as $s|_{U_i} \in \mathscr{H}_Z^0(\mathscr{F})(U_i) \implies \Supp s|_{U_i} \subseteq U_i \cap Z$ and $P \in U_i\cap Z $ because $P \in U \cap Z $.
+	Thus $s \in \mathscr{H}_Z^0(\mathscr{F})(U) $.
+
+	(b) We obviously have the existence and injectivity of the first morphism.
+	The second morphism is defined via restriction (and thus obviously is a sheaf morphism) as $j_\ast(\mathscr{F}|_U)(V) = \mathscr{F}|_U(U\cap V)$.
+
+	% It suffices to show exactness on stalks.
+	%
+	% If $P \in U $, then $j_\ast(\mathscr{F}|_U)_P = \mathscr{F}_P $ because
+	% \[
+	% 	\varinjlim_{P \in V} j_\ast(\mathscr{F}|_U)(V) = \varinjlim \mathscr{F}|_U(U\cap V) = \varinjlim \mathscr{F}(U\cap V) = (\mathscr{F}|_U)_P = \mathscr{F}_P.
+	% \] 
+	% Because $Z $ is closed, we can find an open neighborhood of $P $, call it $V $ that doesn't intersect $Z $.
+	% Thus $\mathscr{H}_Z^0(\mathscr{F})(V) = 0 $ because the support of sections in $\mathscr{H}_Z^0(V) $ has to be the empty set ($V \cap Z = \emptyset $), so $s_Q = 0 \forall Q \in V \implies s = 0 $.
+	% Hence $\mathscr{H}_Z^0(\mathscr{F})_P = 0 $.
+	% This gives us exactness in this case.
+	%
+	% If $P \in Z $, then we have two cases:
+	%
+	% $P$ in interior of $Z $: If $P $ is in the interior of $Z $, then we have $U' $ open and contained in $Z $ so that
+	% \[
+	% 	\varinjlim_{P \in V} j_\ast(\mathscr{F}|_U)(V) = \varinjlim \mathscr{F}|_U(U\cap V) = \varinjlim \mathscr{F}(U\cap V) = 0
+	% \] 
+	% with the last equality due to the index of the limit including $U' $, which has no intersection with $U $.
+	% Next, we can see that $\mathscr{H}_Z^0(\mathscr{F})_P = \mathscr{F}_P $ because any element of $\mathfrak{F}(V) $ for $V $ a small enough neighborhood of $P $ (i.e. contained in $U' $) has support contained in $Z$ as $V \subseteq U' \subseteq Z $.
+	% This gives us exactness in this case.
+	%
+	% $P $ in boundary of $Z $: If $P $ is in the boundary of $Z $, then every neighborhood of $P $ intersects $Z $.
+	% We can assume that there is a neighborhood of $P $ not contained in $Z $ because of the previous argument.
+	% Thus 
+	% \[
+	% 	\varinjlim_{P \in V} j_\ast(\mathscr{F}|_U)(V) = \varinjlim \mathscr{F}|_U(U\cap V) = \varinjlim \mathscr{F}(U\cap V) = \mathscr{F}_P
+	% \] 
+	% with the last equality due to there being morphisms 
+	%
+	% Finally, we compute $\mathscr{H}_Z^0(\mathscr{F})_P $: if this stalk isn't $\mathscr{F}_P $, then there is some section such that 
+
+	Call the first morphism $a $ and the second $b $.
+	Since $a $ is obviously injective, the image presheaf is a sheaf, so we just need to show that $\im a = \ker b $.
+
+	We can see that $\im a(V) \subseteq \ker b(V) $ because restricting a section $s \in \mathscr{H}_Z^0(V) $ with support contained in $Z\cap V $ to $U \cap V$ means that $s_Q = 0 \forall Q \in U\cap V $, making $s=0 $ in $\mathscr{F}|_U(U\cap V) $.
+	Then if we have $s \in \ker b(V)$, then because $s|_{U\cap V}=0 $, $\Supp s \subseteq V \setminus (U\cap V) = Z\cap V$, so $s \in \mathscr{H}_Z^0(\mathscr{F})(V) $.
+\end{proof}
+
+\begin{exercise}[Some Examples of Sheaves on Varieties] %1.21
+	Let $X$ be a variety over an algebraically closed field $k$, as in Ch I. Let $\mathscr{O}_X $ be the sheaf of regular functions on $X$ (1.0.1). 
+	\begin{enumerate}
+		\item Let $Y$ be a closed subset of $X$. For each open set $U \subseteq X$, let $\mathscr{I}_Y(U)$ be the ideal in the ring $\mathscr{O}_X(U)$ consisting of those regular functions which vanish at all points of $Y \cap U$. Show that the presheaf $U \mapsto \mathscr{I}_Y(U)$ is a sheaf. It is called the sheaf of ideals $\mathscr{I}_Y$ of $Y$, and it is a subsheaf of the sheaf of rings $\mathscr{O}_X $.
+		\item If $Y$ is a subvariety, then the quotient sheaf $\mathscr{O}_X/\mathscr{I}_Y$ is isomorphic to $i_\ast(\mathscr{O}_Y)$, where $i: Y \to X$ is the inclusion, and $\mathscr{O}_Y$ is the sheaf of regular functions on $Y$. 
+		\item Now let $X = \P^1$, and let $Y$ be the union of two distinct points $P,Q \in X$. Then there is an exact sequence of sheaves on $X$, where $\mathscr{F} = i_\ast\mathscr{O}_P \oplus i_\ast\mathscr{O}_Q$, 
+			\[
+			0\to \mathscr{I}_Y \to \mathscr{O}_X \to \mathscr{F} \to 0. 
+		\]
+		Show however that the induced map on global sections $\Gamma(X,\mathscr{O}) \to \Gamma(X,\mathscr{F})$ is not surjective. This shows that the global section functor $\Gamma(X,\cdot)$ is not exact (cf. (Ex. 1.8) which shows that it is left exact). 
+		\item Again let $X = \P^1$, and let $\mathscr{O}$ be the sheaf of regular functions. Let $\mathscr{H}$ be the constant sheaf on $X$ associated to the function field $K$ of $X$. Show that there is a natural injection $\mathscr{O} \to \mathscr{H}$. Show that the quotient sheaf, $\mathscr{H} / \mathscr{O}$ is isomorphic to the direct sum of sheaves $\sum_{P\in X} i_P(I_P) $, where $I_p$ is the group $K/\mathscr{O}_P$, and $i_p(I_p)$ denotes the skyscraper sheaf (Ex. 1.17) given by $I_P$ at the point $P$, 
+		\item Finally show that in the case of (d) the sequence 
+		\[
+			0\to \Gamma(X,\mathscr{O}) \to \Gamma(X,\mathscr{H}) \to \Gamma(X,\mathscr{H}/\mathscr{O}) \to 0 
+		\]
+		is exact. (This is an analogue of what is called the ``first Cousin problem'' in several complex variables, See Gunning and Rossi [1, p. 248]).
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Property 1: If we have $s \in \mathscr{I}(U) $ such that $s|_{U_i} = 0 $ for an open cover $\{U_i\}   $ of $U $, then by sheaf property 1 $s=0 $.
+	Because $s$ vanishes every, it vanishes on $Y \cap U $ and thus $s \in \mathscr{I}(U) $.
+
+	Property 2: If we have $s_i \in \mathscr{I}(U_i) $ that agree on intersections, then by sheaf property 2 we can lift it to a section $s \in \mathscr{O}(U) $ that restricts to $s_i $.
+	As restriction in the sheaf of regular functions is just restriction as a function, $|_{U_i} $ vanishing on $Y\cap U_i $ implies that $s $ vanishes on $Y\cap U_i $.
+	As it vanishes for all $i $, $s $ vanishes on $Y \cap U $.
+
+	(b) We have a morphism $\mathscr{O}_X / \mathscr{I}_Y \to i_\ast(\mathscr{O}_Y) $ by sending $[f] \in (\mathscr{O}_X / \mathscr{I}_Y)(U) $ (because of \Cref{lem:injsheaf} and Exercise 1.6b) to $f|_{Y\cap U} \in \mathscr{O}_Y(Y \cap U) = i_\ast\mathscr{O}_Y(U) $, which is well-defined because $\mathscr{I}_Y(U) $ vanishes on $Y\cap U $.
+
+	(c) This is exact because $\mathscr{F} \cong i_\ast(\mathscr{O}_Y)  $ because $\mathscr{O}_Y = \mathscr{O}_P \oplus \mathscr{O}_Q $ and $i_\ast(\mathscr{O}_P \oplus \mathscr{O}_Q) = i_\ast(\mathscr{O}_P) \oplus i_\ast(\mathscr{O}_Q)$.
+	Then by (b), $i_\ast(\mathscr{O}_Y) \cong \mathscr{O}_X / \mathscr{I}_Y $.
+	Thus the sequence is exact.
+
+	Clearly $\mathscr{F}(X) = k \oplus k $.
+	But $\mathscr{O}_X(X) = k $ by Theorem 3.4 so that this map is not surjective.
+
+	(d) We have that $K = k[x_{0},x_{1}]_{((0))}$ by Theorem 3.4. 
+	As we have a map $\mathscr{O}(U) \to \mathscr{O}_P $ for some $P \in U $ and we have a natural map $\mathscr{O}_P = S(X)_{\mathfrak{m}_P} \to K(X) = K $ by Theorem 3.4, we have a natural injection $\mathscr{O}\to \mathscr{H} $.
+	Namely this is via $\mathscr{O}(U) \to \mathscr{O}_P \to K \xrightarrow{\oplus n} K^n = \mathscr{H}(U) $ where $n $ is the number of connected components of $U $ by Example 1.0.3.
+	Also note that $\P^1 $ is locally connected because every point is in an affine neighborhood.
+
+	Let $\mathscr{F} = \sum_{P\in X}i_P(I_P) $.
+	We can first realize that the stalks of $\mathscr{H} / \mathscr{O} $ are $K / \mathscr{O}_P$ because sheafification preserves stalks.
+	Then by definition, an element $s $ of the section $\mathscr{H} / \mathscr{O} (U)$ is a function $U \to \sqcup_{P\in U} (K / \mathscr{O}_P)$ with certain properties.
+	By letting $\pi _P $ be the projection to the $P $-th coordinate, we can see that each $\pi_P\circ s (P)$ is in $K / \mathscr{O}_P $ .
+	% as this latter group is the group of regular functions on an open set modded out by regular functions on an open neighborhood of $P $ and $\pi _P(s) $ is a regular 
+	Thus we have a morphism that sends $s $ to $(\pi_Ps(P))_{P\in U} \in \mathscr{F}(U) $.
+	This commutes properly because
+	\[
+	\begin{tikzcd}
+	\mathscr{H} / \mathscr{O}(U) & \mathscr{F}(U)\\
+	\mathscr{H} / \mathscr{O}(V) & \mathscr{F}(V)
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\arrow[from=2-1,to=2-2]
+	\arrow[from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	sends $s $ to $(\pi _Ps(P))_{P\in U}$ to $(\pi _Ps(P))_{P \in V} $ along the top path and sends $s $ to $s|_V $ to $(\pi _Ps|_V(P))_{P \in V} = (\pi _Ps(P))_{P\in V} $ by construction of the sections of the sheafification.
+	Finally, to see this isomorphism, we can check it on stalks by Proposition 1.1.
+	At $P $, $(\mathscr{H} / \mathscr{O})_P = K / \mathscr{O}_P$ and $\mathscr{F}_P = \sum (i_Q(I_Q))_P = (i_P(I_P))_P = I_P = K / \mathscr{O}_P$.
+
+	(e) 
+	By Exercise 1.6a we have the exact sequence
+	\[
+		0 \to \mathscr{O} \to \mathscr{H} \to \mathscr{H} / \mathscr{O} \to 0
+	.\] 
+	Then by Exercise 1.8 we have left exactness.
+	By part (d), $\Gamma(X,\mathscr{H} / \mathscr{O}) \cong \sum_{P \in X} (K / \mathscr{O}_P)$.
+	Then because $\P^1 $ is connected, $\mathscr{H}(X) = K $.
+	By Theorem 3.4, $\mathscr{O}_P = S(X) /_{(\mathfrak{m}_P)} $ where $S = k[x_{0},x_{1}] $.
+	Thus we are trying to show surjectivity of this:
+	\[
+		K \to \sum_{P \in X} (K / (k[x_{0},x_{1}]_{(\mathfrak{m}_P)}))
+	.\] 
+	Suppose we have $f \in \sum_{P \in X} (K / (S_{(\mathfrak{m}_P)})) $.
+	Then $s = ([k_P])_{P\in X}$ where $k_P $ is the projection of $s $ into the $P $ component and $[\cdot] $ is the equivalent class.
+	Because this is a direct sum, $s $ has all but finitely many zeros, say $\{[k_{P_i}]\} $ are non-zero.
+
+	We can find an element $s' $ that maps to $s $ by letting $s' $ be $\sum k_{P_i} $ for representatives $k_{P_i} $ of $[k_{P_i}] $.
+	Then $s' \mapsto s $ because for $Q \notin \{P_i\}   $, $\sum k_{P_i} \equiv 0 \pmod{S_{(\mathfrak{m}_Q)}}$ as the denominator of each $k_{P_i} $ is not in $\mathfrak{m}_P $, so $k_{P_i} $ is an element of $S_{(\mathfrak{m}_Q)} $.
+	Thus this last map is surjective, showing exactness.
+\end{proof}
+
+\begin{exercise}[Gluing Sheaves.]%1.22
+	Let $X$ be a topological space, let $\mathfrak{U} = \{U_i\}$  be an open cover of $X$, and suppose we are given for each $i$ a sheaf $\mathscr{F}_i$ on $U_i$ and for each $i,j$ an isomorphism $\phi_{ij}:\mathscr{F}_i|_{U_i\cap U_j} \to \mathscr{F}_j|_{U_i\cap U_j}$ such that (1) for each i, $\phi_{ii} = \id$, and (2) for each $i,j,k, \phi_{ik} = \phi_{jk} \phi_{ij}$ on $U_i\cap U_j\cap U_k $. Then there exists a unique sheaf $\mathscr{F}$ on $X$, together with isomorphisms $\psi:\mathscr{F}|_{U_i} \xrightarrow{\sim} \mathscr{F}_i$ such that for each $i,j, \psi_j = \phi_{ij} \circ \psi_i$ on $U_i \cap U_j$. We say loosely that $\mathscr{F}$ is obtained by \textit{glueing} the sheaves $\mathscr{F}_i$ via the isomorphisms $\phi_{ij}$.
+\end{exercise}
+\begin{proof}
+	Consider $U \subseteq X $ be an open set and $\mathscr{U}_i = U \cap U_i $.
+	Define $\Gamma(U, \mathscr{F}) $ to be the pullback of the diagram $\mathscr{F}_i(V) $ with $V \subseteq \mathscr{U}_i $ for all $i $ and the restriction morphisms, i.e. the diagrams $\mathscr{F}_i|_{\mathscr{U}_i} $ and the morphisms $\phi_{ij}$.
+	The restriction map into open subsets of the $U_i $ are well-defined by having the isomorphism $\phi_{ii}$.
+	The restriction maps into these open subsets commute properly because $\phi _{ik} = \phi _{jk}\phi _{ij} $.
+
+	Finally, the restriction maps into any open subset of $U $, call it $V $, commutes properly because $V\subseteq U \implies V\cap U_i \subseteq \mathscr{U}_i $, giving us maps from $\Gamma(V, \mathscr{F}) $ to $\mathscr{F}_i(\mathscr{U}_i) $ for all $i $.
+	This then induces a map $\Gamma(V, \mathscr{F}) \to \Gamma(U,\mathscr{F}) $ by the universal property of the pullback.
 \end{proof}
 
 \subsection{Schemes}
 
+\begin{exercise}
+	Let $A $ be a ring, let $X = \Spec A $, let $f \in A $ and let $D(f) \subseteq X $ be the open complement of $V((f)) $. Show that the locally ringed space $(D(f),\mathscr{O}_X|_{D(f)}) $ is isomorphic to $\Spec A_f $.
+\end{exercise}
+\begin{proof}
+	Because we have the homomorphism $\iota: A \to A_f $, can see that $\Spec A_f $ pullback to prime ideals in $A $ that don't contain $f $.
+	The prime ideals of $A $ that don't contain $f $ also correspond to prime ideals in $A_f $ because if $A_f / \iota(\mathfrak{p})$ had a zero divisor, say $ab = 0 $, then by cancelling the denominators and pulling back into $A $, we get a zero divisor in $A / \mathfrak{p} $, a contradiction.
+	Thus we have a homeomorphism $D(f) \to \Spec A_f $.
+
+	Finally, it suffices to show that we have a sheaf isomorphism $\mathscr{O}_X|_{D(f)}\to \Spec A_f $.
+	Obviously both are isomorphic on stalks: all points (i.e. primes) in $\mathscr{O}_X|_{D(f)} $ don't contain $f $, so $A_{\mathfrak{p}} = (A_f)_{\mathfrak{p}}$.
+	Thus all we need is a sheaf morphism.
+	We have one via composing the isomorphism of the stalks with elements of the section, which commutes because the restriction homomorphisms are just restriction of domains.
+\end{proof}
+
+\begin{exercise}
+	Let $(X, \mathscr{O}_X) $ be a scheme, and let $U \subseteq X $ be any open subset. Show that $(U, \mathscr{O}_X|_U)$ is a scheme. We call this the \textit{induced scheme structure} on the open set $U $, and we refer to $(U, \mathscr{O}_X|_U) $ as an \textit{open subscheme} of $X $.
+\end{exercise}
+\begin{proof}
+	Clearly this is a locally ringed space.
+	To check that this is locally affine, take some point $p \in U $.
+	Then we have a local open affine neighborhood $\Spec A $ around $p $.
+	By intersecting this with $U $, we get an open subset of $\Spec A $ around $p $.
+	The complement of this open subset in $\Spec A $ is then $V(\mathfrak{a}) $ for some ideal $a $.
+	By picking an element in $\mathfrak{a} $, we get a open affine neighborhood $\Spec A_f $ around $p $ in $U $.
+\end{proof}
+
+\begin{exercise}
+	A scheme $(X, \mathscr{O}_X) $ is \textit{reduced} if for every open set $U \subseteq X $, the ring $\mathscr{O}_X(U) $ has no nilpotent elements.
+	\begin{enumerate}
+		\item Show that $(X, \mathscr{O}_X) $ is reduced if and only if for every $P \in X$, the local ring $\mathscr{O}_{X,P} $ has no nilpotent elements.
+		\item Let $(X, \mathscr{O}_X) $ be a scheme. Let $(\mathscr{O}_X)_{red} $ be the sheaf associated to the presheaf $U\mapsto \mathscr{O}_X(U)_{red} $, where for any ring $A $, we denote by $A_{red} $ the quotient of $A $ by its ideal of nilpotent elements. Show that $(X, (\mathscr{O}_X)_{red})$ is a scheme. We it the \textit{reduced scheme} associated to $X $, and denote it by $X_{red} $. Show that there is a morphism of schemes $X_{red}\to X $, which is a homeomorphism on the underlying topological spaces.
+		\item Let $f: X\to Y $ be a morphism of schemes, and assume that $X $ is reduced. Show that there is a unique morphism $g: X\to Y_{red} $ such that $f $ is obtained by composing $g $ with the natural map $Y_{red}\to Y $.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Clearly if all the local rings are reduced, the sections are reduced, for if we had a nilpotent element, it would become a nilpotent element in the local ring through the ring morphism.
+	Conversely, if all sections are reduced and we had a nilpotent in some local ring, then it, by definition of limit, has a power that is $0$ on some open set.
+	But then on the section of that open set, that element is a nilpotent, contradiction our hypothesis.
+
+	(b) 
+	\begin{lem}\label{lem:limquotient}
+		Limits commute with quotients in the category of groups.
+	\end{lem}
+	\begin{proof}
+		Suppose we have directed systems $(A_i) $ and $(I_i) $ with $I_i \triangleleft A_i$ with $\rho_{ij}(I_i) \subseteq I_j $ with limits $A, I $.
+		Then if we have a collection of morphisms that commute with the system $(A_i / I_i)$ to a group $P $, induce a map $\varinjlim A_i \to P $ because of the maps $A_i \to A_i / I_i $ (which commute because $\rho_{ij}(I_i) \subseteq I_j $).
+		By a similar proof from Exercise 1.2a, we see that $\ker(\varinjlim A_i \to P) = \varinjlim \ker (A_i \to P) = I$.
+		Hence $A \to P $ factors uniquely through $\varinjlim (A_i /I_i) \to P $ by the universal property of quotients.
+		As this happens uniquely for all $P $, $\varinjlim (A_i /I_i) \cong A / I $.
+	\end{proof}
+
+	By the above lemma (which applies because nilpotents restrict to nilpotents) and the fact that quotients of a local ring are local, $(\mathscr{O}_X)_{red}) $ is a locally ringed space.
+	Clearly it is also affine because a point $p \in X $ has an open affine $\Spec A = \Gamma(U, \mathscr{O}_X|_U)$ which produces an open affine of $(\mathscr{O}_X)_{red} $ being $\Spec A_{red} $.
+
+	Let $f $ be the identity map and let $f^\# $ be the quotient map $f^\#(U): \mathscr{O}_X(U) \to (\mathscr{O}_X)_{red}(U) $.
+	By \fullref{lem:limquotient}, the map $(\mathscr{O}_X)_P \to ((\mathscr{O}_X)_{red})_P$ is the quotient map.
+	Because the maximal ideal of the RHS is the image of the maximal ideal of the LHS and the quotient map is surjective, the preimage of the maximal ideal on the right is the maximal ideal on the left.
+	Hence $f^\#_P $ is a local homomorphism.
+
+	(c) 
+	\begin{lem}\label{lem:constsheafmorphism}
+		To define a locally ringed morphism $X\to Y $, it is enough to define locally ringed morphisms $f_i: U_i \to Y$ on an open cover $\{U_i\}   $ of $X $ such that $f_i|_{U_i\cap U_j} = f_j|_{U_i\cap U_j}$.
+		It is also unique.
+	\end{lem}
+	\begin{proof}
+		Denote $f_i^\#: \mathscr{O}_Y \to f_{i_\ast} \mathscr{O}_{U_i} = f_{i_\ast} \mathscr{O}_X|_{U_i} $.
+		Defining the topological map is trivial: just let $f(x) = f_i(x) $ for some $i $ such that $x\in U_i $.
+		This is well-defined by hypothesis.
+		In this way $f^{-1}(U) = \cup f_i^{-1}(U) $ for any open set $U \subseteq Y $.
+
+		Now take an arbitrary open subset of $X $.
+		We can define a map $f^\#: \mathscr{O}_Y \to f_\ast \mathscr{O}_X $ by letting the map $f^\#(U) $ take $s \in \mathscr{O}_Y(U) $ to the section lifted from the sections $f_i^\#(s) \in \mathscr{O}_X(f_i^{-1}(U)) $ to $\mathscr{O}_X(\cup f_i^{-1}(U)) $.
+		Let $V_i = f_i^{-1}(U) $.
+		We can lift like this because $f_i^\#(s)\big|_{V_i\cap V_j} = f_j^\#(s)\big|_{V_i\cap V_j} $ by hypothesis.
+		Then $f^\# $ is a morphism because the image of $f^\#(U) $ agree on restrictions by property 2 of the sheaf giving us a section that agrees on restrictions.
+		This is unique because of property 1 of sheaves.
+	\end{proof}
+
+	Because $X $ is reduced, for every open affine subset $U = \Spec A $ of $Y $, the map $f^\#(U): A \to f_\ast \mathscr{O}_X(U) $ has kernel containing the ideal of nilpotents of $\mathscr{O}_X(f^{-1}(U)) $.
+	Thus it factors through a map $\iota(U): \mathscr{O}_Y(U)_{red}\to f_\ast \mathscr{O}_X(U)$, allowing us to define $g_U(U)$.
+	The restriction morphisms are just via composition with restrictions. The diagram later will illuminate.
+	We can then check that this map agrees on intersections: say we have $U = \Spec A, V = \Spec B $.
+	Then $g(U)|_{U\cap V}= g(U\cap V)$ because $f^\#$ commutes with restrictions, i.e.
+	\[\begin{tikzcd}
+	& {\Gamma(U,\mathscr{O}_Y)_{red}} \\
+	{\Gamma(U,\mathscr{O}_Y)} & {\Gamma(U,f_\ast \mathscr{O}_X)} \\
+	{\Gamma(U\cap V,\mathscr{O}_Y)} & {\Gamma(U\cap V,f_\ast \mathscr{O}_X)} \\
+	& {\Gamma(U\cap V,\mathscr{O}_Y)_{red}}
+	\arrow[from=1-2, to=2-2]
+	\arrow["{g_U(U\cap V)}", curve={height=-30pt}, from=1-2, to=3-2]
+	\arrow[from=2-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-1, to=4-2]
+	\arrow["{g_{U\cap V}(U\cap V)}"', from=4-2, to=3-2]
+	\end{tikzcd}\]
+	By similar logic, $g(U\cap V) = g(V)|_{U\cap V} $, showing that they agree on intersections.
+	By \fullref{lem:constsheafmorphism} we then have a unique map $Y_{red}\to Y $.
+\end{proof}
+
 \begin{exercise}%2.4
-	Let $A $ be a ring and let $(X,\mathcal{O}_X) $ be a scheme. Given a morphism $f: X\to \Spec A $, we have an associated map on sheaves $f^\#: \mathcal{O}_{\Spec A} \to f_\ast \mathcal{O}_X $. Taking global sections we obtain a homomorphism $A\to \Gamma(X,\mathcal{O}_X) $. Thus there is a natural map
+	Let $A $ be a ring and let $(X,\mathscr{O}_X) $ be a scheme. Given a morphism $f: X\to \Spec A $, we have an associated map on sheaves $f^\#: \mathscr{O}_{\Spec A} \to f_\ast \mathscr{O}_X $. Taking global sections we obtain a homomorphism $A\to \Gamma(X,\mathscr{O}_X) $. Thus there is a natural map
 	\[
-		\alpha: \Hom_{\text{\textbf{Sch}}}(X,\Spec A) \to \Hom_{\text{\textbf{Ring}}}(A,\Gamma(X,\mathcal{O}_X))
+		\alpha: \Hom_{\text{\textbf{Sch}}}(X,\Spec A) \to \Hom_{\text{\textbf{Ring}}}(A,\Gamma(X,\mathscr{O}_X))
 	.\] 
 	Show that $\alpha $ is bijective (cf. (I, 3.5) for an analogous statement about varieties).
 \end{exercise}
 \begin{proof}
 	First we show that it is surjective.
 	Cover $X $ with open affines $U_i = \Spec A_i $.
-	Then for some map $f: A\to \Gamma(X,\mathcal{O}_X) $, we have a map $f_i:A\to \Gamma(U_i, \mathcal{O}_X) = A_i $ defined by $\rho_{U_iX}(f(a)) $.
-	Hence we have maps $f_i': \Spec A_i \to \Spec A $.
+	Then for some map $f: A\to \Gamma(X,\mathscr{O}_X) $, we have a map $f^\#_i(X):A\to \Gamma(U_i, \mathscr{O}_X) = A_i $ defined by composing with $\rho^X_{XU_i} $.
+	Hence we have a morphism of schemes induced by the ring homomorphism $f_i: \Spec A_i \to \Spec A $.
 
-	These maps agree on the open cover of affines because given $f_i',f_j' $, $f_i'|_{U_i \cap U_j} = (\rho_{(U_i\cap U_j)\cap X}(f(a)))^{-1} = f_j'|_{U_i\cap U_j}$.
-	Hence by the second property of sheaves, they glue together to a global section that is a map $X\to \Spec A $.
+	These maps agree on intersections because given $f_i^\#,f_j^\# $, $f_i^\#|_{U_i \cap U_j} = (\rho^X_{X U_i}f)|_{U_i\cap U_j} = \rho^X_{X (U_i\cap U_j)}f = f_j^\#|_{U_i\cap U_j}$.
+	Hence by \fullref{lem:constsheafmorphism}, we have a map $X\to \Spec A $.
+	By uniqueness given in the lemma, we have injectivity, giving us a bijection.
+\end{proof}
+
+\begin{exercise}%2.5
+	Describe $\Spec \Z $, and show that it is a final object for the category of schemes , i.e., each scheme $X $ admits a unique morphism to $\Spec \Z $.
+\end{exercise}
+\begin{proof}
+	We have the $\Spec \Z $ bijects to the set of prime numbers in $\Z $ and $0 $.
+	It is a final object in the category of schemes because we have a morphism $\Z \to \Gamma(X, \mathscr{O}_X) $ as $\Z $ is the initial object in $\Ring $, giving us a scheme morphism by Exercise 1.2.4.
+\end{proof}
+
+\begin{exercise}
+	Describe the spectrum of the zero ring, and show that it is an initial object for the category of schemes. (According to our conventions, all ring homomorphisms must take $1 $ to $1 $. Since $0 = 1 $ in the zero ring, we see that each ring $R $ admits a unique homomorphism to the zero ring, but that there is no homomorphism from the zero ring to $R $ unless $0=1 $ in $R $).
+\end{exercise}
+\begin{proof}
+	The spectrum of the zero ring is $\emptyset $, as there are no proper ideals.
+	Then the map $\emptyset \to X $ is just no map on points and the trivial map on sections.
 \end{proof}
 
 \begin{exercise}%2.7
-	Let $X $ be a scheme. For any $x\in X $, let $\mathcal{O}_x $ be the local ring at $x $, and $\mathfrak{m}_x $ its maximal ideal. We define the \textit{residue field} of $x $ on $X $ to be the field $k(x) = \mathcal{O}_x / \mathfrak{m}_x $. Now let $K $ be any field. Show that to give a morphism of $\Spec K $ to $X $, it is equivalent to give a point $x\in X $ and an inclusion map $k(x) \to K $.
+	Let $X $ be a scheme. For any $x\in X $, let $\mathscr{O}_x $ be the local ring at $x $, and $\mathfrak{m}_x $ its maximal ideal. We define the \textit{residue field} of $x $ on $X $ to be the field $k(x) = \mathscr{O}_x / \mathfrak{m}_x $. Now let $K $ be any field. Show that to give a morphism of $\Spec K $ to $X $, it is equivalent to give a point $x\in X $ and an inclusion map $k(x) \to K $.
 \end{exercise}
 \begin{proof}
-	A morphism $f: \Spec K \to X $ gives us a local homomorphism $f^\#_x: \mathcal{O}_x \to K $ where $x $ is the image of the unique point of $\Spec K $.
-	As this is a local homomorphism, this implies that the maximal ideal of $\mathcal{O}_x $ is $\ker f^\#_x$.
-	By the first iso theorem, we then have that $\mathcal{O}_x / \ker f^\#_x \cong \im(f^\#_x) \subseteq K $, giving an inclusion $k(x) \to K $.
+	A morphism $f: \Spec K \to X $ gives us a local homomorphism $f^\#_x: \mathscr{O}_x \to K $ where $x $ is the image of the unique point of $\Spec K $.
+	As this is a local homomorphism, this implies that the maximal ideal of $\mathscr{O}_x $ is $\ker f^\#_x$.
+	By the first iso theorem, we then have that $\mathscr{O}_x / \ker f^\#_x \cong \im(f^\#_x) \subseteq K $, giving an inclusion $k(x) \to K $.
 
 	If we have a point $x\in X $ and an inclusion map $k(x) \to K $, then we have the desired morphism by sending $(0) \to x $ and we have two cases for defining $f^\# $.
-	For $U $ open, $x\in U $, then $f_\ast(\mathcal{O}_K(U)) = K $, and we can define the map $\mathcal{O}_X(U) $ to $K $ via $\mathcal{O}_X(U) \to \mathcal{O}_x \to k(x) \to K $.
+	For $U $ open, $x\in U $, then $f_\ast(\mathscr{O}_K(U)) = K $, and we can define the map $\mathscr{O}_X(U) $ to $K $ via $\mathscr{O}_X(U) \to \mathscr{O}_x \to k(x) \to K $.
 
-	If $x\notin U $, then $f_\ast(\mathcal{O}_K(U)) = 0 $, so the map is just given by 0.
+	If $x\notin U $, then $f_\ast(\mathscr{O}_K(U)) = 0 $, so the map is just given by 0.
 
 	Then we have that the needed diagram commute with three cases:
 
 	$x\in U \subseteq V$:
 	\[
 	\begin{tikzcd}
-	{\mathcal{O}_X(V)} & K\\
-	{\mathcal{O}_X(U)} & K
+	{\mathscr{O}_X(V)} & K\\
+	{\mathscr{O}_X(U)} & K
 	\arrow[from=1-1,to=1-2]
 	\arrow["\rho_{UV}",from=1-1,to=2-1]
 	\arrow[from=2-1,to=2-2]
 	\arrow["\rho _{UV}",from=1-2,to=2-2]
 	\end{tikzcd}
 	\]
-	The top and bottom row commute by commutativity of $\rho $ in the direct system that is part of $\mathcal{O}_x $.
+	The top and bottom row commute by commutativity of $\rho $ in the direct system that is part of $\mathscr{O}_x $.
 
 	$x\notin U, x \in V $:
 	\[
 	\begin{tikzcd}
-	\mathcal{O}_X(V) & K\\
+	\mathscr{O}_X(V) & K\\
 	0 & 0
 	\arrow[from=1-1,to=1-2]
 	\arrow["\rho_{UV}",from=1-1,to=2-1]
@@ -331,10 +1061,44 @@
 	Let $X$	be a scheme. For any point $x\in X $, we define the \textit{Zariski tangent space} $T_x $ to $X $ to be the dual of the $k(x) $-vector space $\mathfrak{m}_x / \mathfrak{m}_x^2 $. Now assume that $X $ is a scheme over a field $k $, and let $k[\epsilon] / \epsilon^2$ be the \textit{ring of dual numbers} over $k $. Show that to give a $k $-morphism of $\Spec k[\epsilon] / \epsilon^2 $ to $X $ is equivalent to giving a point $x\in X $, \textit{rational over} $k $ (i.e. such that $k(x) = k $) and an element of $T_x $.
 \end{exercise}
 \begin{proof}
-	TODO
-	% $\implies) $
-	% Let $x $ be the image of $(0) $ and the element of $T_x $ be the image of $(\epsilon) $.
-	% Then $x = \ker f^\# $, so
+	$\implies) $
+	Let $x $ be the image of $(\epsilon) $ in $X $.
+	Then because we have this diagram
+	\[
+	\begin{tikzcd}
+		\Spec k[\epsilon]/(\epsilon^2) & & X\\
+	 & \Spec k &
+	\arrow[from=1-1,to=1-3]
+	\arrow[from=1-1,to=2-2]
+	\arrow[from=1-3,to=2-2]
+	\end{tikzcd},
+	\]
+	we have this diagram
+	\[
+	\begin{tikzcd}
+		k[\epsilon] / (\epsilon^2) & & \mathscr{O}_x\\
+	 & k &
+	\arrow[from=1-3,to=1-1]
+	\arrow[from=2-2,to=1-1]
+	\arrow[from=2-2,to=1-3]
+	\end{tikzcd}.
+	\]
+	First we can see that $k(x) = k $ because the image of $k $ in $\mathscr{O}_x $ is a field, and $\mathscr{O}_x / \mathfrak{m}_x $ is a field.
+
+	Because $f^\#_x $ is a local homomorphism, $f^\#_x(\mathfrak{m}_x) \subseteq (\epsilon) $.
+	Thus $f^\#_x(\mathfrak{m}_x^2) \subseteq (\epsilon^2) = 0 \implies \mathfrak{m}_x^2 \subseteq \ker f^\#_x $.
+	As such it induces a ring map $\mathscr{O}_x / \mathfrak{m}^2_x \to k[\epsilon] / (\epsilon^2)$.
+	By restricting to $\mathfrak{m}_x / \mathfrak{m}_x^2 $ and composing with just taking the coefficient of $\epsilon $ in the image, we get a $k $-linear vector space map $\mathfrak{m}_x / \mathfrak{m}_x^2 \to k $.
+	(Note that $(\epsilon) $ has no elements of the form $\epsilon+a $).
+
+	$\Leftarrow $) Suppose we have $x \in X $ such that $k(x) = k $ and $e \in T_x $. 
+	Define the map $(f,f^\#) $ by letting $f $ map $(\epsilon) $ to $x $.
+	Then define $f^\#(U): \mathscr{O}_X(U) \to 0$ for $U$ with $x\notin U $ to just be 0.
+
+	Finally define $f^\#(U): \mathscr{O}_X(U) \to k[\epsilon] / (\epsilon^2) $ for $x\in U $ to be the composition of of $\mathscr{O}_X(U) \to \mathscr{O}_x \xrightarrow{e'} k[\epsilon] / (\epsilon^2)$ where $e' $ is defined as follows:
+	write $h \in \mathscr{O}_x $ as $k' + m $ with $k' \in k $ and $m \in \mathfrak{m}_x $, which exists because $\mathscr{O}_x / \mathfrak{m}_x = k $.
+	Then send $h $ to $k' + e([m])\epsilon$.
+	This is a ring morphism because $(k_{1}+m_{1})(k_{2}+m_{2}) \mapsto k_{1}k_{2} + e([k_{1}m_{2}+k_{2}m_{1}])\epsilon $, which is the result expected.
 \end{proof}
 
 \begin{exercise}%2.9
@@ -348,30 +1112,299 @@
 
 	Hence we can reduce it to showing that there is an open affine space $\Spec A $, there is a point $\zeta $ s.t. $\{\zeta\} ^- = \Spec A  $.
 	Further, we have that $\Spec A $ is irreducible, since if we had a closed partition of $\Spec A $, the complement of $\Spec A $ is closed, giving rise to a closed partition of $Z $.
-	Hence there is only one minimal prime ideal of $\Spec A $, with which the closure of is $\Spec A $ (there is only one minimal prime ideal because otherwise, the closures of them would be a closed partition of $\Spec A $).
+	Hence there is only one minimal prime ideal of $\Spec A $, with which the closure of it is $\Spec A $ (there is only one minimal prime ideal because otherwise, the closures of them would be a closed partition of $\Spec A $).
 
 	The uniqueness follows from the uniqueness of the minimal prime ideal.
 \end{proof}
 
+\begin{exercise}
+	Describe $\Spec \R[x] $. How does its topological space compare to the set $\R $? To $\C $?
+\end{exercise}
+\begin{proof}
+	$\Spec \R[x] = \{(0), (x-a), (x^2+ax+b) | a,b \in \R, a^2-4b<0\}   $ as $\R[x] $ is a PID and these are the irreducible elements.
+	Its set of closed points has a copy of $\R $ in it, through $\{x-a\}   $ and a copy of $\C \setminus \R $ glued along the real line, as each $(x^2+ax+b) $ corresponds to its two roots glued, and each complex, non-real number corresponds to such a $x^2+ax+b $.
+\end{proof}
+
+\begin{exercise}
+	Let $ k = \F_p $ be the finite field with $p $ elements. Describe $\Spec k[x] $. What are the residue fields of its points? How many points are there with a given residue field?
+\end{exercise}
+\begin{proof}
+	Because $k[x] $ is a PID, the prime ideals correspond to irreducible elements.
+	Thus the residue field is just a finite field, as $(k[x] / \mathfrak{p})_{\mathfrak{p}} \cong k[x] / \mathfrak{p}$ due to $k[x] / \mathfrak{p} $ being a field already.
+	The fact that $k[x] / \mathfrak{p} $ is a finite field is due to $\mathfrak{p} $ being generated by an irreducible.
+
+	The number of points with a given residue field, say $\F_{p^n} $ equals
+	\[
+		\frac{1}{n}\sum_{d | n} \mu(d) p^{n / d} 
+	\] 
+	by M\"obius inverting the formula $\sum_{d | n} d\tau (d) = p^n $.
+	We get this formula from counting degrees in the fact that $x^{p^n} - x  $ factors into all the irreducibles of degree $d $ for all $d|n $.
+
+	The topology here is the Zariski topology, i.e. cofinite sets because $k[x] $ is a PID, so $V(\mathfrak{a}) = V((f)) $ for some $f \in k[x] $, and because $k[x] $ has unique factorization, $V(\mathfrak{a}) $ is finite.
+	This proof works for the previous question too.
+
+	The set of closed points of degree $n $ ``look'' like $\F_{p^n} $ with each point glued to $n $ other points glued along the Galois automorphisms.
+\end{proof}
+
+\begin{exercise}[Gluing Lemma]
+	Generalize the glueing procedure described in the text (2.3.5) as follows. Let $\{X_i\}$ be a family of schemes (possible infinite). For each $i \ne j$, suppose given an open subset $U_{ij} \subseteq X_i$ and let it have the induced scheme structure (Ex. 2.2). Suppose also given for each $i \ne j$ an isomorphism of schemes $\phi_{ij}: U_{ij} \to U_{ji}$ such that (1) for each $i,j, \phi_{ji} = \phi_{ij}^{-1}$, and (2) for each $i,j,k, \phi_{ij}(U_{ij}\cap U_{ik}) = U_{ji}\cap U_{jk} $, and $\phi_{ik} = \phi_{jk}\circ \phi_{ij}$ on $U_{ij} \cap U_{ik}$. Then show that there is a scheme $X$, together with morphisms $\psi_i:X_i \to X$ for each $i$, such that (1) $\psi_{i}$ is an isomorphism of $X_i$ onto an open subscheme of $X$, (2) the $\psi_i(X_i)$ cover $X$, (3) $\psi_i(U_{ij}) = \psi_i(X_i) \cap \psi_j(X_j)$ and (4) $\psi_i = \psi_j \circ \phi_{ij}$ on $U_{ij}$. We say that $X$ is obtained by \textit{glueing} the schemes $X_i$ along the isomorphisms $\phi_{ij}$. An interesting special case is when the family $X_i$ is arbitrary, but the $U_{ij}$ and $\phi_{ij}$ are all empty. Then the scheme $X$ is called the \textit{disjoint union} of the $X_i $, and is denoted $\sqcup X_i $.
+\end{exercise}
+\begin{proof}
+	Let $sp(X) $ be the pushout in the category of topological spaces of the $\phi_{ij}$ of the diagrams
+	\[
+	\begin{tikzcd}
+	U_{ij} = U_{ji} & X_j\\
+	X_i &
+	\arrow[from=1-1,to=1-2]
+	\arrow[from=1-1,to=2-1]
+	\end{tikzcd}
+	\]
+	(the extra properties are needed to ensure that the pushout exists, namely for ensuring that $x\sim x' \iff x \in U_{ij}, x' \in U_{ji}, \phi_{ij}(x) = x' $).
+	We want to let the sheaf structure be the one obtained from gluing the sheaves together, a l\'a Exercise 1.22.
+	To glue them together, let the topological space be $sp(X) $.
+	Because this is the pushfoward, $\{sp(X_i)\} $ form an open cover of $sp(X) $.
+	Then each $sp(X_i) $ has a sheaf on it, $X_i $.
+	Then because $sp(X_i) \cap sp(X_j) $ in $X $ is just $U_{ij} $ by gluing.
+	Thus by letting the gluing maps be $\phi_{ij} $ and $\id $ when $j=i $, we have the maps that satisfy conditions 1 and 2 needed.
+\end{proof}
+
+\begin{exercise}
+	A topological space is \textit{quasi-compact} if every open cover has a finite subcover.
+	\begin{enumerate}
+		\item Show that a topological space is noetherian (I, $\S 1 $) if and only if every open subset is quasi-compact.
+		\item If $X $ is an affine scheme, show that $sp(X) $ is quasi-compact, but not in general noetherian. We say a scheme is \textit{quasi-compact} if $sp(X) $ is.
+		\item If $A $ is a noetherian ring, show that $sp(\Spec A) $ is a noetherian topological space.
+		\item Give an example to show that $sp(\Spec A) $ can be noetherian even when $A $ is not.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) $\implies $) Suppose $X $ is noetherian and we had an open cover with no finite subcover $\{U_i\}  $.
+	Then we can get a non-stabilizing descending chain of closed sets by starting with some $V_1 \in \{U_i\}   $, picking $V_{i+1} $ not contained in $V_i $.
+	So we have
+	\[
+		V_1^C \supseteq (V_1\cup V_{2})^C \supseteq \cdots \supseteq (\cup_{n = 1}^i V_n)^C \supseteq \cdots
+	.\] 
+	It is obviously descending and consists of closed sets, and it is non-stabilizing because if it stabilizes, then by how we pick $V_{i+1} $, it must terminate in $\emptyset $.
+	But then we have a finite subcover.
+
+	$\Leftarrow $) Suppose every open subset is quasi-compact.
+	Now FTSOC suppose we have a descending chain of closed sets:
+	\[
+		C_{1} \supseteq C_{2} \supseteq \cdots
+	.\] 
+	Then consider the open set $\bigcup C_i^C $ and the open cover $\{\cup_{i=1}^n C_i^C\}_{n\in \N}   $.
+	As $\bigcup C_i^C $ is quasi-compact, we have a finite subcover $\cup_{i=1}^{n_1} C_i^C, \ldots, \cup_{i=1}^{n_m}C_i^C $.
+	Let $N = \max n_i $.
+	Then the (finite) union of the subcover is $X $ and also $\cup_{i=1}^N C_i^C$.
+	Taking complements, we get that $\emptyset = \cap_{i=1}^N C_i $.
+	Thus this sequence terminates.
+
+	(b) Let $X = \Spec A $ and suppose we have an open cover $\{U_i\} $.
+	Then $X = \bigcup U_i \implies \emptyset = \bigcap V(\mathfrak{a}_i) = V(\sum \mathfrak{a}_i)$.
+	Because $V(\sum \mathfrak{a}_i) = \emptyset \iff \sum \mathfrak{a}_i = (1) $, this implies that $1 = \sum_{j=1}^m f_{n_j} $ for $f_{n_j} \in \mathfrak{a}_{n_j} $.
+	Now take as subcover the $\mathfrak{a}_{n_j} $.
+	This forms a cover because $(\cup_{j=1}^m U_{n_j})^C = \cap_{j=1}^m V(\mathfrak{a}_{n_j}) = V(\sum_{j=1}^m \mathfrak{a}_{n_j}) = \emptyset$ because $1 \in \sum_{j=1}^m \mathfrak{a}_{n_j} $.
+
+	For an example of a quasi-compact non-Noetherian affine scheme, consider $\Spec (\C[x_{1},x_{2},\ldots])_{(x_{1},x_{2},\ldots)} $.
+	As we have localized all ideals not contained in $(x_{1},x_{2},\ldots) $, the prime spectrum falls into this ascending sequence:
+	\[
+		(x_{1}) \subseteq (x_{1},x_{2}) \subseteq \cdots
+	.\] 
+	Then we have an non-stabilizing chain of closed subsets:
+	\[
+		V(x_{1}) \supseteq V(x_{1},x_{2}) \supseteq \cdots
+	.\] 
+	Furthermore, this is quasi-compact, because the topology is cofinite (see Exercise 2.11).
+
+	(c) Suppose we have a descending non-stabilizing chain of closed sets
+	\[
+		V(\mathfrak{a}_1) \supseteq V(\mathfrak{a}_2) \supseteq \cdots
+	.\] 
+	Then we can WLOG suppose that $\mathfrak{a}_i $ are radical, because $V(\mathfrak{a}_i) = V(\sqrt{\mathfrak{a}_i}) $---clearly $V(\sqrt{\mathfrak{a}} ) \supseteq V(\mathfrak{a} $ and $V(\sqrt{\mathfrak{a}} ) \subseteq V(\mathfrak{a}) $ because any prime that contains $\mathfrak{a} $ also contains $\sqrt{\mathfrak{a}}  $, being the intersection of all prime ideals containing $\mathfrak{a} $.
+	By 2.1c,
+	\[
+		\mathfrak{a}_1 \subseteq \mathfrak{a}_2 \subseteq \cdots
+	.\] 
+	As this is an ascending chain of ideals, it stabilizes, at which point the chain of closed sets also stabilize.
+
+	(d) Consider $\Spec \C[x_{1},x_{2},\ldots] $.
+	The topology is the cofinite topology (see Exercise 2.11), so every open subset is quasi-compact, allowing us to use a).
+	But $\C[x_{1},\ldots] $ is not Noetherian as we have $(x_{1}) \subseteq (x_{1},x_{2}) \subseteq \ldots $, each of which is prime.
+\end{proof}
+
+\begin{exercise}
+	~
+	\begin{enumerate}
+		\item Let $S $ be a graded ring. Show that $\Proj S = \emptyset $ if and only if every element of $S_+ $ is nilpotent.
+		\item Let $\phi :S \to T $ be a graded homomorphism of graded rings (preserving degrees). Let $U = \{\mathfrak{p} \in \Proj T | \mathfrak{p} \not \supseteq  \phi (S_+)\}   $. Show that $U $ is an open subset of $\Proj T $, and show that $\phi $ determines a natural morphism $f: U \to \Proj S$.
+		\item The morphism $f $ can be an isomorphism even when $\phi  $ is not. For example, suppose that $\phi _d: S_d \to T_d $ is an isomorphism for all $d \ge  d_{0} $, where $d_{0} $ is an integer. Then show that $U = \Proj T $ and the morphism $f: \Proj T \to \Proj S $ is an isomorphism.
+		\item Let $V $ be a projective variety with homogenous coordinate ring $S $ (I, $\S 2$). Show that $t(V) \cong \Proj S $.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) If $\Proj S = \emptyset$, and there is a non-nilpotent element of $S_+ $, then because this is contained in a prime (non-necessarily homogenous) ideal of $S $ $\mathfrak{p} $, by taking the ideal generated by the homogenous elements of $\mathfrak{p} $ we get a homogenous prime ideal containing the element.
+	This homogenous ideal is prime because it is a subset of $\mathfrak{p} $.
+	But then we get a contradiction with our starting assumption, and hence every element of $S_+ $ is nilpotent.
+
+	Conversely, if every element is nilpotent, then if we had $\mathfrak{p} \in \Proj S $, then because $0 \in \mathfrak{p} $ and $\mathfrak{p} $ is a homogenous prime ideal, $\forall a \in S_i, a^n = 0 \implies a \in \mathfrak{p}$ as $a $ is homogenous.
+	But these $a \in S_i $ for all $i $ generate $S_+ $, so $S_+ \subseteq \mathfrak{p} $, a contradiction.
+
+	Hence we get a morphism $f $ by having a topological map via taking preimages: this is well-defined because the preimage is prime, homogenous, and doesn't contain $S_+ $.
+	The map on sheaves is the one induced by gluing together the open covers $\Spec T_{(\phi(f))} \to \Spec S_{(f)}$ induced by $S_{(f)}\to T_{\phi (f)} $ via \fullref{lem:constsheafmorphism}.
+	The conditions for gluing are met because on intersections, it is just $\Spec T_{(\phi(f_if_j))} $, which is well-defined up to order.
+	It is a local homomorphism because the map $\mathscr{O}_{T,\mathfrak{p}} \to \mathscr{O}_{S,\phi ^{-1}(\mathfrak{p})} $ is clearly a local homomorphism.
+
+	(b) $U $ is an open subset because $U^C = \{\mathfrak{p} \in \Proj T | \mathfrak{p} \supseteq \phi(S_+) = V(\langle \phi(S_+) \rangle)\} $ where $\left< \phi(S_+) \right> $ indicates the homogenous ideal generated by it.
+	Such an ideal exists because $\phi $ is degree preserving (namely, the homogenous generators of $S_+ $ will be sent to homogenous generators of $\left< \phi(S_+) \right> $).
+	The equality is obvious: a homogenous ideal containing the homogenous ideal genereated by $\phi(S_+) $ must contain $\phi(S_+) $ and a homogenous ideal containing $\phi(S_+) $ must contain the ideal generated by $\phi(S_+) $.
+
+	(c) First we show that $U = \Proj T $: we want to show that any $\mathfrak{p} \in \Proj T $ doesn't contain $\phi(S_+) $.
+	We do so by using the observation that homogenous prime $\mathfrak{p} \subseteq T$ contains $\phi_{\ge d_{0}}(S_{\ge d_{0}}) $ if and only if $\mathfrak{p} $ contains $T_+ $.
+	One direction is obvious because $\phi _{\ge  d_{0}} $ is an isomorphism.
+
+	Now if we had a homogenous element $a $ of $T_+ $, say it is of degree $i $, there $n $ such that $a^n \in T_{\ge d_{0}} $ by simply picking $n $ such that $in \ge d_{0} $.
+	Thus $a^n \in \mathfrak{p} $, but because $\mathfrak{p} $ is prime, $a \in T $.
+	Because homogenous elements span $T_+ $, $T_+ \subseteq \mathfrak{p} $.
+
+	Because all $\mathfrak{p}\in \Proj T $ don't contain $\phi(S_+)$, $U = \Proj T $.
+	Next we show that $f $ is a homeomorphism.
+	Continuity of $f $ is obvious.
+
+	injective: suppose we had $\mathfrak{p},\mathfrak{q}\in \Proj T $ such that their images were equal.
+	Then $f(\mathfrak{p})_{\ge d_{0}} = f(\mathfrak{q})_{\ge d_{0}} $.
+	Now take some homogenous element $a $ of $\mathfrak{p}_{< d_{0}} $.
+	Then for some $n $, $a^n \in \mathfrak{p}_{\ge d_{0}} $.
+	Thus $\phi ^{-1}(a^n) \in f(\mathfrak{p})_{\ge d_{0}} = f(\mathfrak{q})_{\ge d_{0}} $ so that $a^n \in \mathfrak{q} $.
+	Because $\mathfrak{q}$ is a homogenous prime, $a \in \mathfrak{q}$, proving their equality.
+
+	surjective: 
+	Define the map $f^{-1}:\Proj S\to \Proj T $ via $\mathfrak{p} \mapsto \sqrt{\langle \phi(\mathfrak{p})\rangle} $ where $\left< \cdot \right> $ indicates the homogenous ideal generated by it.
+	Because radicals of homogenous are homogenous, $\sqrt{\langle\phi (\mathfrak{p}\rangle)}  $ is homogenous.
+	It is also prime because given homogenous $ab \in \sqrt{\langle\phi (\mathfrak{p})\rangle} $, $\exists m $ such that $(ab)^m \in \langle\phi (\mathfrak{p}) \rangle$.
+	We can find $n $ such that $(ab)^{mn} \in \phi _{\ge d_{0}}(\mathfrak{p}) $ and large enough that $a^{mn}, b^{mn} \in S_{\ge d_{0}}  $.
+	Pulling back with the isomorphism $\phi _{\ge d_{0}} $ and using the fact that $\mathfrak{p} $ is a homogenous prime, we get that $\phi ^{-1} (a^{mn})$ or $\phi ^{-1}(b^{mn})$ is in $\mathfrak{p} $.
+	Thus either $a^{mn}  $ or $b^{mn}  $ are in $f(\mathfrak{p}) $.
+	Hence $a $ or $b $ are in $\sqrt{\phi (\mathfrak{p})} $.
+
+	Let $f^{-1}(\mathfrak{p}) = \mathfrak{q} $.
+	Finally, we can show that $f(\mathfrak{q}) = \mathfrak{p} $.
+	One direction is obvious.
+	Now we want to show that $\phi ^{-1}(\sqrt{\langle\phi (\mathfrak{p})\rangle} ) \subseteq \mathfrak{p} $.
+
+	Suppose that we have $a \in \phi ^{-1}(\sqrt{\langle\phi (\mathfrak{p})\rangle} ) $.
+	Consider it's homogenous components $a_i $.
+	Then $\phi (a_i) \in \sqrt{\phi (\mathfrak{p})}$.
+	By definition, we have $m $ such that $\phi (a_i)^m = \phi(a_i^m) \in \phi (\mathfrak{p}) $.
+	Thus $\phi(a_i^m) = \sum t_i \phi(p_i) $ with $t_i \in T $ and $p_i \in \mathfrak{p} $.
+	By finding $n $ large enough that each $t_i \phi (p_i) $ has degree larger than $d_{0} $ (possible by finding the least degree $t_i \phi (p_i) $ and multiplying it enough times to be larger than $d_{0} $), we find that $\phi (a_i^{mn}) \in \phi(\mathfrak{p})$ via the isomorphism.
+
+	Thus $a_i^{mn} \in \mathfrak{p} $, so $a_i \in \mathfrak{p}$ by $\mathfrak{p} $ being homogenous prime and $a_i $ being homogenous.
+	As all the components of $a $ are in $\mathfrak{p} $, $a\in \mathfrak{p} $.
+
+	Because we have a morphism $\Proj T\to \Proj S $, it suffices to show that they are isomorphic on stalks.
+	The stalks are $T_{\mathfrak{p}} $ and $S_{f(\mathfrak{p})} $ respectively.
+	Because every element of $T_{\mathfrak{p}} $ is of the form $\frac{t}{a} $ for $t \in T $ and $a \in T\setminus \mathfrak{p}$ such that $t $ and $a $ have the same degree.
+	Then we can find $n $ such that $\frac{t}{a} = \frac{ta^{n-1}}{a^n} $ with $ta^{n-1} \in T_{\ge d_{0}}  $.
+	Hence $\phi_{\ge d_{0}}$ is an isomorphism of $T_{\mathfrak{p}} $ to $S_{f(\mathfrak{p})} $, showing that $f $ is an isomorphism of schemes.
+
+	(d) Using Chapter 2.4.10, we get a morphism $t(V) \to \Proj S $.
+	By checking the stalks, we can see that this is an isomorphism.
+\end{proof}
+
+\begin{exercise}%2.15
+	~
+	\begin{enumerate}
+		\item Let $V $ be a variety over the algebraically closed field $k $. Show that a point $P \in t(V) $ is a closed point if and only if its residue field is $k $.
+		\item If $f: X\to Y $ is a morphism of schemes over $k $, and if $P \in X $ is a point with residue field $k $, then $f(P) \in Y $ also has residue field $k $.
+		\item Now show that if $V,W $ are any two varieties over $k $, then the natural map
+			\[
+				\Hom_{\Var}(V,W) \to \Hom_{\Sch / k}(t(V),t(W))
+			\] 
+			is bijective. (Injectivity is easy. The hard part is to show it is surjective).
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Suppose $P $ is closed.
+	Because $\alpha $ is a homeomorphism of $V $ to closed points of $t(V) $, $P = \{P' \} ^- = \{\eta \}     $, i.e. $P'  $ is a closed point.
+	
+	Now consider
+	\[
+		\varinjlim_{P \in \text{open}\ U \subseteq t(V)} \mathscr{O}_V(\alpha ^{-1}(U))
+	.\] 
+	Because $P $ is in all the $U $, $\alpha ^{-1}(U) $ contains $P'$ for all $U $.
+	As $\alpha $ produces a bijection between open subsets of $t(V) $ and $V $, this limit is then just $\mathscr{O}_{V,P' } $.
+
+	Next note that because $V $ is a variety over $k $, there is a map $\mathscr{O}_V \to \Spec k $.
+	Now let $\Spec A $ be an open affine neighborhood of $P' $.
+	Because of the map $\mathscr{O}_V \to \Spec k $, we have a map $k \to A $, making $A $ a $k $-algebra.
+	Finally, because $\mathscr{O}_{V,P'} = \mathscr{O}_{\Spec A,P'} $ and $P' $ is a closed point, $P' $ be maximal.
+	Thus the residue field is $k $ because $k $ is algebraically closed ($k(P') $ is a finite field extension of $k $ because $V $ being a variety implies that $k(P') $ is finitely generated over $k $, but $k $ is algebraically closed).
+
+	If $k(P) = k$:
+	Take an open affine cover of $t(V) $, $\{\Spec A_i\}   $.
+	Then for all $\Spec A_i $ with $P $ in them, $\mathscr{O}_{t(V),P} = \mathscr{O}_{\Spec A_i, P}$ has residue field $k $.
+	But this only happens if $P $ is maximal in $A_i $, i.e. $P $ is closed in $\Spec A_i $ (Nullstellensatz).
+	A point closed in an open cover is closed.
+
+	(b) By Exercise 2.7, we have a map $\Spec k \to X $ because we have a point $P \in X $ and an inclusion $k(P) = k \to k $.
+	Then just composing, we get a map $\Spec k \to Y $.
+	By using Exercise 2.7 again, we get an inclusion $k(f(P)) \to k $.
+	Because $Y $ is a scheme over $k $, we get a map $k\to k(f(P)) $, making $k(f(P)) $ equal to $k $.
+
+	(c) 
+	The natural map is by taking $f: V\to W $ to a map of $k $ schemes with the topological map being $t(f) $ and $f^\#(U): \alpha_{\ast}(\mathscr{O}_W)(U) \to t(f)_\ast \alpha_\ast(\mathscr{O}_V)(U)$ for $U\subseteq t(W) $ as follows:
+
+	First take a section $s \in \mathscr{O}_W(\alpha ^{-1}(U)) $.
+	Next, notice that $t(f)^{-1}(\alpha ^{-1}(U)) = f^{-1}(\alpha ^{-1}(U)) $ because $t(f)(\alpha(P)) = \overline{f(\overline{P}) } \supseteq \overline{f(P)}$ as $f(P) \in f(\overline{P})  $. 
+	We also have $\overline{f(\overline{P}) } \subseteq \overline{f(P)}   $ because $\overline{f(P)}  $ is a closed set containing $f(\overline{P})  $ as $f^{-1}\overline{f(P)}$ is closed and contains $P $, so $\overline{P} \subseteq f^{-1}\overline{f(P)}   $.
+
+	Finally, by precomposing it with $f$, we get a regular map on $f^{-1}(\alpha ^{-1}(U)) = \alpha ^{-1}(t(f)^{-1}(U)) $, i.e. $s\circ f: f^{-1}(\alpha ^{-1}(U)) \to k$ by definition of a morphism of varieties.
+
+	This map is injective because the codomain is not correct ($\mathscr{O}(f^{-1}\alpha ^{-1}(U)) $ isn't always $\mathscr{O}(g^{-1}(\alpha ^{-1}(U))) $).
+	For surjectivity, suppose we have a morphism $f: t(V) \to t(W) $.
+	Then we can see that $f $ takes closed points to closed points because it is a local homomorphism and the stalks of $t(V) $ and $t(W) $ at closed points is just the stalk of the sheaf of regular functions.
+	Thus define $f': V\to W $ by $P\mapsto \alpha ^{-1}(f(\{P\} ))  $ (all points of a variety are closed).
+	This is continuous because it satisfies the following diagram:
+	\[
+	\begin{tikzcd}
+	V & W\\
+	t(V) & t(W)
+	\arrow["f'",from=1-1,to=1-2]
+	\arrow["\alpha",from=1-1,to=2-1]
+	\arrow["f",from=2-1,to=2-2]
+	\arrow["\alpha",from=1-2,to=2-2]
+	\end{tikzcd}
+	\]
+	and an open set in $W $ bijects via $\alpha $ to an open in $t(W) $, preimages to an open in $t(V) $, and bijects to an open in $V $ via $\alpha $.
+
+	Finally, to see that this is a morphism of varieties, suppose we have a regular function $s \in \mathscr{O}_W(U) $.
+	To show that $s\circ f' $ is regular on $(f')^{-1}(U) $, take a point $v \in (f')^{-1}(U) $.
+	% Because $s  $ is regular, there is a neighborhood $U' \subseteq U$ of $f'(v) $ such that $s = \frac{P}{Q} $ for homogenous polynomials $P,Q $ over $k $ of the same degree with $Q $ non-vanishing on $U' $.
+	We can pick an open affine subneighborhood, $U'' = \Spec A $ of $U' $.
+	Then pick an open affine neighborhood $N=\Spec B$ of $v $ contained in $f^{-1}(U'') $.
+	By making these choices, we have a map $\Spec B \to \Spec A $, inducing a map $\mathscr{O}_W(U'') = A \to B = f'_\ast\mathscr{O}_V(N) $, implying that 
+	, turning $s\big|_{\Spec B} = \frac{P}{Q} $ into a rational polynomial in $k$ with a denominator that doesn't vanish on $N$ (as otherwise the denominator would become a polynomial th
+\end{proof}
+
 \begin{exercise}%2.16
-Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to be the subset of points $x\in X $ such that the stalk $f_x $ of $f $ at $x $ is not contained in the maximal ideal $\mathfrak{m}_x$ of the local ring $\mathcal{O}_x $.
+Let $X $ be a scheme, let $f\in \Gamma(X,\mathscr{O}_X)$, and define $X_f $ to be the subset of points $x\in X $ such that the stalk $f_x $ of $f $ at $x $ is not contained in the maximal ideal $\mathfrak{m}_x$ of the local ring $\mathscr{O}_x $.
 \begin{enumerate}[(a)]
-	\item If $U = \Spec B$ is an open \textit{affine} subscheme of $X $, and if $\overline{f} \in B = \Gamma(Y,\mathcal{O}_X|_U)  $ is the restriction of $f $, show that $U\cap X_f = D(\overline{f})  $. Conclude that $X_f $ is an open subset of $X $.
+	\item If $U = \Spec B$ is an open \textit{affine} subscheme of $X $, and if $\overline{f} \in B = \Gamma(Y,\mathscr{O}_X|_U)  $ is the restriction of $f $, show that $U\cap X_f = D(\overline{f})  $. Conclude that $X_f $ is an open subset of $X $.
 	\begin{proof}
 		$U\cap X_f \subseteq D(\overline{f})  $: Take a point $x\in U\cap X_f $.
-		Then because $\mathcal{O}_x = \mathcal{O}_{U,x} = B_x $, $f_x $ not being in the maximal ideal of $\mathcal{O}_x$ implies that $\overline{f}_x  $ isn't in the maximal ideal of $B_x $.
+		Then because $\mathscr{O}_x = \mathscr{O}_{U,x} = B_x $, $f_x $ not being in the maximal ideal of $\mathscr{O}_x$ implies that $\overline{f}_x  $ isn't in the maximal ideal of $B_x $.
 		So $\overline{f}_x  $ is invertible, implying that $\overline{f}_x = \frac{\overline{f}}{1}  \notin x  $.
 		Thus $x\in D(\overline{f})  $.
 
 		$U\cap X_f \supseteq D(\overline{f})  $:
 		Take some point $x\in D(\overline{f})  $, so $\overline{f}\not\in x$.
 		Thus $\frac{\overline{f}}{1}$ is invertible in $B_x $.
-		Hence $\frac{\overline{f} }{1} = \overline{f}_x = f_x$ is not in the maximal ideal of $\mathcal{O}_x = \mathcal{O}_{U,x} = B_x $, putting $x \in X_f $.
+		Hence $\frac{\overline{f} }{1} = \overline{f}_x = f_x$ is not in the maximal ideal of $\mathscr{O}_x = \mathscr{O}_{U,x} = B_x $, putting $x \in X_f $.
 
 		To see that $X_f $ is open, for every point of $X_f $, we can find an open affine neighborhood of it, whose intersection with $X_f $ is an open set.
 		A union of open sets is open.
 	\end{proof}
-	\item Assume that $X $ is quasi-compact. Let $A = \Gamma(X,\mathcal{O}_X), $ and let $a\in A $ be an element whose restriction to $X_f $ is $0 $. Show that for some $n > 0 $, $f^na = 0 $.
+	\item Assume that $X $ is quasi-compact. Let $A = \Gamma(X,\mathscr{O}_X), $ and let $a\in A $ be an element whose restriction to $X_f $ is $0 $. Show that for some $n > 0 $, $f^na = 0 $.
 		[Hint: Use an open affine cover of $X $.]
 	\begin{proof}
 		Take an open affine cover of $X $.
@@ -383,35 +1416,35 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 		As $D(\overline{f}_i) \cong \Spec (A_i)_{\overline{f}_i }$, $a|_{X_f} = 0 \implies a|_{U_i} = 0 \in (A_i)_{\overline{f}_i}$.
 		Thus $\exists n_i $ s.t. $\overline{f} _i^{n_i}a|_{U_i} = (f^{n_i}a)|_{U_i} = 0 $ in $A_i $ by definition of localizing.
 		Because there are finitely many, we can take a common $n $ for all $\overline{f} _i $.
-		As $\mathcal{O}_X $ is a sheaf, $f^na $ being 0 on the restictions to an open cover implies that $f^na $ is globally 0.
+		As $\mathscr{O}_X $ is a sheaf, $f^na $ being 0 on the restictions to an open cover implies that $f^na $ is globally 0.
 	\end{proof}
-	\item Now assume that $X $ has a finite cover by open affines $U_i $ such that each intersection $U_i\cap U_j $ is quasi-compact. (This hypothesis is satisfied for example, if $\text{sp}(X)$ is Noetherian.) Let $b\in \Gamma(X_f,\mathcal{O}_{X_f}) $. Show that for some $n > 0, f^n b$ is the restriction of an element of $A $.
+	\item Now assume that $X $ has a finite cover by open affines $U_i $ such that each intersection $U_i\cap U_j $ is quasi-compact. (This hypothesis is satisfied for example, if $\text{sp}(X)$ is Noetherian.) Let $b\in \Gamma(X_f,\mathscr{O}_{X_f}) $. Show that for some $n > 0, f^n b$ is the restriction of an element of $A $.
 	\begin{proof}
 		Let $U_i = \Spec A_i $.
 		Let $b|_{X_f\cap U_i} = \frac{b_i}{f^{n_i} } $ for $b_i \in A_i $.
 		Because there are finitely many $U_i $, we can pick a sufficiently large common $n $ for all of them.
 		Then $f^nb|_{X_f\cap U_i} = b_i $.
 
-		From this is follows that restricting $b_i,b_j $ to $U_{ij}\coloneqq U_i\cap U_j $ equals $f^nb|_{X_f\cap U_{ij}} $, so $b_i-b_j = 0 $ in $\Gamma(U_{ij}\cap X_f, \mathcal{O}_X) $.
-		%=\Gamma((U_{ij})_f,\mathcal{O}_X)$.
+		From this it follows that restricting $b_i,b_j $ to $U_{ij}\coloneqq U_i\cap U_j $ equals $f^nb|_{X_f\cap U_{ij}} $, so $b_i-b_j = 0 $ in $\Gamma(U_{ij}\cap X_f, \mathscr{O}_X) $.
+		%=\Gamma((U_{ij})_f,\mathscr{O}_X)$.
 		As $U_{ij} $ is quasi-compact by hypothesis, from (b) we can conclude that there is a $m_{ij} $ and s.t. $f^{m_{ij}}(b_i-b_j) = 0 $.
 		Because there are finitely many, we can pick a universal $m $ that works for all of $i,j $.
-		Then by $\mathcal{O}_X $ being a sheaf (and they agree on intersections), the $f^mb_i \in \Gamma(U_i,\mathcal{O}_X)$ glue together to get a global section $s \in A$.
+		Then by $\mathscr{O}_X $ being a sheaf (and they agree on intersections), the $f^mb_i \in \Gamma(U_i,\mathscr{O}_X)$ glue together to get a global section $s \in A$.
 		Finally, $s|_{X_f} = f^{n+m}b$ because $s|_{U_i\cap X_f}-f^{n+m}b|_{U_i\cap X_f} = f^mb_i-f^mb_i = 0 $ on a cover of $X_f $, so by sheaf property (i) $s|_{X_f}-f^mb = 0 $.
 	\end{proof}
-	\item With the hypothesis of (c), conclude that $\Gamma(X_f,\mathcal{O}_{X_f}) \cong A_f $.
+	\item With the hypothesis of (c), conclude that $\Gamma(X_f,\mathscr{O}_{X_f}) \cong A_f $.
 	\begin{proof}
-		Technically, there should be some $\overline{f}  $ to indicate the image in $\Gamma(X_f,\mathcal{O}_{X_f}) $, but it doesn't really add much.
-		We have a map $\Gamma(X_f,\mathcal{O}_{X_f}) \to A_f $ by sending $b\to \frac{a}{f^n} $ where $a$ is the element of $A $ and $n $ is the associated $n $ via (c).
+		Technically, there should be some $\overline{f}  $ to indicate the image in $\Gamma(X_f,\mathscr{O}_{X_f}) $, but it doesn't really add much.
+		We have a map $\Gamma(X_f,\mathscr{O}_{X_f}) \to A_f $ by sending $b\to \frac{a}{f^n} $ where $a$ is the element of $A $ and $n $ is the associated $n $ via (c).
 		This is a homomorphism because obviously 0 and $1 $ are sent to the right places.
 		Then with $f^nb_{1} = a_{1}|_{X_f}, f^mb_{2} = a_{2}|_{X_f}$, we have that $f^{n+m}(b_{1}+b_{2})  $ is the restriction of $f^ma_{1}+f^na_2 $.
 		Hence $b_{1}+b_{2} $ gets mapped to $\frac{a_{1}f^m + a_{2}f^n}{f^{n+m} } = \frac{a_{1}}{f^n} +\frac{a_{2}}{f^m}$, the sum of the images of $b_{1},b_{2} $.
 
 		This is an isomorphism because it is surjective with $\frac{a|_{X_f}}{f^n} $ mapping to $\frac{a}{f^n} \in A_f \forall a\in A$.
-		This is in $\Gamma(X_f,\mathcal{O}_{X_f}) $ because we can find for any point $\mathfrak{p} $ an open neighborhood of $X_f $ s.t. $f\notin \mathfrak{q}$ for all points $\mathfrak{q} $ in that neighborhood.
+		This is in $\Gamma(X_f,\mathscr{O}_{X_f}) $ because we can find for any point $\mathfrak{p} $ an open neighborhood of $X_f $ s.t. $f\notin \mathfrak{q}$ for all points $\mathfrak{q} $ in that neighborhood.
 		Take any open affine neighborhood of $\mathfrak{p} $.
-		By definition, $f\notin \mathfrak{m}_{\mathfrak{q}} = \mathfrak{q} \forall \mathfrak{q}\in X_f$ (note that $\mathfrak{m}_{\mathfrak{q}} $ is the maximal ideal of the stalk at $\mathfrak{q} $ of the open affine neighborhood, which equals $\mathcal{O}_ \mathfrak{q} $).
-		% (hence $f $ is invertible in $\mathcal{O}_\mathfrak{q} $, hence is invertible in some $\Gamma(U\cap X_f,\mathcal{O}_{X_f})$ by direct limit).
+		By definition, $f\notin \mathfrak{m}_{\mathfrak{q}} = \mathfrak{q} \forall \mathfrak{q}\in X_f$ (note that $\mathfrak{m}_{\mathfrak{q}} $ is the maximal ideal of the stalk at $\mathfrak{q} $ of the open affine neighborhood, which equals $\mathscr{O}_ \mathfrak{q} $).
+		% (hence $f $ is invertible in $\mathscr{O}_\mathfrak{q} $, hence is invertible in some $\Gamma(U\cap X_f,\mathscr{O}_{X_f})$ by direct limit).
 	\end{proof}
 \end{enumerate}
 \end{exercise}
@@ -420,21 +1453,140 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \begin{enumerate}[(a)]
 	\item Let $f:X\to Y $ be a morphism of schemes, and suppose that $Y $ can be covered by open subsets $U_i $, such that for each $i $, the induced map $f^{-1}(U_i)\to U_i $ is an isomorphism. Then $f $ is an isomorphism.
 	\begin{proof}
-		TODO
+		First we can see that $f $ is a homeomorphism as it is:
+
+		bijective: surjectivity comes from every point in $Y $ being the output of some $x \in f^{-1}(U_i) $ and injectivity comes from the fact that if two points map to the same point, they are in the same preimage, which implies they are the same point by bijectivity of $f^{-1}(U_i) \to U_i $.
+
+		bicontinuous: follows from it being a local homeomorphism and a bijection.
+
+		Thus it suffices to check it is sheaf isomorphism on stalks.
+		Take some $x \in X $ and some $j $ such that $x\in f^{-1}(U_i) $.
+		Then $\mathscr{O}_{Y,x} = (\mathscr{O}_{Y}|_{U_i})_x = \mathscr{O}_{U_i,x}$.
+		As $\mathscr{O}_{U_i} \to \mathscr{O}_{f^{-1}(U_i)}$ is an isomorphism, we have an isomorphism $\mathscr{O}_{U_i,x} \to \mathscr{O}_{f^{-1}(U_i),x}$.
+		Hence $\mathscr{O}_{Y,x} \cong (\mathscr{O}_Y\big|_{U_i})_x \cong \mathscr{O}_{U_i,x}\cong \mathscr{O}_{f^{-1}(U_i),x}\cong (\mathscr{O}_X\big|_{f^{-1}(U_i)})_x$.
+		Thus the stalks are isomorphic.
 	\end{proof}
-	\item A scheme is affine if and only if there is a finite set of elements $f_{1}, \ldots ,f_r \in A = \Gamma(X,\mathcal{O}_X) $ such that the open subsets $X_{f_i} $ are affine and $f_{1}, \ldots ,f_r $ generate the unit ideal in $A $.
+	\item A scheme is affine if and only if there is a finite set of elements $f_{1}, \ldots ,f_r \in A = \Gamma(X,\mathscr{O}_X) $ such that the open subsets $X_{f_i} $ are affine and $f_{1}, \ldots ,f_r $ generate the unit ideal in $A $.
 		[Hint: Use (Ex. 2.4) and (Ex. 2.16d) above.]
 	\begin{proof}
-		The if direction is easy.
+		The if direction is easy because $X_{f_i} \cong D(f_i) $.
 
 		For the only if direction, we will show that $X \cong \Spec A $.
-		We can cover $\Spec A $ with a finite number of $U_i \coloneqq \Spec A_{g_i} $.
-		We have the map $f: X\to \Spec A $ via Exercise 2.4 and the map $\iota :A\to \Gamma(X,\mathcal{O}_X) $.
-		So by (a), if we show that $f^{-1}(U_i) \to U_i$ is an isomorphism, we are done.
-		TODO
+		We want to use 2.16c, so we first show that with the finite open cover of affines $X_{f_i} $, the intersections are quasi-compact.
+		By 2.16a, $X_{f_i}\cap X_{f_j} = D(f_j|_{X_{f_i}})  \subseteq \Spec \Gamma(X_{f_i},\mathscr{O}_X\big|_{X_{f_i}})$.
+		As a distinguished open subset of an affine space, this intersection is then affine.
+		Thus by 2.16d we have that $\Gamma(X_{f_i},\mathscr{O}_{X_{f_i}}) \cong A_{f_i} $.
+		As $X_{f_i}$ is affine, $f_i: X_{f_i}\xrightarrow{\sim} \Spec A_{f_i} $.
+		By looking at the map $A_{f_i}\to \Gamma(X_{f_i}, \mathscr{O}_{X_{f_i}}) $, we see that
+		\[
+		\begin{tikzcd}
+		A & \Gamma(X, \mathscr{O}_X)\\
+		A_{f_i} & \Gamma(X_{f_i},\mathscr{O}_{X_{f_i}})
+		\arrow[from=1-1,to=1-2]
+		\arrow[from=1-1,to=2-1]
+		\arrow[from=2-1,to=2-2]
+		\arrow["\sim",from=1-2,to=2-2]
+		\end{tikzcd}
+		\]
+		commutes.
+		Thus the morphism $f:X\to \Spec A $ induced by identity from 2.4a gives us isomorphisms $X_{f_i}\to \Spec A_{f_i} $.
+		By part (a), this makes $f $ an isomorphism (because $\Spec A_{f_i} $ cover $\Spec A $ as the ideal generated by all the $f_i $'s contains $1$), making $X $ affine.
 	\end{proof}
 \end{enumerate}
 \end{exercise}
+
+\begin{exercise}%2.18
+	In this exercise, we compare some properties of a ring homomorphism to the induced morphism of the spectra of the rings.
+	\begin{enumerate}
+		\item Let $A $ be a ring, $X  = \Spec A$, and $f \in A $. Show that $f $ is nilpotent if and only if $D(f) $ is empty.
+		\item Let $\phi :A\to B $ be a homomorphism of rings, and let $f: Y = \Spec B \to X = \Spec A $ be the induced morphism of affine schemes. Show that $\phi  $ is injective if and only if the map of sheaves $f^\#: \mathscr{O}_X \to f_\ast \mathscr{O}_Y $ is injective. Show furthermore in that case $f $ is \textit{dominant}, i.e. $f(Y) $ is dense in $X $.
+		\item With the same notation, show that if $\phi  $ is surjective, then $f $ is a homeomorphism of $Y $ onto a closed subset of $X $, and $f^\#: \mathscr{O}_X\to f_\ast \mathscr{O}_Y$ is surjective.
+		\item Prove the converse to (c), namely, if $f: Y\to X $ is a homeomorphism onto a closed subset, and $f^\#: \mathscr{O}_X\to f_\ast \mathscr{O}_Y $ is surjective, then $\phi  $ is surjective.
+			[Hint: Consider $X' = \Spec(A / \ker \phi)$ and use (b) and (c).
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Begin with the fact that $D(f) = \Spec A_f $.
+	Next, notice that the elements of $\Spec A_f $ don't meet $f $.
+	If $f $ is nilpotent, every prime ideal must contain $f $ (as they contain $0 $), so $\Spec A_f = \emptyset $.
+
+	Conversely, if $\Spec A_f = \emptyset $, then $A_f = 0$ because every non-zero ring has a maximal ideal.
+	Thus there is some $n $ such that $1\cdot f^n = 0 $ in $A $.
+
+	(b) The map of sheaves is injective iff it is injective on the stalks.
+	This happens iff $f^\#_{y}: \mathscr{O}_{X,f(y)} \to (f_\ast \mathscr{O}_{Y})_{f(y)}$ is injective.
+	Note that the domain and codomain are $A_{f(y)} $ and $B$.
+	To see this codomain equality, we can first see that $(f_\ast \mathscr{O}_Y)_{f(y)} \cong B \otimes $
+	But this happens iff the map $A\to B $ is injective as these localizations range over all prime ideals (by commutative algebra, can see Atiyah-Macdonald Chapter 5).
+
+	Finally, $f(Y) $ is dense because we can show that every open set in $X $ intersects $f(Y) $.
+	It suffices to show this for distinguished open sets $D(g) \subseteq X $ because every open set contains a non-empty distinguished open.
+	Because $D(g) \cong \Spec A_g $, if we show that there is an element of $\Spec A_g $ that is the image of an element of $\Spec B $, we are done.
+	Now consider $\Spec B_{\phi (g)} $.
+	This is non-empty because it is empty iff $\phi (g) $ is nilpotent, which would imply that $g $ is nilpotent (using injectivity of $\phi  $), contradicting the non-emptiness of $\Spec A_g $.
+	Then the image of an element of $\Spec B_{\phi (g)} $ is in $\Spec A_g $ because primes in $B_{\phi (g)} $ don't contain $\phi (g) $, so their pullbacks don't either.
+
+	(c) 
+	To see that $f $ is a homeomorphism onto a closed subset of $X $, realize that because $\phi  $ is surjective, $A / \ker \phi \cong B $.
+	Thus $\Spec B \cong \Spec A / \ker \phi \cong V(\ker \phi) \subseteq \Spec A$.
+
+	Finally, to see that $f^\# $ is surjective, 
+\end{proof}
+
+\begin{exercise}
+	Let $A$ be a ring. Show that the following conditions are equivalent:
+	\begin{enumerate}
+		\item $\Spec A $ is disconnected;
+		\item there exist nonzero elements $e_{1},e_{2}\in A $ such that $e_{1}e_{2} = 0, e_{1}^2=e_{1},e_{2}^2=e_{2}, e_{1}+e_{2}=1$ (these elements are called \textit{orthogonal idempotents});
+		\item $A $ is isomorphism to a direct product $A_{1}\times A_{2} $ of two nonzero rings.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	% $i) \implies ii) $ If $\Spec A $ is disconnected, then $\Spec A = V(\mathfrak{a}) \sqcup V(\mathfrak{b}) $ for ideals $\mathfrak{a},\mathfrak{b} $ such that the closed sets aren't empty.
+	$ii) \implies iii) $ We have that $A \cong Ae_{1} \times Ae_{2}$.
+	First note that $Ae_{1} $ is a ring because we have addition and multiplication from $A $, and it is closed: $ae_{1} + be_{1} = (a+b)e_{1} $ and $(ae_{1})(be_{1}) = abe_{1}^2=abe_{1} $.
+	The isomorphism is via the forward direct mapping $a \in A $ to $(ae_{1},ae_{2}) $ and the backwards mapping $(a,b) $ to $ae_{1}+be_{2} $.
+	These are inverses because $e_{1}e_{2}=0 $, so $ae_{1}+be_{2}\mapsto (a,b) $.
+
+	Finally, the forward map is injective because if $(ae_{1},ae_{2}) = (be_{1},be_{2}) $, then $((a-b)e_{1},(a-b)e_{2}) = (0,0) $, so $a-b = (a-b)(e_{1}+e_{2}) = 0 $.
+
+	$iii) \implies ii) $ Let $e_{1}=(1,0) $ and $e_{2}=(0,1) $.
+
+	$i) \implies iii) $ By definition, $\Spec A = V(\mathfrak{a})\sqcup V(\mathfrak{b}) $ for ideals $\mathfrak{a},\mathfrak{b} $.
+	Then $\Spec A \cong \Spec A / \mathfrak{a} \sqcup \Spec A / \mathfrak{b} $.
+	Because $\Spec $ is a contravariant functor, this implies that $A = A / \mathfrak{a} \times A / \mathfrak{b} $ via universal properties.
+	Proof of this:
+	We have this diagram:
+	\[\begin{tikzcd}
+		C \\
+	& {A / \mathfrak{a} \times A / \mathfrak{b}} & A / \mathfrak{b} \\
+	& A / \mathfrak{a}
+	\arrow["{\exists !}"{description}, dotted, from=1-1, to=2-2]
+	\arrow[from=1-1, to=2-3]
+	\arrow[from=1-1, to=3-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\end{tikzcd}\]
+	Applying $\Spec $ we get
+	\[\begin{tikzcd}
+		& \Spec A / \mathfrak{b} \\
+		\Spec A / \mathfrak{a} & {\Spec(A / \mathfrak{a} \times A / \mathfrak{b})} \\
+		&& \Spec C
+		\arrow[from=1-2, to=2-2]
+		\arrow[from=1-2, to=3-3]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=2-1, to=3-3]
+		\arrow["\exists !",dotted,from=2-2, to=3-3]
+	\end{tikzcd}\]
+	This implies by universality of disjoint union that
+	\[
+		\Spec(A / \mathfrak{a}) \sqcup \Spec(B / \mathfrak{b}) \cong \Spec(A / \mathfrak{a} \times A / \mathfrak{b})
+	.\] 
+	(Note that this is only in the category of affine schemes, but that is enough here. By Lemma 26.6.7 of the Stacks, finite disjoint unions and products in the category of affine schemes are also disjoint unions and products in the category of locally ringed spaces.).
+
+	$iii) \implies i) $ Let $e_{1} = (1,0)$ and $e_{2} = (0,1) $.
+	Then $\Spec A = V((e_{1}))\sqcup V((e_{2})) $ because $V((e_{1}))\sqcup V((e_{2})) = V((e_{1}e_{2})) = V((0)) = \Spec A $ and $V((e_{1}))\cap V((e_{2})) = V((e_{1},e_{2})) = V((1)) = \emptyset$.
+\end{proof}
 
 \subsection{First Properties of Schemes}
 
@@ -487,14 +1639,14 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
-	a) The if direction is trivially.
+	a) The if direction is trivial.
 	Finite type implies locally finite type by definition.
 	Now for quasi-compact, take the cover of $Y $ from locally finite type, let it be $V_i $.
 	Because it is finite type, there is a finite open affine cover of $f^{-1}(V_i) $, say $U_{ij} $.
 	Then any open cover of $f^{-1}(V_i) $ then covers $U_{ij} $, which is quasi-compact because it is affine, so we can take a finite subcover.
 	We then have a finite subcover of $f^{-1}(V_i) $ by putting together all the finite subcovers from $U_{ij} $.
 
-	b) Easy by using 3.1 and 3.2.
+	b) Easy by using Exercises 3.1 and 3.2.
 
 	c) WLOG, we can have $Y=\Spec B $ be affine. Let P be the property of $\Spec A \subseteq X$ that $A $ is a finitely generated $B $-algebra.
 	We want to use the affine communication lemma.
@@ -550,30 +1702,67 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \end{proof}
 
 \begin{exercise}%3.6
-	Let $X $ be an integral scheme. Show that the local ring $\mathcal{O}_{\zeta} $ of the generic point $\zeta  $ of $X $ is a field. It is called the \textit{function field} of $X $, and is denoted by $K(X) $. Show also that if $U = \Spec A $ is any open affine subset of $X $, then $K(X) $ is isomorphic to the quotient field of $A $.
+	Let $X $ be an integral scheme. Show that the local ring $\mathscr{O}_{\zeta} $ of the generic point $\zeta  $ of $X $ is a field. It is called the \textit{function field} of $X $, and is denoted by $K(X) $. Show also that if $U = \Spec A $ is any open affine subset of $X $, then $K(X) $ is isomorphic to the quotient field of $A $.
 \end{exercise}
 \begin{proof}
 	We can find an open affine neighborhood of $\zeta  $ $U = \Spec A $ by definition of a scheme.
 	Because $X $ is integral, and the generic point is unique, the generic point is $(0) \in U $.
-	Further, $\mathcal{O}_{(0),U} $ is a field because it is an integral domain.
-	Because the local ring of a restricted scheme and the scheme are the same, $\mathcal{O}_{\zeta } $ is a field.
+	Further, $\mathscr{O}_{(0),U} $ is a field because it is an integral domain.
+	Because the local ring of a restricted scheme and the scheme are the same, $\mathscr{O}_{\zeta } $ is a field.
 
-	The quotient field of $A $ is $A_{(0)} \cong \mathcal{O}(U)_{\zeta} $.
-	Because the local ring of a restricted scheme and the scheme are the same, $K(X) = \mathcal{O}_{\zeta }\cong A_{(0)} $.
+	The quotient field of $A $ is $A_{(0)} \cong \mathscr{O}(U)_{\zeta} $.
+	Because the local ring of a restricted scheme and the scheme are the same, $K(X) = \mathscr{O}_{\zeta }\cong A_{(0)} $.
 \end{proof}
 
 \begin{exercise}%3.7
-	A morphism $f: X\to Y $, with $Y $ irreducible is \textit{generically finite} if $f^{-1}(\eta ) $ is a finite set, where $\eta  $ is the generic point of $Y $. A morphism $f: X\to Y $ is \textit{dominant} is $f(X) $ is dense in $Y $. Now let $f: X\to Y $ be a dominant, generically finite morphism of finite type of integral schemes. Show that there is an open dense subset $Y \subseteq Y $ scuh that the induced morphism $f^{-1}(U) \to U $ is finite.
-	[Hint: First show that the function field of $X $ is a finite field extension of the function field of $Y $.]
+	A morphism $f: X\to Y $, with $Y $ irreducible is \textit{generically finite} if $f^{-1}(\eta ) $ is a finite set, where $\eta  $ is the generic point of $Y $. A morphism $f: X\to Y $ is \textit{dominant} is $f(X) $ is dense in $Y $. Now let $f: X\to Y $ be a dominant, generically finite morphism of finite type of integral schemes. Show that there is an open dense subset $Y \subseteq Y $ such that the induced morphism $f^{-1}(U) \to U $ is finite.
+	\ifhint
+		Hint: First show that the function field of $X $ is a finite field extension of the function field of $Y $.
+	\fi
 \end{exercise}
 \begin{proof}
-	We show the hint first.
-	Let $\eta _X $ be the generic point of $X $.
+	We show the hint first, namely that the function field $K_X $ of $X $ is a finite field extension of $K_Y $.
+	Let $\eta _X $ be the generic point of $X $, which exists because $X $ is integral, so irreducible, so Exercise 2.9 applies.
 	Then because $f(\overline{\eta _X}) \subseteq \overline{f(\eta _X)}   $ and $\eta _X $ is the generic point of $X $, we have that $f(X) \subseteq \overline{f(\eta_X)}  $.
 	Because $f  $ is dominant, $f(X) $ is dense, so by definition of closure we have $\overline{f(X)} = Y \subseteq \overline{f(\eta _X)} \implies f(\eta_X) = \eta$.
 	So $f $ maps the generic point of $X $ to the generic point of $Y $.
 
-	Because $f $ is generically finite and $f^{-1}(\eta ) $ is homeomorphic to $X \times_Y \Spec(K(Y)) $.
+	Next notice that $f^{-1}(\eta_X ) $ is homeomorphic to $X \times_Y \Spec(k(\eta_Y)) $.
+	As $\eta_Y  $ is the generic point of $Y $, $k(\eta _Y) = K_Y $.
+\end{proof}
+
+\begin{lem}\label{lem:distinguished}
+	Consider an affine scheme $\Spec A $ and an open subset $U $.
+	Then $U $ has an open cover by distinguished opens.
+\end{lem}
+\begin{proof}
+	Take some point $\mathfrak{p} \in U$.
+	Because $U^C $ is closed, $U^C = V(\mathfrak{a}) $ for some ideal $\mathfrak{a} $.
+	Now we pick $f \in \mathfrak{a} \setminus \mathfrak{p} $.
+	There exists such an $f $ because if $\mathfrak{a} \subseteq \mathfrak{p} $, then $V(\mathfrak{a}) \supseteq V(\mathfrak{p})$, which is clearly a contradiction.
+	Then $D(f) \subseteq U$ because $U^C = V(\mathfrak{a}) \subseteq V(f)$ and $f\notin \mathfrak{p} $.
+	Do so for every point in $U $ to obtain an open cover.
+\end{proof}
+
+\begin{lem}[Nike's Lemma]
+	The intersection of open affines $\Spec A $, $\Spec B $ can be covered by distinguished open in both $\Spec A, \Spec B $.
+\end{lem}
+\begin{proof}
+	Let $U = \Spec A \cap \Spec B $ and let $P $ be some point in $U $.
+	Find a distinguished open neighborhood of $P $, $D(f)$, of $U $ in $\Spec A $ by \fullref{lem:distinguished}.
+	This is open in $\Spec B $, so we can find a distinguished open $D(g) \subseteq D(f) $ in $\Spec B $, once again by \fullref{lem:distinguished}.
+
+	Finally, we can show that $D(g) $ is distinguished in $\Spec A $.
+	First we can restrict $g $ to an element $g' \in \Gamma(D(f),\Spec A) = A_f $.
+	Then because the restriction maps in affine schemes are restrictions of schemes, $g' $ vanishes on the same points in $\Spec A_f $ as $g $, so $\Spec B_g =  $
+\end{proof}
+
+\begin{exercise}[Normalization.] 
+	A scheme is \textit{normal} if all of its local rings are integrally closed domains. Let $X$ be an integral scheme. For each open affine subset $U = \Spec A$ of $X$, let $\tilde{A} $ be the integral closure of $A$ in its quotient field, and let $\tilde{U} = Spec \tilde{A}$. Show that one can glue the schemes $\tilde{U}$ to obtain a normal integral scheme $\tilde{X} $, called the \textit{normalization} of $X$. Show also that there is a morphism $\tilde{X} \to X$, having the following universal property: for every normal integral scheme $Z$, and for every dominant morphism $f:Z \to X$, $f $ factors uniquely through $X$. If $X$ is of finite type over a field $k$, then the morphism $\tilde{X} \to X$ is a finite morphism. This generalizes (I, Ex. 3.17).
+\end{exercise}
+\begin{proof}
+	We wish to glue together the schemes via Exercise 2.12, so we have to check the conditions.
+	Let the $X_i $ be $\tilde{U} $, and let 
 \end{proof}
 
 \begin{exercise}%3.9
@@ -583,13 +1772,186 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	\end{enumerate}
 \end{exercise}
 
+\begin{exercise}[3.11 Closed Subschemes]
+    \begin{enumerate}
+        \item Closed immersions are stable under base extension: if $f: Y\to X$ is a closed immersion, and if $X'\to X$ is any morphism, then $f':Y\times_X X' \to X'$ is also a closed immersion.
+        \begin{proof}
+            
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[3.18, Constructible Sets.]
+    Let $X$ be a Zariski topological. A \textit{constructible subset} of $X$ is a subset which belongs to the smallest family $\mathcal{F}$ of subsets such that (1) every open subset is in $\mathcal{F}$, (2) a finite intersection of elements of $\mathcal{F}$ is in $\mathcal{F}$, and (3) the complement of an element of $\mathcal{F}$ is in $\mathcal{F}$.
+    \begin{enumerate}
+        \item A subset of $X$ is \textit{locally closed} if it is the intersection of an open subset with a closed subset. Show that a subset of $X$ is constructible if and only if it can be written as a finite disjoint union of locally closed subsets.
+        \begin{proof}
+            First we can see that every disjoint union of locally closed sets is constructible.
+            Suppose we had $X = \sqcup_{i=1}^n U_i\cap C_i$ with $U_i$ open and $C_i$ closed.
+            
+            Because all open subsets are in the family, and closed sets are the complement of an open set, closed subsets are also in the family by (3).
+            Further, finite unions of constructible sets are constructible.
+            Say we had $X = \cup_{i=1}^n c_i$ with $c_i$ constructible.
+            Then $c_i^C$ is constructible by (3), so $\cap c_i^C$ is constructible by (2).
+            Finally, by (3) $(\cap c_i^C)^C = \cup c_i$ is constructible.
+
+            Because $U_i,C_i$ are constructible, $U_i\cap C_i$ is constructible.
+            As $X$ is a finite union, we are done.
+
+            To show the reverse direction, we show that $S = \{$ finite disjoint union of locally closed subsets $\}$ satisfies properties (1),(2),(3).
+
+            (1): Obviously met since open sets are itself intersected with the whole space, a closed subset, making open sets locally closed.
+            Further, (as a fact needed in (3)), closed sets are in $S$ because a closed set is itself intersected with the whole space, an open set, making closed sets locally closed.
+
+            (2): Say we have $X=\sqcup_{i= 1}^m U_i\cap C_i$ and $Y = \sqcup_{i=1}^n U'_i\cap C'_i$.
+            Then $X\cap Y = \sqcup_{i=1}^m\sqcup_{j=i}^n (U_i\cap C_i)\cap (U'_j \cap C'_j)$.
+            This is because of how intersections distribute across unions.
+            The disjoint union is due to each $U_i\cap C_i, U'_j\cap C'_j$ being disjoint as $i$ varies and as $j$ varies.
+            Finally, $(U_i \cap C_i)\cap (U'_j \cap C'_j) = (U_i\cap U'_j) \cap (C_i\cap C'_j)$, which is constructible as the two sides are open and closed sets respectively, making their intersection constructible.
+
+            (3): Suppose we have $X = \sqcup_{i=1}^n U_i\cap C_i$.
+            Then $X^C = \cap_{i=1}^n (U_i\cap C_i)^C = \cap_{i=1}^n U_i^C\cup C_i^C$.
+            As $U_i^C,C_i^C$ are locally closed, $U_i^C\cup C_i^C \in S$ by definition.
+            By (2), this intersection is in $S$.
+            So $S$ is closed under complements.
+        \end{proof}
+        \item Show that a constructible subset of an irreducible Zariski space $X$ is dense if and only if it contains the generic point. Furthermore, in that case it contains a non-empty open subset.
+        \begin{proof}
+            If it contains the generic point, it is obviously dense.
+
+            Suppose we have a dense constructible set $S$.
+            Then by the above, it is of the form $S = \sqcup_{i=1}^n U_i\cap C_i$.
+            Because it is dense, $\overline{S} = X$.
+            But $\overline{S} \supseteq \cup \overline{U_i\cap C_i}$.
+            
+            As $X$ is irreducible, if the right hand side equalled $X$, then we would get a closed decomposition of $X$.
+            So in this case, $\overline{U_i\cap C_i} = X$, and because $C_i \supseteq U_i\cap C_i$ and $C_i$ is closed, $\overline{U_i\cap C_i} \subseteq C_i \implies C_i = X$.
+            So $X$ is a union of open sets in $X$, so $X$ contains the generic point as all open sets contain the generic point.
+
+            So $\cup \overline{U_i\cap C_i} \subsetneq X$.
+            As $\overline{U_i\cap C_i} \supseteq \overline{U_i}\cap \overline{C_i}$, 
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\subsection{Sheaves of Modules}
+
+\begin{exercise}%5.4
+	Show that a sheaf of $\mathscr{O}_X $-modules $\mathscr{F} $ on a scheme $X $ is quasi-coherent if and only if every point of $X $ has a neighborhood $U $, such that $\mathscr{F}|_U $ is isomorphic to a cokernel of free sheaves on $U $. If $X $ is noetherian, then $\mathscr{F} $ is coherent if and only if it is locally a cokernel of a morphism of free sheaves of finite rank. (These properties were originally the definition of quasi-coherent and coherent sheaves).
+\end{exercise}
+\begin{proof}
+	Fix a point $x\in X $.
+	Let the neighborhood be an open affine set $U = \Spec A $ containing $x $.
+	Then $\mathscr{F}|U \cong \tilde{M} $ by Proposition 5.4.
+	For all open $U $, we have the exact sequence
+	\[
+		0 \to A^{n} \to A^{m} \to M \to 0
+	\] 
+	because all modules are the quotient of a free module.
+
+	Because $\tilde{\cdot}$ is exact, we have that
+	\[
+		0 \to \tilde{A^n} \to \tilde{A^m} \to \tilde{M} \to 0
+	\] 
+	is exact.
+	By Proposition 5.2c, the first two sheaves are free sheaves, and by hypothesis the last sheaf is $\mathscr{F}|_U $.
+	Finally, $\tilde{M} \cong \tilde{A^m} / \tilde{A^n} $ by Exercise 1.6.
+
+	Similarly, if $X $ is Noetherian, then use the same notation as above.
+	$M $ is finitely generated by coherence of $\mathscr{F} $.
+	Hence $m $ is finite, and $n $ is finite because a submodule of a finite module over a Noetherian ring is finite.
+\end{proof}
+
+\begin{exercise}[5.5]
+	Let $f: X\to Y $ be a morphism of schemes.
+	\begin{enumerate}
+		\item Show by example that if $\mathscr{F} $ is coherent on $X $, then $f_\ast \mathscr{F} $ need not be coherent on $Y $, even if $X $ and $Y $ are varieties over a field $k $.
+		\item Show that a closed immersion is a finite morphism ($\S$ 3).
+		\item If $f $ is a finite morphism of noetherian schemes, and if $\mathscr{F} $ is coherent on $X $, then $f_\ast \mathscr{F} $ is coherent on $Y $.
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) Let $X = \Spec \Q $ and $Y = \Spec \Z $.
+	Let $\mathscr{F} $ be the coherent sheaf assigning to $(0) \in X$ the finite $\Q $-module $\Q $.
+	Then $f_\ast \mathscr{F}(Y) = \Q$, which isn't finite over $\Z $.
+
+	b) By exercise 3.4, it suffices to show that for all affines $V = \Spec B $, $f^{-1}(V) = \Spec A $ with $A $ a finite $B $ module.
+	By exercise 3.11, $f^{-1}(V) = \Spec B / I$ for some ideal $I \subseteq B $.
+	As $B / I $ is clearly finite over $B $, we are done.
+
+	c) Fix an arbitrary open affine $U = \Spec A $ of $Y $.
+	Because $f $ is finite, $f^{-1}(U) = \Spec B $ for $B $ a finite $A $ module.
+	Because $\mathscr{F} $ is coherent on $X $, for all open affines $\Spec A $ of $Y $, $\mathscr{F}(f^{-1}(\Spec A)) = \mathscr{F}(\Spec B) = \tilde{M} $ with $M $ a finite $B $ module.
+	As $M $ is finite over $B $ and $B $ is finite over $A $, $M $ is finite over $A $.
+	Thus $f_\ast \mathscr{F} $ is coherent on $Y $.
+\end{proof}
+
+\begin{exercise}[Support.] %5.6
+	Recall the notions of support of a section of a sheaf, support of a sheaf, and subsheaf with supports from (Ex. 1.14) and (Ex. 1.20).
+	\begin{enumerate}
+		\item Let $A $ be a ring, let $M $ be an $A $-module, let $X = \Spec A $, and let $\mathscr{F} = \tilde{M} $. For any $m \in M = \Gamma(X,\mathscr{F}) $, show that $\Supp m = V(\Ann m) $, where $\Ann m $ is the \textit{annihilator} of $m = \{a \in A | am = 0\}   $.
+		\item Now suppose that $A $ is noetherian, and $M $ finitely generated. SHow that $\Supp \mathscr{F} = V(\Ann M) $.
+		\item The support of a coherent sheaf on a noetherian scheme is closed.
+		\item For any ideal $\mathfrak{a} \subseteq A $, we define a submodule $\Gamma_{\mathfrak{a}}(M) $ of $M $ by $\Gamma_{\mathfrak{a}}(M) = \{m \in M | \mathfrak{a}^n m = 0 \text{ for some }n > 0\}   $. Assume that $A $ is noetherian, and $M $ any $A $-module. Show that $\tilde{\Gamma_{\mathfrak{a}}(M)} \cong \mathscr{H}_Z^0(\mathscr{F}) $, where $Z = V(\mathfrak{a}) $ and $\mathscr{F} = \tilde{M} $.
+
+			[Hint: Use (Ex. 1.20) and (5.8) to show a priori that $\mathscr{H}^{0}_{Z}(\mathscr{F}) $ is quasi-coherent. Then show that $\Gamma_{\mathfrak{a}}(M)\cong \Gamma _Z (\mathscr{F})$.]
+		\item Let $X $ be a noetherian scheme, and let $Z $ be a closed subset. If $\mathscr{F} $ is a quasi-coherent (respectively, coherent) $\mathscr{O}_X $-module, then $\mathscr{H}_Z^0(\mathscr{F}) $ is also quasi-coherent (respectively, coherent).
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) 
+	Clearly $V(\Ann m) \subseteq \Supp m$, as $\forall \mathfrak{p} \in V(\Ann m) $, $m_{\mathfrak{p}} \ne 0 $ because otherwise, $\exists a \in A\setminus \mathfrak{p} $ such that $am = 0 $.
+	But then $a \in \Ann m $, a contradiction.
+	Thus $\mathfrak{p} \in \Supp m $.
+
+	Finally, take some $\mathfrak{p} \in \Supp m $.
+	Then $m_{\mathfrak{p}} \ne 0 $, which by definition means that $\forall a \in A\setminus \mathfrak{p}, am \ne 0 $.
+	Thus $a \in \Ann m \implies am = 0 \implies a \notin A \setminus \mathfrak{p} $, so $a \in \mathfrak{p} $.
+	Hence $\Ann m \subseteq \mathfrak{p} $.
+
+	b) We have that $\Supp \mathscr{F} = \bigcap_{m \in \mathscr{F}(X)} \Supp m $ by definition.
+	By part a, this equals $\Supp \mathscr{F} = \bigcap V(\Ann m) $.
+	Because $M $ is finitely generated, it suffices to consider $\cap V(\Ann m_i) $ with $m_i $ a finite set of generators of $M $.
+	Finally, $\cap V(\Ann m_i) = V(\cup \Ann m_i) $.
+	But $\cup \Ann m_i = \Ann M $.
+	Thus $\Supp \mathscr{F} = V(\Ann M) $.
+
+	c) By b, locally $\Supp \mathscr{F}|_{\Spec A} = V(\Ann M)$ with $M $ finitely generated and $A $ noetherian.
+
+	d) By Exercise 1.20, we have
+	\[
+		0 \to \mathscr{H}_Z^0(\mathscr{F}) \to \mathscr{F} \to j_\ast(\mathscr{F}|_U)
+	.\] 
+	By 5.8, $j_\ast(\mathscr{F}|_U) $.
+	Because $\mathscr{H}_{Z}^0(\mathscr{F}) \cong \ker(\mathscr{F}\to j_\ast(\mathscr{F}|_U)) $.
+	But the kernel of a map between quasi-coherent sheaves is quasi-coherent, so $\mathscr{H}_Z^0(\mathscr{F}) $.
+
+	e) 
+\end{proof}
+
+\begin{exercise}%5.7
+	Let $X $ be noetherian scheme, and let $\mathscr{F} $ be a coherent sheaf.
+	\begin{enumerate}
+		\item If the stalk $\mathscr{F}_x $ is a free $\mathscr{O}_X $-module for some point $x\in X $, then there is a neighborhood $U $ of $x $ such that $\mathscr{F}|_U $ is free.
+		\item $\mathscr{F} $ is locally free if and only if its stalks $\mathscr{F}_x $ are free $\mathscr{O}_X $-module for all $x \in X $.
+		\item $\mathscr{F} $ is invertible (i.e., locally free of rank $1 $) if and only if there is a coherent sheaf $\mathscr{G} $ such that $\mathscr{F} \otimes \mathscr{G} \cong \mathscr{O}_X $. (This justifies the terminology invertible: it means that $\mathscr{F} $ is an invertible element of the monoid of coherent sheaves under the operation $\otimes $).
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	a) 
+
+	b) The if direction follows from a).
+
+	c)
+\end{proof}
+
 \begin{exercise}[Vector Bundles]%5.18
 	Let $Y $ be a scheme. A \textit{(geometric) vector bundle} of rank $n $ over $Y $ is a scheme $X $ and a morphism $f: X\to Y$, together with additional data consisting of an open covering $\{U_i\}   $ of $Y $, and isomorphisms $\psi_i: f^{-1}(U_i) \to \A^n_{U_i} $, such that for any $i,j $, and for any open affine subset $V = \Spec A \subseteq  U_i \cap U_j $, the automorphism $\psi = \psi_j\circ \psi_i ^{-1} $ of $\A^n_V = \Spec A[x_{1}, \ldots ,x_n] $, i.e. $\theta(a) = a $ for any $a \in A $, and $\theta (x_i) = \sum a_{ij}x_j $ for suitable $a_{ij} \in A $.
 
 	An \textit{isomorphism} $g: (X,f,\{U_i\} ,\{\psi_i\} ) \to (X',f',\{U_i'\} ,\{\psi_i'\} )     $ of one vector bundle of rank $n $ to another one is an isomorphism $g: X\to X' $ of the underlying schemes, such that $f=  f' \circ g $, and such that $X,f $, together with the covering of $Y $ consisting of all the $U_i $ and $U_i' $, and the isomorphisms $\psi_i $ and $\psi_i'\circ g $, is also a vector bundle structure on $X $.
 	\begin{enumerate}
-		\item Let $\mathcal{E} $ be a locally free sheaf of rank $n $ on a scheme $Y $. Let $S(\mathcal{E})$ be the symmetric algebra on $\mathcal{E}$, and let $X = Spec S(\mathcal{E})$, with projection morphism $f:X \to Y$. For each open affine subset $U \subseteq Y$ for which $\mathcal{E}|_U $ is free, choose a basis of $\mathcal{E}$, and let $\psi: f^{-1}(U) \to \A^n_U $ be the isomorphism resulting from the identification of $S(\mathcal{E}(V))$ with $\mathcal{O}(U)[x_{1}, \ldots , x_n]$. Then $(X,f,{u},{\psi})$ is a vector bundle of rank $n$ over $Y$, which (up to isomorphism) does not depend on the bases of $\mathcal{E}_U$ chosen. We call it the geometric vector bundle associated to $\mathcal{E}$, and denote it by $\bm{V}(\mathcal{E})$.
-% 		\item For any morphism $f:X \rightarrow Y$, a section of $f$ over an open set U s;; Yis a mor- phism s: U -+ X such that f 0 s = idu. It is clear how to restrict sections to smaller open sets, or how to glue them together, so we see that the presheaf U H {set of sections of f over U} is a sheaf of sets on Y, which we denote by 9'(X/Y). Show that if f:X -+ Y is a vector bundle of rank n, then the sheaf of sections .9"(X/Y) has a natural structure of (1)y-module, which makes it a locally free (1)y-module of rank n. [Hint: It is enough to define the module structure locally, so we can assume Y = Spec A is affine, and X = AY. Then a section s : Y -+ X comes from an A -algebra homomorphism (J: A [Xl' ... ,x.] -+ A, which in tum determines an ordered n-tuple «(J(x 1), • •• ,(J(x.) of elements of A. Use this correspondence between sections s and ordered n-tuples of 
+		\item Let $\mathscr{E} $ be a locally free sheaf of rank $n $ on a scheme $Y $. Let $S(\mathscr{E})$ be the symmetric algebra on $\mathscr{E}$, and let $X = Spec S(\mathscr{E})$, with projection morphism $f:X \to Y$. For each open affine subset $U \subseteq Y$ for which $\mathscr{E}|_U $ is free, choose a basis of $\mathscr{E}$, and let $\psi: f^{-1}(U) \to \A^n_U $ be the isomorphism resulting from the identification of $S(\mathscr{E}(V))$ with $\mathscr{O}(U)[x_{1}, \ldots , x_n]$. Then $(X,f,{u},{\psi})$ is a vector bundle of rank $n$ over $Y$, which (up to isomorphism) does not depend on the bases of $\mathscr{E}_U$ chosen. We call it the geometric vector bundle associated to $\mathscr{E}$, and denote it by $\bm{V}(\mathscr{E})$.
+% 	\item For any morphism $f:X \rightarrow Y$, a section of $f$ over an open set U s;; Yis a mor- phism s: U -+ X such that f 0 s = idu. It is clear how to restrict sections to smaller open sets, or how to glue them together, so we see that the presheaf U H {set of sections of f over U} is a sheaf of sets on Y, which we denote by 9'(X/Y). Show that if f:X -+ Y is a vector bundle of rank n, then the sheaf of sections .9"(X/Y) has a natural structure of (1)y-module, which makes it a locally free (1)y-module of rank n. [Hint: It is enough to define the module structure locally, so we can assume Y = Spec A is affine, and X = AY. Then a section s : Y -+ X comes from an A -algebra homomorphism (J: A [Xl' ... ,x.] -+ A, which in tum determines an ordered n-tuple «(J(x 1), • •• ,(J(x.) of elements of A. Use this correspondence between sections s and ordered n-tuples of 
 % elements of A to define the module structure.] 
 % 	\item Again let c! be a locally free sheaf ofrank n on Y, let X = V(c!), and let 9' = .9"(X /Y) be the sheaf of sections of X over Y. Show that .9" ~ c!~, as follows. Given a section s E r(v,c!~) over any open set V, we think of s as an element of Hom(c!lv,{1)v). So s determines an (1)y-algebra homomorphism S(c!lv) -+ (1)v. This determines a morphism of spectra V = Spec (1)v -+ Spec S(c!lv) = f-1(V), which is a section of X/YO Show that this construction gives an iso- morphism of c!~ to 9'. 
 % 	\item Summing up, show that we have established a one-to-one correspondence between isomorphism classes of locally free sheaves of rank n on Y, and iso- morphism classes of vector bundles of rank n over Y. Because of this, we sometimes use the words "locally free sheaf" and "vector bundle" inter- changeably, if no confusion seems likely to result.
