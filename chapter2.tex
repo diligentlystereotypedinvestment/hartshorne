@@ -1,5 +1,6 @@
 % root = main.tex
 \section{Schemes}
+\setcounter{section}{2}
 
 \begin{lem}\label{lem:directimagestalks}
 	Given a scheme morphism $f: X\to Y $, $(f_\ast \mathcal{O}_Y)_{f(x')} \cong \bigotimes_{x \in f^{-1}(f(x'))} \mathcal{O}_{X,x} $
@@ -2262,8 +2263,11 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 
 	(d) 
 	Fix an open affine cover $\Spec A_i $ of $X $.
-	Let $Y = \overline{f(Z)}  $, and give it a scheme structure as follows:
-	On $Y \cap \Spec A_i $, give it the scheme structure of $\Spec A_i / \ker f\big|_{f^{-1}(\Spec A_i)} $.
+	I will assume that $X $ is Noetherian, namely quasi-compact.
+	% Let $Y = \overline{f(Z)}  $, and give it a scheme structure as follows:
+	Define $Y $ locally as $\cup \overline{f(Z) \cap \Spec A_i}  $ with the scheme structure of $\Spec A_i / \ker f^\#( \Spec A_i ) $.
+	Note that $\overline{f(Z)} \subseteq Y $.
+	Since $X $ is quasi-compact, $Y $ is a finite union of closed sets, so it is closed.
 	Denote the latter ring by $B_i $.
 
 	Now we wish to glue the schemes $\{\Spec B_i\}   $ together, a l\`a Exercise 2.12, let $U_{ij} = \Spec B_i \cap \Spec B_j $.
@@ -2272,16 +2276,16 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Take $D(b_j) = D(b_i) \subseteq \Spec B_i\cap \Spec B_j$ with $b_j\in B_j, b_i\in B_i $.
 	Unravelling definitions, we then have that
 	\begin{align*}
-		\mathcal{O}_{\Spec B_j}(D(b_j)) &= \Spec (A_j / \ker f\big|_{f^{-1}(\Spec A_j)})_{b_j}\\
-		\mathcal{O}_{\Spec B_i}(D(b_i)) &= \Spec (A_i / \ker f\big|_{f^{-1}(\Spec A_i)})_{b_i}.
+		\mathcal{O}_{\Spec B_j}(D(b_j)) &= \Spec (A_j / \ker f^\#( \Spec A_i ))_{b_j}\\
+		\mathcal{O}_{\Spec B_i}(D(b_i)) &= \Spec (A_i / \ker f^\#( \Spec A_i ))_{b_i}.
 	\end{align*}
 	But because $f $ is a morphism of schemes, we thus have
 	\begin{align*}
-		\mathcal{O}_{\Spec B_j}(D(b_j)) &= \Spec (A_j)_{b_j} / \ker f\big|_{f^{-1}(D(b_j))} \\
-		\mathcal{O}_{\Spec B_i}(D(b_i)) &= \Spec (A_i)_{b_i} / \ker f\big|_{f^{-1}(D(b_i))}.
+		\mathcal{O}_{\Spec B_j}(D(b_j)) &= \Spec (A_j)_{b_j} / \ker f^\#( \Spec (A_j)_{b_j} ) \\
+		\mathcal{O}_{\Spec B_i}(D(b_i)) &= \Spec (A_i)_{b_i} / \ker f^\#( \Spec (A_i)_{b_i} ).
 	\end{align*}
-	Because $D(b_j)=D(b_i) $ are distinguished opens, $(A_j)_{b_j} \cong (A_i)_{b_i} $, so use this isomorphism as the local map of sheaves.
-	These maps on a distinguished open cover of $U_{ij} $ agrees on intersections because we can once again cover the intersection of distinguished opens with distinguished opens and apply the same logic and then use sheaf property 2 to lift to unique sections.
+	Because $D(b_j)=D(b_i) $, being common distinguished opens, $(A_j)_{b_j} \cong (A_i)_{b_i} $ and $f^\#(\Spec(A_i)_{b_i}) = f^\#(\Spec(A_j)_{b_j}) $, so we can use this isomorphism as the local map of sheaves.
+	These maps on $U_{ij} $ agree on intersections because we can once again cover the intersection of distinguished opens with distinguished opens and apply the same logic and then use sheaf property 2 to lift to unique sections.
 
 	Because $\phi _{ij} $ is defined using isomorphisms on sections and is topologically identity, $\phi _{ij} = \phi _{ji}^{-1} $.
 	Finally, $\phi _{ik} = \phi _{jk} \circ \phi _{ij} $ because on distinguished open sets, it is just composing the canonical isomorphisms of distinguished open sets in each $U_{ij},U_{ik} $.
@@ -2309,6 +2313,11 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 
 	To see that $Y $ is just the reduced induced structure, simply use part (c).
 \end{proof}
+
+\begin{rem}
+	Note that the scheme theoretic image is \textbf{not} always the closure of $f(Z) $.
+	See \url{https://stacks.math.columbia.edu/tag/0GIK}.
+\end{rem}
 
 \begin{exercise}[Closed Subschemes of $\Proj S $.]
 	~
@@ -2432,8 +2441,8 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \end{exercise}
 \begin{proof}
 	The closed points in $\Spec A $ correspond to maximal ideals.
-	The closure of a union contains the union of the closures, so if we show that the union of the closures of each point is $\Spec A $.
-	Finally, this union is $\bigcup_{x\in \Specm A} V(x) = V(\bigcap_{x\in \Specm A} x)$, which is the closure of the Jacobson radical.
+	The closure of a union contains the union of the closures, so it suffices to show that the union of the closures of each point is $\Spec A $.
+	This union is $\bigcup_{x\in \Specm A} V(x) = V(\bigcap_{x\in \Specm A} x)$, which is the closure of the Jacobson radical.
 	But the nilradical equals the Jacobson radical by \fullref{lem:finitetypenilradical}, and the nilradical is contained in every prime ideal.
 	Thus $V(J) = \Spec A $.
 	Therefore we are done, as by definition of the closure, the closure of the set of closed points contains the closure of the closed points in $\Spec A \subseteq X $ in $X $ and every point has an open affine neighborhood.
@@ -2452,50 +2461,111 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Let $X $ is a scheme of finite type over a field $k $ (not necessarily algebraically closed).
 	\begin{enumerate}
 		\item Show that the following three conditions are equivalent (in which case we say that $X $ is \textit{geometrically irreducible}).
-			\begin{enumerate}
-				\item $X \times _k \overline{k}  $ is irreducible, where $\overline{k}  $ denotes the algebraic closure of $k $. (By abuse of notation, we write $X \times _k \overline{k}  $ to denote $X \times _{\Spec k} \Spec \overline{k}$.) 
-				\item $X \times _k k_s $ is irreducible, where $k_s $ denotes the separable closure of $k $.
-				\item $X \times _k K $ is irreducible for every extension field $K $ of $k $.
-			\end{enumerate}
+		\begin{enumerate}[(i)]
+			\item $X \times _k \overline{k}  $ is irreducible, where $\overline{k}  $ denotes the algebraic closure of $k $. (By abuse of notation, we write $X \times _k \overline{k}  $ to denote $X \times _{\Spec k} \Spec \overline{k}$.) 
+			\item $X \times _k k_s $ is irreducible, where $k_s $ denotes the separable closure of $k $.
+			\item $X \times _k K $ is irreducible for every extension field $K $ of $k $.
+		\end{enumerate}
 		\item Show that the following three conditions are equivalent (in which case we say X is \textit{geometrically reduced}).
-			\begin{enumerate}
-				\item $X \times_k \overline{k}$ is reduced. 
-				\item $X \times_k k_p$ is reduced, where $k_p $ denotes the perfect closure of k. 
-				\item $X \times_k K$ is reduced for all extension fields $K$ of 
-			\end{enumerate}
+		\begin{enumerate}
+			\item $X \times_k \overline{k}$ is reduced. 
+			\item $X \times_k k_p$ is reduced, where $k_p $ denotes the perfect closure of k. 
+			\item $X \times_k K$ is reduced for all extension fields $K$ of $k $
+		\end{enumerate}
 		\item We say that $X $ is \textit{geometrically integral} if $X \times _k \overline{k}  $ is integral. Give examples of integral schemes which are neither geometrically irreducible nor geometrically reduced. 
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
 	Obviously $(a)iii \implies (a)i $ and $(a)ii $.
 
-	$(a)i \implies (a)ii $: First we can see that we have a morphism $f:X \times _k k_s \to X \times _k \overline{k} $ because any morphism $X\to Y $ and $\Spec k_s \to Y  $, we have morphisms $X\to Y $ and $\Spec \overline{k}  \to \Spec k_s \to Y  $ because have the inclusion $k_s \to \overline{k}  $.
-	Thus by the universal property, we have the aforementioned morphism.
+	% $(a)i \implies (a)ii $: First we can see that we have a morphism $f:X \times _k k_s \to X \times _k \overline{k} $ because any morphism $X\to Y $ and $\Spec k_s \to Y  $, we have morphisms $X\to Y $ and $\Spec \overline{k}  \to \Spec k_s \to Y  $ because have the inclusion $k_s \to \overline{k}  $.
+	% Thus by the universal property, we have the aforementioned morphism.
+	%
+	% Now suppose that $X \times \overline{k} = U_{1} \cup U_{2}$ for open $U_{1},U_{2} $.
+	% Because morphisms are continuous, $f^{-1}(U_{1}), f^{-1}(U_{2}) $ are both open.
+	% As $X \times _k k_s $ is irreducible, $f^{-1}(U_{1}) = X \times _k k_s$ or $f^{-1}(U_{2}) = X \times _k k_s$.
+	%
+	% Finally, to get a contradiction, we shall show that $f $ is surjective topologically.
+	% Thus it suffices to check this on open affines, so suppose $X = \Spec A $, with $A $ a $k $-algebra.
+	% Then we have this diagram
+	% \[
+	% \begin{tikzcd}
+	% 	& \Spec A \otimes k_s & \\
+	% 	\Spec A \otimes \overline{k}  & \Spec \overline{k} & \Spec k_s\\
+	% \Spec A & \Spec k &
+	% \arrow[from=2-1,to=2-2]
+	% \arrow[from=2-1,to=3-1]
+	% \arrow[from=3-1,to=3-2]
+	% \arrow[from=2-2,to=3-2]
+	% \arrow["f",from=2-1,to=1-2]
+	% \arrow[from=1-2,to=3-1]
+	% \arrow[from=1-2,to=2-3]
+	% \arrow[from=2-2,to=2-3]
+	% \arrow[from=2-3,to=3-2]
+	% \end{tikzcd}
+	% \]
+	% Because $\overline{k}  $ is integral over $k_s $, $A \otimes \overline{k}  $ is integral over $A \otimes k_s $, so by the going up theorem, $f $ is surjective.
+	WLOG, we can assume that $X $ is reduced, since $X $ is universally homeomorphic to $X_{red} $ via Exercise 2.3 (the universal part is neessary to conclude that the base change is also homeomorphic).
 
-	Now suppose that $X \times \overline{k} = U_{1} \cup U_{2}$ for open $U_{1},U_{2} $.
-	Because morphisms are continuous, $f^{-1}(U_{1}), f^{-1}(U_{2}) $ are both open.
-	As $X \times _k k_s $ is irreducible, $f^{-1}(U_{1}) = X \times _k k_s$ or $f^{-1}(U_{2}) = X \times _k k_s$.
+	Then to prove ii to i, we just need to show that if $K $ is a purely inseparable extension of $k $, then $X \times _k k $ being irreducible implies $X \times _k K $ is irreducible.
+	This is since $\overline{k}  $ is a purely inseparable extension of $k_s $ so we can consider $(X \times _k k_s) \times k_s K \cong X \times _k K$ over $(X \times _k k_s) \times k_s\cong X \times _k k_s $ (see bialgebras in Atiyah Macdonald).
+	By Proposition 3.1, we just need to show that $X \times _k k $ being an integral scheme implies $X \times _k K $ is.
+	So suppose FTSOC that we have open $U \subseteq X \times K $ such that $\mathcal{O}_{X \times _k K} (U) $ has sections $f,g $ such that $fg = 0 $.
+	Then we can find an open affine $V \coloneqq \Spec A \otimes K $ of $U $ so that $f\left.\right|_{V}g\left.\right|_{V} = 0 $.
+	Call the restrictions $f,g $.
+	% Since $A $ is a finite $k $ algebra, $fg=0 $ is equivalent to a system of equations in $k $ having solutions over $K $.
 
-	Finally, to get a contradiction, we shall show that $f $ is surjective topologically.
-	Thus it suffices to check this on open affines, so suppose $X = \Spec A $, with $A $ a $k $-algebra.
-	Then we have this diagram
-	\[
-	\begin{tikzcd}
-		& \Spec A \otimes k_s & \\
-		\Spec A \otimes \overline{k}  & \Spec \overline{k} & \Spec k_s\\
-	\Spec A & \Spec k &
-	\arrow[from=2-1,to=2-2]
-	\arrow[from=2-1,to=3-1]
-	\arrow[from=3-1,to=3-2]
-	\arrow[from=2-2,to=3-2]
-	\arrow["f",from=2-1,to=1-2]
-	\arrow[from=1-2,to=3-1]
-	\arrow[from=1-2,to=2-3]
-	\arrow[from=2-2,to=2-3]
-	\arrow[from=2-3,to=3-2]
-	\end{tikzcd}
-	\]
-	Because $\overline{k}  $ is integral over $k_s $, $A \otimes \overline{k}  $ is integral over $A \otimes k_s $, so by the going up theorem, $f $ is surjective.
+	Next, let $L $ be a finite purely inseparable extension contained in $K $ of $k $ such that $A \otimes L $ contains both $f $ and $g $.
+	Since it is finite, there is $n $ such that $f^{(\char k)^n}$ and $g^{(\char k)^n}$ are in $A \otimes k $ (since algebra multiplication is coordinate wise).
+	But then $f^{(\char k)^n}g^{(\char k)^n}=0$ in $A \otimes k $, i.e. zero-divisors.
+	Thus by contrapositive, $X \times _k k $ being irreducible implies $X \times _k K $ is.
+
+	To show that i implies iii, we can use the same reduction as above to reduce the problem to showing $A \times_k \overline{k}  $ being integral implies that $A \otimes_k K $ is integral.
+	If $K $ is algebraic over $k $, then the latter is contained in the former, so we are done.
+	Thus let $K $ be a transcendental extension of $L $, an algebraic extension of $k $ and let $K = L(x_{1},x_{2}, \ldots ) $.
+	As in the proof of (ii) to (i), we suppose that in an open affine set $\Spec A \otimes K $, we have $fg = 0 $.
+	Then by cancelling out the denominators of the fractions in $K $, we get $f'g' = 0 $ for $f,g\in A \otimes L[x_{1},x_{2}, \ldots ] $.
+	Neither are zero because $A \otimes K $ is reduced and if they were, $f,g $ would already be zero, which we assumed them not to be.
+	Observe that $A \otimes L[x_{1}, \ldots ] \cong (A \otimes L)[x_{1}, \ldots ] $.
+	Since a polynomial ring is a domain iff the ring is a domain, we thus conclude that $A \otimes L $ is not a domain.
+	This is a contradiction, hence $A \otimes K $ is a domain.
+	%first note that if $K $ is contained in $\overline{k}  $, then $\overline{k}  $ is an algebraic extension of $K $.
+	% Hence $A \otimes \overline{k}  $ is an algebraic extension of $A \otimes K $ so that $A \otimes \overline{k}  $ lies over
+
+	(b) (iii) easily implies (i) and (ii) once again.
+	We now wish to show (ii) implies (i).
+	For this, it suffices to show that if $K / k $ is separable, then, for a ring $A $, if $A$ being reduced implies that $A \otimes K $ is.
+	Next notice that we have a map $A \xhookrightarrow{} \prod A / \mathfrak{p}_i $ where the product is over all minimal primes.
+	This is an injection since the kernel is the intersection of all minimal primes, which equals the nilradical.
+	We have assumed that the nilradical is zero, since $A $ is reduced.
+	Thus $A \otimes K \xhookrightarrow{} \prod A / \mathfrak{p}_i \otimes K $ since there are a finite number of minimal primes ($X $ is finite type over a field), $K / k $ is flat, and tensors distribute.
+	Thus we can assume $A $ is a domain by replacing it with $A / \mathfrak{p}_i $ (and using the fact that the RHS is reduced iff each component of the product is).
+
+	Using the flatness of $K / k $ again, we conclude that it suffices to show that $\text{Frac}(A) \otimes K $ is reduced, since $A \otimes K $ injects into it ($A \xhookrightarrow{} \text{Frac}(A) $).
+	Now suppose FTSOC that we have an nilpotent element in $\text{Frac}(A) \otimes K $.
+	It lives in $\text{Frac}(A) \otimes L $, with $L $ a finite separable extension of $k $.
+	Since $L $ is a finite separable extension, write $L = k[t] / f(t) $ for some polynomial $f $.
+	Then $\text{Frac}(A) \otimes L \cong \text{Frac}(A)[t] / f(t) $.
+	This is reduced since $f $ is a separable polynomial.
+	Thus $X \times _k K$ is reduced.
+	Finally, apply this to the separable extension $\overline{k} / k_p  $.
+
+	$(i) \implies (iii) $: Apply the same reductions as above to reduce to showing that $A \otimes_k K $ is a domain if $A \otimes \overline{k}  $ is.
+	If $K $ is an algebraic extension of $k $, then the former is contained in the latter and we are done.
+	So let $K = L(x_{1},x_{2}, \ldots )$ where $L $ is an algebraic extension of $k $ and $x_i $ are transcendental.
+	Then if we have a nilpotent in $A \otimes K $, we have a nilpotent in $A \otimes L[x_{1}, \ldots ] $ by clearing out denominators.
+	Next observe that polynomial rings are reduced iff the ring is.
+	Then since $A \otimes L[x_{1}, \ldots ] \cong (A \otimes L)[x_{1}, \ldots ] $, and the latter is a domain ($L $ is algebraic over $k $ so that $A \otimes L \subseteq A \otimes \overline{k}  $), the nilpotent must be zero.
+	Hence $A \otimes K $ is reduced.
+
+	(c) 
+	Let $p=3 $.
+	Consider $k = \F_p(t) $ and $K =\Spec k(t)(y)(w) / (y^p-t,w^2-2) $ with $X = \Spec k(t)[x][z] / (t-x^p,z^2-2) $.
+	Clearly $X $ is an integral scheme.
+	Then $X \times _k K = \Spec k(t)(y)(w)[x][z] / (t-x^p, y^p-t,w^2-2,z^2-2) $.
+	Notice that $y^p-x^p = 0 $ and $(y-x)^p = y^p-x^p $ and that $z^2-w^2=0 = (z-w)(z+w) $.
+	We can see that $y-x \ne 0 $, $z-w\ne 0,z+w\ne 0 $ in this ring by looking at the degrees.
+	Hence $X $ isn't geometrically reduced nor irreducible.
 \end{proof}
 
 \begin{exercise}[Noetherian Induction.]
