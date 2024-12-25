@@ -2860,7 +2860,8 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \end{proof}
 
 \begin{lem}\label{lem:stalk_dim}
-	For an integral scheme $X $, the dimension of the stalks of all closed points and all affine schemes are the same.
+	For an integral scheme $X $, the dimension of the stalks of all closed points and all open affine subschemes are the same.
+	Furthermore, the dimension of an open affine subscheme is $\le  \dim X$.
 \end{lem}
 \begin{proof}
 	By Theorem 1.8A, in an open affine neighborhood $\Spec A $ of $\mathfrak{p} $, $\text{height }\mathfrak{p} + \dim A / \mathfrak{p} = \dim A $.
@@ -2868,7 +2869,8 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Because $\mathfrak{p} $ is a closed point, it is a maximal ideal in $A $, so $A / \mathfrak{p} $ is a field, and thus has dimension 0.
 	Hence $\dim A = \dim \mathcal{O}_{\mathfrak{p}} $.
 	We also have that $\dim X \ge \dim A $ because a chain of irreducible closed subsets in $\Spec A $ translate to a chain of closed subsets in $X $ by taking closures in $X $.
-	These are then irreducible for if we have $Z \subseteq U $ for $U $ irreducible, then if $\overline{Z} = C_1 \cup C_{2}$, then $Z = C_{1} \cap U \cup C_{2} \cap U $, implying that one of these equal $Z $ by irreducibility in $U $, 
+	These are then irreducible for if we have $Z \subseteq U $ for $U $ irreducible, then if $\overline{Z} = C_1 \cup C_{2}$, then $Z = C_{1} \cap U \cup C_{2} \cap U $, implying that one of these equal $Z $ by irreducibility in $U $.
+	So apply this reasoning to $U=\Spec A $ (irreducible since $A $ is integral).
 
 	Because $ X$ is irreducible by Proposition 3.1, any two open affine neighborhoods of points $x,y $, call them $\Spec A, \Spec B $, intersect non-trivially.
 	Then because $\Spec A \cap \Spec B $ is a non-empty open set, it has a distinguished open contained in it.
@@ -2894,56 +2896,173 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Thus all dimensions are finite.
 
 	(a) 
-	By \fullref{lem:stalk_dim}, $\dim A = \dim \mathcal{O}_P $.
-	Now let a maximal chain of irreducible closed subsets of $X $ be
+	% By \fullref{lem:stalk_dim}, $\dim A = \dim \mathcal{O}_P $ for $\Spec A $ an open affine neighborhood of $P $.
+	Let a maximal chain of irreducible closed subsets of $X $ be
 	\[
 		C_{0} \subsetneq \cdots \subsetneq C_n
 	.\] 
-	Let $\Spec A $ be an open affine neighborhood of $P\in C_n$.
-	We can show that
+	Let $\Spec A $ be an open affine neighborhood of $P\in C_0$.
+	Since closed points are dense in schemes of finite type over a field (Exercse 3.14), $\dim A = \dim \mathcal{O}_{P'} $, for $P' $ are closed point by \fullref{lem:stalk_dim}.
+	By the same lemma, $\dim \mathcal{O}_{P'} $ equals the dimension of the stalk at any closed point.
+
+	Then we can show that
 	\[
 		C_{0} \cap \Spec A \subsetneq \cdots \subsetneq C_n \cap \Spec A
 	\] 
 	and that each is irreducible in $\Spec A $.
-	Each is irreducible because the intersection is non-trivial, $\overline{C_i \cap \Spec A} = C_i  $ because $C_i = \overline{C_i\cap \Spec A} \cup (C_i\cap(\Spec A)^C)  $.
+	Each entry is non-empty since $\Spec A $ is a neighborhood of a point in $C_{0} $.
 
-	This finishes the problem because of Proposition 1.7, the topological dimension equals the Krull dimension of $A $, so this would therefore show that $\dim A \ge \dim X $, completing the problem by combining with the earlier inequality.
-	Now suppose that $C_{i-1} \cap \Spec A = C_{i}\cap \Spec A $ for some $i $.
-	But $C_{i-1} $ would then equal $C_{i} \cup (\Spec A)^C $ because $C_{i-1} \cap \Spec A \subseteq \Spec A$.
-	Thus we get such a chain, and we are done.
+	\begin{lem}\label{lem:irreducibleaffine}
+		In a scheme $X $ with two irreducible sets $C_i \subsetneq C_{i+1} $ and an open affine $\Spec A $,
+		\[
+			C_i\cap \Spec A \subsetneq C_{i+1} \cap \Spec A
+		\] 
+		with both being irreducible in $\Spec A $ if $C_i \cap \Spec A $ is non-empty.
+	\end{lem}
+	\begin{proof}
+		Each is irreducible in $\Spec A $:
+		Suppose FTSOC that $C_i \cap \Spec A = D\cup E $ with $D,E $ closed in $\Spec A $.
+		Then let $D=F\cap \Spec A $ and $E = G\cap \Spec A $ with $F,G $ closed in $X $.
+		Thus $C_i = (F \cup G) \cup (\Spec A)^C\cap C_i $ since the first term covers $\Spec A \cap C_i$.
+		Then the irreducibility of $C_i $ implies that $F\cup G= C_i$.
+		Then one of $F $ or $G $ is $C_i $ by irreducibility of $C_i $, forcing $D $ or $E $ to be $C_i\cap \Spec A $.
+		% Thus $F=G=\emptyset $ and hence $C_i\cap \Spec A $ is irreducible in $\Spec A $.
+
+		Next suppose that $C_{i} \cap \Spec A = C_{i+1}\cap \Spec A $ for some $i $.
+		But $C_{i+1} $ would then equal $C_{i} \cup ((\Spec A)^C\cap C_{i+1}) $.%because $C_{i} \cap \Spec A \subseteq \Spec A$.
+		Neither can be empty, so we get a contradiction.
+	\end{proof}
+	% because the intersection is non-trivial and $\overline{C_i \cap \Spec A} = C_i  $ due to the fact that $C_i = \overline{C_i\cap \Spec A} \cup (C_i\cap(\Spec A)^C)  $.
+
+	Thus we get such a chain, and this finishes the problem because of Proposition 1.7, the topological dimension equals the Krull dimension of $A $.
+	Thus $\dim A \ge n = \dim X $.
+	Finally, $\dim A \le \dim X $ by \fullref{lem:stalk_dim}.
+	Thus $\dim A = \dim X = \dim \mathcal{O}_{P'} $.
 
 	(b) By Exercise 3.6, the function field of any open affine $\Spec A \subseteq X $ is the function field of $X $.
 	Then by Theorem 1.8A and Exercise 3.20a), $\dim X = \dim A = \text{tr.d } \operatorname{Frac}(A) = \text{tr.d } K(X)$.
 
-	(c) First I claim that that $\dim Y = \max \dim Y_i $ where $Y_i $ are the irreducible components of $Y $.
-	This is because we can take a maximal finite strictly descending chain of irreducible closed subsets of $Y $.
-	Then the first element must be an irreducible component because otherwise, we could add an irreducible component that it is contained in to the start of the chain and get a larger strictly descending chain of irreducible closed subsets.
+	(c)
+	% First I claim that that $\dim Y = \max \dim Y_i $ where $Y_i $ are the irreducible components of $Y $.
+	% This is because we can take a maximal finite strictly descending chain of irreducible closed subsets of $Y $.
+	% Then the first element must be an irreducible component because otherwise, we could add an irreducible component that it is contained in to the start of the chain and get a larger strictly descending chain of irreducible closed subsets.
+	% closure of open affine is irreducible
 
-	Because $X $ is Noetherian, the infinum on the right is achieved.
-	Then take the chain of the 
-	can reduce to $Y$ being an irreducible component because $Y $ has irreducible components, being Noetherian ($X $ is Noetherian) as follows:
-	Suppose 
+	% Because $X $ is Noetherian, the infinum on the right is achieved.
+	% Then take the chain of the 
+	% can reduce to $Y$ being an irreducible component because $Y $ has irreducible components, being Noetherian ($X $ is Noetherian) as follows:
+	% Suppose 
 	Because $X $ is Noetherian, we can take a minimal chain of closed irreducibles with $Z_{0} \subseteq Y $ and $n = \codim(Y,X) $.
 	\[
 		Z_{0} \subsetneq \cdots \subsetneq Z_n
 	.\] 
-	Take an open affine set $\Spec A $ around the point $P $ such that $\dim \mathcal{O}_{P,X} $ is minimal.
-	Because $\overline{\{P\}  } \subseteq Z_{0}  $, we can let $Z_{0} = \overline{\{P\}  }  $.
-	By the above argument,
+	Take an open affine set $\Spec A $ around a point $P\in Z_{0} $.
+	% such that $\dim \mathcal{O}_{P,X} $ is minimal.
+	% Note that $\dim \mathcal{O}_{P,X} = \dim A_P $.
+	% If $Z_n \cap \Spec A = \emptyset $, then 
+	% Then if $\Spec A \cap Z_{0} = \emptyset$, then by the above reasoning, the chain
+	% \[
+	% 	Z_{1} \cap \Spec A \subsetneq \cdots \subsetneq Z_n \cap \Spec A
+	% \] 
+	% is a chain of irreduc
+	Because $\overline{\{P\}  } \subseteq Z_{0}  $ and the closure of a point is irreducible, $Z_{0} = \overline{\{P\}  }  $.
+	By \fullref{lem:irreducibleaffine},
 	\[
 		Z_{0}\cap \Spec A \subsetneq \cdots \subseteq Z_n \cap \Spec A
 	\] 
-	and each is still irreducible.
-	Let $\mathfrak{p}_i $ be the unique prime ideal associated to $Z_i $ (because they are irreducible closed subsets of an affine scheme).
+	and each is irreducible in $\Spec A $.
+	Let $\mathfrak{p}_i $ be the unique prime ideal of $\Spec A $ associated to $Z_i \cap \Spec AA$ (because they are irreducible closed subsets of an affine scheme).
 	Then
 	\[
 		\mathfrak{p}_n \subsetneq \cdots \subsetneq \mathfrak{p}_0
 	.\] 
-	Thus $n \le \text{height }\mathfrak{p}_0$.
+	Thus $n \le \text{height }\mathfrak{p}_0$ in $A $.
 	Because $Z_{0} = \overline{\{P\}  }, \mathfrak{p}_0 = P  $.
-	Thus $\codim(Y,X) = n \le \inf \{\dim \mathcal{O}_{P,X}| P\in Y\}   $.
+	Furthermore, $n $ equals the height because if there was a longer ascending chain ending in $\mathfrak{p}_0 $, we could extend it to a strictly increasing chain of closed irreducible subsets of $X $ beginning with $Z_{0}$ using the argument in \fullref{lem:stalk_dim}.
+	This would contradict the definition of codimension of $Z_{0}$.
+	Thus $\codim(Y,X) = n \ge \inf \{\dim \mathcal{O}_{P,X}| P\in Y\}   $ as $\text{height} \mathfrak{p}_0 = \dim A_{\mathfrak{p}_0} = \dim \mathcal{O}_{P,X} $.
+
+	Finally, take $P $ to be the point in $Y $ that minimizes stalk dimension in $X $.
+	We want to show that $\text{height}(P) = \codim(\overline{P},X)  $, as this would then imply that $\dim \mathcal{O}_{P,X} = \text{height}(P) $ is in the infinum in the definition of $\codim(Y,X) $.
+
+	Now take an open affine $\Spec A $ around $P $.
+	Then $n\coloneqq \dim \mathcal{O}_{P,X} = \dim A_P = \text{height}(P)$.
+	Thus we have an ascending chain of prime ideals in $A $ that terminates in $P $.
+	This leads to a strictly ascending chain of closed irreducibles via taking closures ($Z_i = \overline{\mathfrak{p}_{n-i} }$).
+	\[
+		Z_{0}\subseteq \cdots \subseteq Z_n
+	.\] 
+	Next we can see that this is a strictly increasing chain, for generic points are unique.
+	Finally, this is maximal because if we had a longer chain, we can intersect it with $\Spec A $, use \fullref{lem:irreducibleaffine}, and then convert to prime ideals in $A $ to get a longer ascending chain of prime ideals terminating in $P $.
+	Thus $\text{height}(P) = \codim(\overline{P},X)  $ as we desired, completing the problem.
+	% The closure of $Z_i\cap \Spec A $ in $X $ is irreducible, for if $\overline{Z_i\cap \Spec A} = D \cup E$ with $D,E $ closed in $X $, then 
+	% Each is also a closed irreducible in $X $, for if $C_i $ is closed and irreducible in $\Spec A $ such that $C_i = D\cup E $, 
+
+	(d) 
+	Take $P $ such that the infinum is achieved in (c)'s definition of $\codim(Y,X)$.
+	Let $\Spec A $ be an open affine neighborhood of $P $.
+	Then $\dim A = \dim \Spec A =\dim X$ by \fullref{lem:stalk_dim}.
+	Furthermore, this lemma implies that $\dim Y = \dim Y\cap \Spec A $ where $Y $ has the reduced induced structure since $Y\cap \Spec A $ is an open affine of $Y $.
+	Then part (c) implies that $\codim(Y,X) = \codim(Y\cap \Spec A, \Spec A) $ since the infinums are both achieved.
+	Then Caustion 3.2.8 has that $\dim Y\cap \Spec A + \codim(Y\cap \Spec A, \Spec A) = \dim \Spec A $.
+	Substituting, we have that $\dim Y+ \codim(Y,X) = \dim X $.
+	% Then Chapter I Theorem 1.8A implies that $\dim(Y\cap \Spec A) = \text{height}(P) + \codim(= \text{height}(P) + \dim A / P = \dim A = \dim X $.
 
 	(e) Because the stalks of $\mathcal{O}_X $ and $\mathcal{O}_X\big|_{U} $ are the same, $\dim X = \dim \mathcal{O}_{X,P} = \dim (\mathcal{O}_{X}\big|_{U})_P = \dim U$.
+
+	(f)
+	We can reduce to the affine case because (1) an irreducible component $C $ of $X' $ gives an irreducible component $C\cap \Spec (A \otimes k') $ of $\Spec (A \otimes k') $ and (2) $\dim C\cap \Spec (A \otimes k') = \dim C $ and $\dim \Spec A = \dim X $.
+	We have (1) because intersecting non-trivially with an open affine preserves chains of closed irreducibles via \fullref{lem:irreducibleaffine}.
+	We have (2) because we can give $C $ the reduced induced subscheme structure so that $C\cap \Spec (A \otimes k') $ is an open affine subset of $C $.
+	Then \fullref{lem:stalk_dim} gives us that $\dim C\cap \Spec (A \otimes k') = \dim C $ and $\dim \Spec A = \dim X $.
+
+	Thus we wish to show that $C $, an irreducible component of $X' = \Spec A \otimes k' $ has the same dimension as $X = \Spec A $ and $X $ is integral.
+	By Noether normalization, we have a finite injection $k[x_{1},x_{2}, \ldots ,x_d] \xhookrightarrow{} A$ with $d = \dim A$.
+	Since $k' $ is a flat $k $-module, we have $k'[x_{1}, x_{2}, \ldots ,x_d] \xhookrightarrow{} A \otimes k'$.
+	This is also a finite map since finite maps are stable under base extension (\fullref{lem:finiteextension}).
+	\begin{lem}\label{lem:finiteextension}
+		Finite maps are stable under base extension.
+	\end{lem}
+	\begin{proof}
+		Let $f: X\to Y $ be finite schemes and let $g:Y'\to Y $.
+		Take $\{\Spec A_i\} $, an open affine cover of $Y $ and $f^{-1}(\Spec A_i) = \Spec B_i $, an open affine of $X $ (with the set of all of them forming an open affine cover of $X $).
+		Let an open affine cover of $g^{-1}(\Spec A_i) $ be $\{\Spec C_{ij}\}_j   $.
+		Then $B_i $ is a finite $A_i $ module so that $B_i \otimes C_j $ is a finite $C_j $ module by tensoring generators of $B_i $ over $A_i$ with $1 \in C_j$.
+		Finally note that $\tilde{f}^{-1}(\Spec C_{ij}) = \Spec B_i \otimes C_j $ by construction of the fibre product.
+		Hence $\tilde{f}: X \times Y' \to Y' $ is finite (can also use right exactness of tensor via \url{https://math.stackexchange.com/questions/1967029/finite-morphism-is-stable-under-base-change}).
+		% Take $\Spec A $ an open affine in $X $ and 
+	\end{proof}
+	Hence by Noether normalization, $\dim X' = \dim A \otimes k' = d = \dim X$.
+
+	Now let $\Spec B \otimes k' $ be a small enough open affine such that it doesn't intersect any other irreducible components.
+	We can pick such an open affine for if $C = \cup C' $ of irreducible components, we can pick a finite union because $C $ is compact (it is a closed subset of $\Spec A \otimes k' $).
+	But then $C $'s irreducibility gives us a contradiction.
+	Thus $C $ is not covered by the other irreducible components.
+	But we can cover $C^C $ by irreducible components.
+	Take a finite union of them, and then take the complement.
+	This complement is open and contained in $C $, so we can find an open affine in this complement.
+	This is the sufficiently small open affine.
+	Then $\dim \Spec B \otimes k' =  \sup_{\text{irreducible components}} \dim C'= \dim C=\dim X$.
+	Note that the other irreducible components don't have dimension as large because $C $ is an integral scheme with the reduced induced structure, so by \fullref{lem:irreducibleaffine} we can push chains of closed irreducible sets in $\Spec B \otimes k' $ to $X' $, which is bounded by $\dim C = \dim X $.
+	% since $\cup_{\text{irreducible components in $X' $} \ne C} C' \ne X' $, for otherwise we would have that $C $ is a finite union of closed sets (finite 
+	% Since the dimension of $X' $ equals the dimension of its irreducible components, $\dim X' = \dim C = \dim X $.
+
+	% Finally, give $C $ the reduced induced subscheme structure so that $C $ is integral and equal to $\Spec A \otimes k' / \mathfrak{p}'$, with $\mathfrak{p}' $ a prime ideal in $A \otimes k' $.
+	% Since $C $ is an irreducible component, $\mathfrak{p}' $ is a minimal prime in $A \otimes k' $ (otherwise we could get a larger irreducible component in $\Spec A \otimes k' $, giving a larger irreducible component in $X $ than $C $).
+	% Therefore 
+	% By part (b), $\dim C = \text{tr.d. } K(C) / k' = \text{tr.d. } \text{Frac}(A \otimes k' / \mathfrak{p}') / k'$.
+	% By assumption, $A = k[x_{1}, \ldots ,x_n] / \mathfrak{p}$ for a prime ideal $\mathfrak{p} $, since $X $ is integral.
+	%
+	% If $k' / k $ is algebraic, then $k'[x_{1}, \ldots ,x_n]$ is algebraic over $k[x_{1}, \ldots ,x_n] $.
+	% Since $k[x_{1}, \ldots ,x_n] $ is integrally closed in its field of fractions, $k'[x_{1}, \ldots ,x_n] / k[x_{1}, \ldots ,x_n] $ satisfies going up and going down and incomparability.
+	% Next note that any sequence of closed irreducibles contained in $C $ gives a sequence of primes ideals in $k'[x_{1}, \ldots ,x_n] $ beginning with the generic point of $C $ via the generic point bijection.
+	% This bijects to a chain of prime ideals in $k[x_{1}, \ldots ,x_n] $ by going up and down.
+	% This then bijects to a sequence of closed irreducibles in $\Spec A $.
+	% Thus $\dim \Spec A = \dim C $.
+	% Let $C' = C \cap \Spec A \otimes k' $.
+	%
+	% Next, take $P $ such that $\dim \mathcal{O}_P $ is minimal among points in $C$.
+	% This equals $\codim(C\cap \Spec A \otimes k', \Spec A \otimes k') $ by (c), and by the discussion in (d), $\codim(C, \Spec A \otimes k')$. % = \codim(C,X)$.
 \end{proof}
 
 \begin{exercise}
@@ -2979,7 +3098,7 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \begin{exercise}[Dimension of the Fibres of a Morphism]
 	Let $f:X \to Y$ be a dominant morphism of integral schemes of finite type over a field $k$. 
 	\begin{enumerate}
-		\item Let $Y'$ be a closed irreducible subset of $Y$, whose generic point $\eta'$ is contained in $f(X)$. Let $Z$ be any irreducible component of r $f^{-1}(Y') $, such that $\eta' \in f(Z)$, and show that $\codim(Z,X) \le codim(Y',Y)$.
+		\item Let $Y'$ be a closed irreducible subset of $Y$, whose generic point $\eta'$ is contained in $f(X)$. Let $Z$ be any irreducible component of $f^{-1}(Y') $, such that $\eta' \in f(Z)$, and show that $\codim(Z,X) \le \codim(Y',Y)$.
 		\item Let $e = \dim X - \dim Y$ be the \textit{relative dimension} of $X$ over $Y$. For any point $y \in f(X)$, show that every irreducible component of the fibre $X_y$ has dimension $\ge e$. 
 			\ifhint
 				[Hint: Let $Y' = \overline{\{y\}  }$, and use (a) and (Ex. 3.20b).]
@@ -2993,14 +3112,28 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
-	(a) It suffices to show that given a chain
+	(a) 
+	Take the maximal chain
 	\[
-		Y' = Y_{0} \subseteq Y_{1} \subseteq \cdots \subseteq Y_n
+		Z = Z_{0} \subseteq Z_{1} \subseteq \cdots \subseteq Z_n
 	\] 
-	of closed irreducibles of $Y $ of length $\codim(Y',Y)$ (finite because schemes of finite type over $k $ are Noetherian by Exercise 3.13g).
+	of closed irreducibles of $X $ of length $\codim(Z,X) + 1$ (finite because schemes of finite type over $k $ are Noetherian by Exercise 3.13g).
+	If we show that this leads to a strictly increasing chain of closed irreducibles in $Y $ starting with $Y' $, we are done since $\codim(Y',Y) $ is the supremum of such chains.
 
-	(b) First we have that $X_y $ is homeomorphic to $f^{-1}(y) $ by Exercise 3.10.
-	
+	Let $\eta_i $ be the generic point of $Z_i $ (exists by exercise 2.9 and $X $'s integralness).
+	Let $Y_i = \overline{\{f(\eta_i)\}}  $.
+	Note that 
+	Then $Y_{0} \subseteq Y' $ since $\epsilon'\in f(Z)$.
+	It is equal because $Z \subseteq f^{-1}(Y') $.
+	Now suppose FTSOC that $Y_i = Y_{i+1} $.
+	Then 
+
+	(b) %First we have that $X_y $ is homeomorphic to $f^{-1}(y) $ by Exercise 3.10.
+	We have $X\to Y \to k(y) \to k $ that all commute properly as morphisms over $k $.
+	Then by Exercise 3.20f, $X \times k(y) = X_y $ has dimensions of irreducible components $=\dim X $.
+	Clearly $\dim X \ge e $.
+
+	(c)
 \end{proof}
 
 \begin{exercise}
