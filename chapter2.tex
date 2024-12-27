@@ -3035,11 +3035,13 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Hence by Noether normalization, $\dim X' = \dim A \otimes k' = d = \dim X$.
 
 	Now let $\Spec B \otimes k' $ be a small enough open affine such that it doesn't intersect any other irreducible components.
-	We can pick such an open affine for if $C = \cup C' $ of irreducible components, we can pick a finite union because $C $ is compact (it is a closed subset of $\Spec A \otimes k' $).
+	We can pick such an open affine for if $C = \cup C' $ of irreducible components (where the union is finite since $X \times k'$ is Noetherian (finite type is preserved under base extension, page 90, and Noetherian follows from Exercise 3.13g). %, we can pick a finite union because $C $ is compact (it is a closed subset of $\Spec A \otimes k' $) by taking a finite open affine cover
 	But then $C $'s irreducibility gives us a contradiction.
 	Thus $C $ is not covered by the other irreducible components.
-	But we can cover $C^C $ by irreducible components.
-	Take a finite union of them, and then take the complement.
+
+	Next cover $C^C $ by irreducible components.
+	This is a finite union, so it is closed.
+	Then take the complement.
 	This complement is open and contained in $C $, so we can find an open affine in this complement.
 	This is the sufficiently small open affine.
 	Then $\dim \Spec B \otimes k' =  \sup_{\text{irreducible components}} \dim C'= \dim C=\dim X$.
@@ -3123,17 +3125,51 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Let $\eta_i $ be the generic point of $Z_i $ (exists by exercise 2.9 and $X $'s integralness).
 	Let $Y_i = \overline{\{f(\eta_i)\}}  $.
 	Note that 
-	Then $Y_{0} \subseteq Y' $ since $\epsilon'\in f(Z)$.
+	Then $Y_{0} \subseteq Y' $ since $\eta'\in f(Z)$.
 	It is equal because $Z \subseteq f^{-1}(Y') $.
 	Now suppose FTSOC that $Y_i = Y_{i+1} $.
 	Then 
 
-	(b) %First we have that $X_y $ is homeomorphic to $f^{-1}(y) $ by Exercise 3.10.
-	We have $X\to Y \to k(y) \to k $ that all commute properly as morphisms over $k $.
-	Then by Exercise 3.20f, $X \times k(y) = X_y $ has dimensions of irreducible components $=\dim X $.
-	Clearly $\dim X \ge e $.
+	(b)
+	Let $Y' = \overline{\{y\}}   $ and $Z$ be an irreducible component of $f^{-1}(y) $ ($X_y $ and $f^{-1}(y) $ are homeomorphic by Exercise 3.10a)).
+	By (a), $\codim(Z,X) \le \codim(Y', Y) $.
+	By Exercise 3.20d), $\dim X - \dim Z\le \dim Y - \dim Y'$.
+	Hence $\dim X - \dim Y + \dim Y' = \dim Z \implies e \le \dim Z$.
 
-	(c)
+	(c) Take an open affine of $y $, $\Spec A $.
+	Then take an open affine of $f^{-1}(\Spec A)$, $\Spec B $.
+	Note that by Exercise 3.20, $\dim \Spec A = \dim Y, \dim \Spec B = \dim X $.
+	Then since $X $ is integral and denseness is transitive, we can reduce to $X $ affine.
+	Since the residue field is a local property and $f(\Spec B) \subseteq \Spec A $, we can reduce to $Y $ affine.
+
+	Since localization is exact, $\text{Frac}(B) / \text{Frac}(A) $ is then finite type.
+	By additiveness of transcendence degree, we can find $t_{1}, \ldots ,t_e \in B $ a transcendence basis of $\text{Frac}(B) $ over $\text{Frac}(A) $ ($\text{t.r.d } K(X) / K(Y) = \dim X - \dim Y $).
+	
+	Then we can see that $\Spec B \to \Spec A[t_{1}, \ldots ,t_e] $ is a quasi-finite map.
+	This is because the fibre of the generic point $\eta  $ of $\Spec A[t_{1}, \ldots ,t_e] $ with $\Spec B $ is homeomorphic to $f^{-1}( \eta )$.
+	But this fibre is $\Spec B \otimes_{A[t_{1}, \ldots ,t_e]} \text{Frac}(A[t_{1}, \ldots , t_e]) $.
+	Since $B \otimes \text{Frac}(A) \subseteq \text{Frac}(B) $, $\Spec  $
+	% Thus by Noether normalization and Exercise 3.20b), $\text{Frac}(B)$ is a finite $\text{Frac}(A)[t_{1},t_{2}, \ldots, t_e] $ module.
+	% Thus $B $ is a finite $A[t_{1},t_{2}, \ldots ,t_e] $ module.
+
+	(d) (1) Since the irreducible components cover $X $ and every irreducible component has dimension $\ge e $, $E_e = X $.
+
+	(2) By (c), $E_h \subseteq X \setminus U $.
+	Since $U $ is open, $X \setminus U $ is closed so that $\overline{E_h} \subseteq X \setminus U\ne X  $.
+
+	(3) The statement is obviously true for $\dim X = 0 $ since dimension is non-negative.
+	Now suppose that this statement is true up to $n-1 $.
+	Consider $X $ with $\dim X =n$.
+	Then we have that $E_e = X $, which is closed.
+
+	Now consider $E = \cup_{h > e} E_h $.
+	This is a union of irreducible components by considering irreducible components of $X_y $ as irreducible components of $f^{-1}(\overline{\{y\}  } ) $ by Exercise 3.10a)'s homeomorphism.
+	We can realize $E $ as a closed integral subscheme by gluing together the reduced induced scheme structure on each irreducible component.
+	Since the components are reduced and irreducible, they are integral schemes.
+
+	(e) By definition, $C_h = E_h \setminus E_{h+1} $.
+	This equals $E_h \cap E_{h+1}^C $.
+	But $E_{h+1}^C $ is open by (d), so this is locally closed, which is constructible by Exercise 3.18a).
 \end{proof}
 
 \begin{exercise}
