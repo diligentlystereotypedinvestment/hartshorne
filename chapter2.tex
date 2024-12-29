@@ -6,7 +6,7 @@
 	Given a scheme morphism $f: X\to Y $, $(f_\ast \mathcal{O}_Y)_{f(x')} \cong \bigotimes_{x \in f^{-1}(f(x'))} \mathcal{O}_{X,x} $
 \end{lem}
 \begin{proof}
-	Next we can then see that $(f_\ast \mathcal{O}_Y)_{f(y)} \cong \bigotimes_{x \in f^{-1}(f(y))} \mathcal{O}_{X,x}$.
+	% Next we can then see that $(f_\ast \mathcal{O}_Y)_{f(y)} \cong \bigotimes_{x \in f^{-1}(f(y))} \mathcal{O}_{X,x}$.
 	Suppose we are given ring morphisms from $\mathcal{O}_{X,x} $ for each $x \in f^{-1}(f(y)) $ into a ring $P $.
 	Because each stalk is the limit of restriction maps, the ring morphisms commute with restrictions.
 	Then for every open set $U $ in the limit of $(f_\ast \mathcal{O}_Y)_{f(y)} $, there is a map from $\mathcal{O}_Y(U) $ to $P $ that agrees when restricted to each $\mathcal{O}_{X,x} $ for each $x \in f^{-1}(f(y))$.
@@ -1919,7 +1919,7 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \end{proof}
 
 \begin{lem}[Nike's Lemma]\label{lem:nike}
-	The intersection of open affines $\Spec A $, $\Spec B $ can be covered by distinguished open in both $\Spec A, \Spec B $.
+	The intersection of open affines $\Spec A $, $\Spec B $ can be covered by distinguished opens in both $\Spec A, \Spec B $.
 \end{lem}
 \begin{proof}
 	Let $U = \Spec A \cap \Spec B $ and let $P $ be some point in $U $.
@@ -2263,11 +2263,13 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 
 	(d) 
 	Fix an open affine cover $\Spec A_i $ of $X $.
-	I will assume that $X $ is Noetherian, namely quasi-compact.
+	% I will assume that $X $ is Noetherian, namely quasi-compact.
 	% Let $Y = \overline{f(Z)}  $, and give it a scheme structure as follows:
 	Define $Y $ locally as $\cup \overline{f(Z) \cap \Spec A_i}  $ with the scheme structure of $\Spec A_i / \ker f^\#( \Spec A_i ) $.
 	Note that $\overline{f(Z)} \subseteq Y $.
-	Since $X $ is quasi-compact, $Y $ is a finite union of closed sets, so it is closed.
+	If $X $ is quasi-compact, $Y $ is a finite union, so $\overline{f(Z)} = Y  $.
+	% Since $X $ is quasi-compact, $Y $ is a finite union of closed sets, so it is closed.
+	% In the general case, to see that it is closed, notice that it is closed in each open affine cover, and because localization commutes 
 	Denote the latter ring by $B_i $.
 
 	Now we wish to glue the schemes $\{\Spec B_i\}   $ together, a l\`a Exercise 2.12, let $U_{ij} = \Spec B_i \cap \Spec B_j $.
@@ -2600,21 +2602,21 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \begin{proof}
 	(a) All we need to show that $sp(X) $ is Noetherian since the second property is satisfied by Exercise 2.9.
 	By definition, we have a finite open affine cover $\{\Spec A_i\} $ of Noetherian rings,
-	\begin{lem}\label{lem:noetherian_ring}
-		For a Noetherian ring $A $, $\Spec A $ is Noetherian as a topological space.
-	\end{lem}
-	\begin{proof}
-		Given a descending chain of closed subsets of $\Spec A $,
-		\[
-			V(\mathfrak{a}_1) \supseteq V(\mathfrak{a}_2) \supseteq \cdots,
-		\] 
-		the containment relations gives us that
-		\[
-			\mathfrak{a}_1 \supseteq \mathfrak{a}_2 \supseteq \cdots
-		.\] 
-		Because $A $ is Noetherian, all chains of prime ideals stabilize, so the chain of closed subsets also stabilizes.
-	\end{proof}
-	Then, given a descending chain of closed subsets of $X $, by \fullref{lem:noetherian_ring}, 
+	% \begin{lem}\label{lem:noetherian_ring}
+	% 	For a Noetherian ring $A $, $\Spec A $ is Noetherian as a topological space.
+	% \end{lem}
+	% \begin{proof}
+	% 	Given a descending chain of closed subsets of $\Spec A $,
+	% 	\[
+	% 		V(\mathfrak{a}_1) \supseteq V(\mathfrak{a}_2) \supseteq \cdots,
+	% 	\] 
+	% 	the containment relations gives us that
+	% 	\[
+	% 		\mathfrak{a}_1 \supseteq \mathfrak{a}_2 \supseteq \cdots
+	% 	.\] 
+	% 	Because $A $ is Noetherian, all chains of prime ideals stabilize, so the chain of closed subsets also stabilizes.
+	% \end{proof}
+	Then, given a descending chain of closed subsets of $X $, by Exercise 2.13c), 
 	\[
 		C_{1} \supseteq C_{2} \supseteq \cdots
 	\] 
@@ -3115,20 +3117,44 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 \end{exercise}
 \begin{proof}
 	(a) 
-	Take the maximal chain
+	We can reduce to $X,Y $ affine, since by discussion in Exercise 3.20, $\codim(Z\cap \Spec A, \Spec A) = \codim(Z,X) $ for $\Spec A $ an open affine subset of $X $.
+	By picking $\Spec A \subseteq f^{-1}(\Spec B) $ with $\Spec A $ an open affine of $X $ and $\Spec B $ an open affine of $Y $, we have that
 	\[
-		Z = Z_{0} \subseteq Z_{1} \subseteq \cdots \subseteq Z_n
-	\] 
-	of closed irreducibles of $X $ of length $\codim(Z,X) + 1$ (finite because schemes of finite type over $k $ are Noetherian by Exercise 3.13g).
-	If we show that this leads to a strictly increasing chain of closed irreducibles in $Y $ starting with $Y' $, we are done since $\codim(Y',Y) $ is the supremum of such chains.
+		\codim(Z\cap \Spec A, \Spec A) = \codim(Z,X) \qquad \codim(Y'\cap \Spec B, \Spec B) = \codim(Y',Y)
+	.\] 
 
-	Let $\eta_i $ be the generic point of $Z_i $ (exists by exercise 2.9 and $X $'s integralness).
-	Let $Y_i = \overline{\{f(\eta_i)\}}  $.
-	Note that 
-	Then $Y_{0} \subseteq Y' $ since $\eta'\in f(Z)$.
-	It is equal because $Z \subseteq f^{-1}(Y') $.
-	Now suppose FTSOC that $Y_i = Y_{i+1} $.
-	Then 
+	Then by Exercise 3.20d), it is equivalent to show that
+	\[
+		\dim \Spec A - \dim Z \le \dim \Spec B - \dim Y'
+	.\] 
+	Since $Z,Y' $ are irreducible, they have generic points $\mathfrak{p},\mathfrak{q} $ respectively by Exercise 2.9.
+	Then by Chapter I Theorem 1.8a, it suffices to show that
+	\[
+		\text{ht}(\mathfrak{p}) \le \text{ht}(\mathfrak{q})
+	.\] 
+	By \fullref{lem:dominant_map}, generic points get mapped to generic points, so $\mathfrak{q} = f(\mathfrak{p}) $.
+	Then by Matsumura Commutative Ring Theory Theorem 15.1,
+	\[
+		\text{ht}(\mathfrak{p}) \le \text{ht}(\mathfrak{q}) + \dim A_ \mathfrak{p} / \mathfrak{p}A _{\mathfrak{p}}
+	.\] 
+	Thus we wish to show that $\dim A_ \mathfrak{p} / \mathfrak{p}A _{\mathfrak{p}} =0$.
+
+	Since $\mathfrak{p} $ is an irreducible component of $f^{-1}(Y') = f^{-1}(\Spec B / \mathfrak{q})$, $\mathfrak{p} $ is a minimal prime of $V(\mathfrak{p}B) \subseteq \Spec B $ (if not, then we take closures, reverse orders and get a strictly larger closed irreducible than $Y' $ (strictly because of uniqueness of generic points via Exercise 2.9)).
+	Thus in the localization, there are no proper primes contained in $\mathfrak{p}A_{\mathfrak{p}} $ so that $\dim A_ \mathfrak{p} / \mathfrak{p}A _{\mathfrak{p}} =0 $.
+	% Take the maximal chain
+	% \[
+	% 	Z = Z_{0} \subseteq Z_{1} \subseteq \cdots \subseteq Z_n
+	% \] 
+	% of closed irreducibles of $X $ of length $\codim(Z,X) + 1$ (finite because schemes of finite type over $k $ are Noetherian by Exercise 3.13g).
+	% If we show that this leads to a strictly increasing chain of closed irreducibles in $Y $ starting with $Y' $, we are done since $\codim(Y',Y) $ is the supremum of such chains.
+	%
+	% Let $\eta_i $ be the generic point of $Z_i $ (exists by exercise 2.9 and $X $'s integralness).
+	% Let $Y_i = \overline{\{f(\eta_i)\}}  $.
+	% Note that 
+	% Then $Y_{0} \subseteq Y' $ since $\eta'\in f(Z)$.
+	% It is equal because $Z \subseteq f^{-1}(Y') $.
+	% Now suppose FTSOC that $Y_i = Y_{i+1} $.
+	% Then 
 
 	(b)
 	Let $Y' = \overline{\{y\}}   $ and $Z$ be an irreducible component of $f^{-1}(y) $ ($X_y $ and $f^{-1}(y) $ are homeomorphic by Exercise 3.10a)).
@@ -3145,10 +3171,25 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	Since localization is exact, $\text{Frac}(B) / \text{Frac}(A) $ is then finite type.
 	By additiveness of transcendence degree, we can find $t_{1}, \ldots ,t_e \in B $ a transcendence basis of $\text{Frac}(B) $ over $\text{Frac}(A) $ ($\text{t.r.d } K(X) / K(Y) = \dim X - \dim Y $).
 	
-	Then we can see that $\Spec B \to \Spec A[t_{1}, \ldots ,t_e] $ is a quasi-finite map.
-	This is because the fibre of the generic point $\eta  $ of $\Spec A[t_{1}, \ldots ,t_e] $ with $\Spec B $ is homeomorphic to $f^{-1}( \eta )$.
-	But this fibre is $\Spec B \otimes_{A[t_{1}, \ldots ,t_e]} \text{Frac}(A[t_{1}, \ldots , t_e]) $.
-	Since $B \otimes \text{Frac}(A) \subseteq \text{Frac}(B) $, $\Spec  $
+	Then we can show that $g:\Spec B \to \Spec A[t_{1}, \ldots ,t_e] $ is a quasi-finite map.
+	Let the latter ring be $C $.
+	Then if we have $\mathfrak{p}\in \Spec B \in f^{-1}(\eta_C)$, then $\mathfrak{p}\cap C = (0) $ since $C \xhookrightarrow{} B$ and $t_i \in B $.
+	Thus take some non-zero $b\in \mathfrak{p} $.
+	Then since $b\in \text{Frac}(B) $, $b = \frac{f}{g} $ for $f,g\in C $.
+	But then by closure of $\mathfrak{p}  $ under multiplication, $gb = f \in \mathfrak{p} $.
+	But $f\ne 0 $ and is in $C $, contradicting $\mathfrak{p}\cap C = (0) $.
+	Therefore there is only one prime ideal lying over $(0) $.
+	Obviously this is a dominant map.
+
+	Thus Exercise 3.7 gives us an open dense subset $U $ of $\Spec C $ such that $g\left.\right|_{f^{-1}(U)} $ is finite.
+	Since finite maps are stable under base extension by \fullref{lem:finiteextension}, $f^{-1}(U)_y \to U_y $ is also finite for all $y\in f(f^{-1}(U)) $.
+	Since $U_y $ is an open subset of an integral scheme, $\dim U_y = \dim \Spec C_y $ by Exericse 3.20e).
+	It is a well-known fact in commutative algebra that $\dim k(y)[t_{1}, \ldots ,t_e] = e $.
+	Finally, finite maps of integral affine schemes preserve dimension since they are also integral maps, allowing us to use going up and going down.
+	Hence $\dim f^{-1}(U)_y = e $ as desired.
+	% This is because the fibre of the generic point $\eta  $ of $\Spec A[t_{1}, \ldots ,t_e] $ with $\Spec B $ is homeomorphic to $f^{-1}( \eta )$.
+	% But this fibre is $\Spec B \otimes_{A[t_{1}, \ldots ,t_e]} \text{Frac}(A[t_{1}, \ldots , t_e]) $.
+	% Since $B \otimes \text{Frac}(A) \subseteq \text{Frac}(B) $, $\Spec  $
 	% Thus by Noether normalization and Exercise 3.20b), $\text{Frac}(B)$ is a finite $\text{Frac}(A)[t_{1},t_{2}, \ldots, t_e] $ module.
 	% Thus $B $ is a finite $A[t_{1},t_{2}, \ldots ,t_e] $ module.
 
@@ -3160,12 +3201,24 @@ Let $X $ be a scheme, let $f\in \Gamma(X,\mathcal{O}_X)$, and define $X_f $ to b
 	(3) The statement is obviously true for $\dim X = 0 $ since dimension is non-negative.
 	Now suppose that this statement is true up to $n-1 $.
 	Consider $X $ with $\dim X =n$.
-	Then we have that $E_e = X $, which is closed.
 
-	Now consider $E = \cup_{h > e} E_h $.
-	This is a union of irreducible components by considering irreducible components of $X_y $ as irreducible components of $f^{-1}(\overline{\{y\}  } ) $ by Exercise 3.10a)'s homeomorphism.
-	We can realize $E $ as a closed integral subscheme by gluing together the reduced induced scheme structure on each irreducible component.
-	Since the components are reduced and irreducible, they are integral schemes.
+	If $h < e $, then obviously $E_h \supseteq E_e = X $, so it is closed.
+	Now take $h > e $.
+
+	Then $X \setminus U $ with $U $ being the open dense set from (c) has dimension strictly less than $\dim X $.
+	This is because if $\dim X \setminus U = \dim X $, then for a chain of $n $ closed irreducibles in $X \setminus U $, they are also closed irreducibles in $X $.
+	But since $X $ is integral, $X $ is irreducible by Proposition 3.1.
+	Thus we can add $X $ to the end of the chain and get that $\dim X = n+1 $, a contradiction.
+
+	Finally, take $Z $ an arbitrary irreducible component of $X \setminus U $.
+	There are finitely many irreducible components because $X \setminus U $ with the reduced induced scheme structure is a finite type scheme over a field, making it Noetherian (Exercise 3.13g).
+	We can give it the reduced induced structure so that $Z $ is an integral scheme.
+
+	Then we have $f_Z: Z\to \overline{f(Z)}  $ where $\overline{f(Z)}  $ is the scheme theoretic image of Exercise 3.11.
+	Since the scheme theoretic image for quasi compact schemes is the closure of the image, $f_Z $ is a dominant morhpism of integral schemes of finite type over a field.
+	Then by the induction hypothesis, $E_{h} $ in the scheme $Z $ is closed.
+	Clearly $E_h $ in $X $ is a union of $E_{h} $ for all the choices of irreducible component schemes $Z $.
+	Since this is a finite union, $E_h $ is closed.
 
 	(e) By definition, $C_h = E_h \setminus E_{h+1} $.
 	This equals $E_h \cap E_{h+1}^C $.
